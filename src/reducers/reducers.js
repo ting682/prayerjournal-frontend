@@ -8,3 +8,5 @@ export const rootReducer = (history) => combineReducers({
     entries: entriesReducer
   });
 
+
+
