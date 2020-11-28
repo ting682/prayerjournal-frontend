@@ -1,8 +1,11 @@
 export function fetchEntries() {
     return (dispatch) => {
-      dispatch({ type: 'START_ADDING_ASTRONAUTS_REQUEST' });
-      fetch('http://api.open-notify.org/astros.json')
+      dispatch({ type: 'START_ADDING_ENTRIES_REQUEST' });
+      fetch('http://localhost:3000/api/v1/entries')
         .then(response => response.json())
-        .then(astronauts => dispatch({ type: 'ADD_ASTRONAUTS', astronauts }));
+        .then(entries => { 
+            
+            dispatch({ type: 'ADD_ENTRIES', entries: entries.data})
+        })
     };
   }

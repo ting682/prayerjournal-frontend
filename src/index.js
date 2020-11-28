@@ -11,6 +11,7 @@ import { createBrowserHistory } from 'history'
 import { routerMiddleware } from 'connected-react-router'
 import { ConnectedRouter } from 'connected-react-router'
 import { Route, Switch } from 'react-router'
+import EntriesContainer from './components/entriesContainer'
 
 export const history = createBrowserHistory()
 
@@ -25,7 +26,7 @@ ReactDOM.render(
       <> { /* your usual react-router v4/v5 routing */ }
         <Switch>
           <Route exact path="/" render={() => (<App />)} />
-          <Route exact path="/entries" render={() => (<div>Hello</div>)} />
+          <Route exact path="/entries" render={() => (<EntriesContainer />)} />
         </Switch>
       </>
     </ConnectedRouter>
