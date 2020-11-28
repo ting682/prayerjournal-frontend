@@ -12,12 +12,13 @@ class EntriesContainer extends Component {
 
     render () {
         
+        //debugger
+        const entries = this.props.entries.map(entry => <Entry key={entry.id} entry={entry.attributes} />)
         debugger
-        //const entries = this.props.entries.map(entry => <Entry key={entry.id} entry={entry} />)
         return (
             <div>Entries
                 <button onClick={(event) => this.handleClick(event)} >Fetch entries</button>
-                
+                {entries}
             </div>
         )
     }
@@ -29,7 +30,9 @@ function mapDispatchToProps(dispatch){
 
   function mapStateToProps(state){
     return {
-        state}
+        router: state.router,
+        entries: state.entries.entries
+    }
   }
 
   export default connect(mapStateToProps, mapDispatchToProps)(EntriesContainer)

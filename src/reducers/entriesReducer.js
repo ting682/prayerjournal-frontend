@@ -1,5 +1,5 @@
 export function entriesReducer(state = { entries: [], requesting: false}, action) {
-    debugger
+    //debugger
     switch (action.type) {
         case "START_ADDING_ENTRIES_REQUEST":
             return {
