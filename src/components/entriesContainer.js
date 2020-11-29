@@ -14,7 +14,7 @@ class EntriesContainer extends Component {
         
         //debugger
         const entries = this.props.entries.map(entry => <Entry key={entry.id} entry={entry.attributes} />)
-        debugger
+        //debugger
         return (
             <div>Entries
                 <button onClick={(event) => this.handleClick(event)} >Fetch entries</button>
