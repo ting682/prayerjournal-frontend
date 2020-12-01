@@ -4,8 +4,10 @@ export function fetchEntries() {
       fetch('http://localhost:3000/api/v1/entries')
         .then(response => response.json())
         .then(entries => { 
-            
-            dispatch({ type: 'ADD_ENTRIES', entries: entries.data})
+            debugger
+            dispatch({ type: 'ADD_ENTRIES', entries})
+
+
         })
     };
   }

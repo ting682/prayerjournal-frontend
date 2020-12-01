@@ -9,9 +9,29 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
             }
         case "ADD_ENTRIES":
             
+            let entriesData = []
+
+            for (const entry of action.entries.data) {
+
+                let comments = [];
+                let likes = [];
+
+                for(const includedData of action.entries.included) {
+                    if (includedData.type === 'comment' && includedData.attributes.entry_id === parseInt(entry.id)) {
+                        comments.push(includedData)
+                    } else if (includedData.type === 'like' && includedData.attributes.entry_id === parseInt(entry.id)) {
+                        likes.push(includedData)
+                    }
+                }
+
+                entriesData.push(Object.assign(entry, { comments: comments, likes: likes} ))
+            }
+
+            debugger
+
             return {
                 ...state,
-                entries: action.entries,
+                entries: entriesData,
                 requesting: false
             }
         default:
