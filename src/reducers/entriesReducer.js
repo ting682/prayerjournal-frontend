@@ -27,7 +27,7 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                 entriesData.push(Object.assign(entry, { comments: comments, likes: likes} ))
             }
 
-            debugger
+            //debugger
 
             return {
                 ...state,

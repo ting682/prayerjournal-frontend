@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchEntries } from '../actions/fetchEntries'
 import { Entry }  from './entry'
+import TimeAgo from 'javascript-time-ago'
+ 
+// English.
+import en from 'javascript-time-ago/locale/en'
+ 
+TimeAgo.addDefaultLocale(en)
 
 class EntriesContainer extends Component {
     
@@ -13,7 +19,7 @@ class EntriesContainer extends Component {
     render () {
         
         //debugger
-        const entries = this.props.entries.map(entry => <Entry key={entry.id} entry={entry.attributes} />)
+        const entries = this.props.entries.map(entry => <Entry key={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} />)
         //debugger
         return (
             <div>Entries
