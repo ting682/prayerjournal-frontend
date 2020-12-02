@@ -16,6 +16,10 @@ class EntriesContainer extends Component {
         this.props.fetchEntries()
     }
 
+    componentDidMount = () => {
+        this.props.fetchEntries()
+    }
+
     render () {
         
         //debugger
@@ -24,6 +28,7 @@ class EntriesContainer extends Component {
         return (
             <div>Entries
                 <button onClick={(event) => this.handleClick(event)} >Fetch entries</button>
+                
                 {entries}
             </div>
         )

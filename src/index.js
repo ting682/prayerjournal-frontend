@@ -12,6 +12,7 @@ import { routerMiddleware } from 'connected-react-router'
 import { ConnectedRouter } from 'connected-react-router'
 import { Route, Switch } from 'react-router'
 import EntriesContainer from './components/entriesContainer'
+import LoginContainer from './components/loginContainer';
 
 export const history = createBrowserHistory()
 
@@ -27,6 +28,7 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" render={() => (<App />)} />
           <Route exact path="/entries" render={() => (<EntriesContainer />)} />
+          <Route exact path="/login" render={() => (<LoginContainer />)} />
         </Switch>
       </>
     </ConnectedRouter>

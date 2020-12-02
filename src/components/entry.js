@@ -1,9 +1,6 @@
 import { CommentsContainer }  from './commentsContainer'
 import TimeAgo from 'javascript-time-ago'
 
- 
-
-
 export const Entry = (props) => {
     //debugger
     const timeAgo = new TimeAgo('en-US')
