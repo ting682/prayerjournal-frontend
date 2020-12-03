@@ -10,7 +10,6 @@ import en from 'javascript-time-ago/locale/en'
 TimeAgo.addDefaultLocale(en)
 
 class EntriesContainer extends Component {
-    
 
     handleClick = (event) => {
         this.props.fetchEntries()
@@ -42,7 +41,8 @@ function mapDispatchToProps(dispatch){
   function mapStateToProps(state){
     return {
         router: state.router,
-        entries: state.entries.entries
+        entries: state.entries.entries,
+        currentUser: state.currentUser
     }
   }
 

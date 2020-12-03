@@ -1,16 +1,19 @@
-export function fetchLogin(data) {
-    return (dispatch) => {
-        dispatch({type: 'FETCH_REQUEST_STARTED'})
 
+
+export function fetchLogin(data, history) {
+    return (dispatch) => {
+        dispatch({type: 'LOGIN_REQUEST_STARTED'})
+        
         fetch('http://localhost:3000/api/v1/login', {
             method: 'POST',
+            
             headers: {
                 'Content-Type': 'application/json'
             },
 
             body: JSON.stringify({
                 user: {
-                    email: data.email,
+                    email_address: data.email,
                     password: data.password
 
                 }
@@ -18,7 +21,11 @@ export function fetchLogin(data) {
         })
         .then(resp => resp.json())
         .then(userData => {
-            debugger
+            
+            //debugger
+            dispatch({type: 'SET_CURRENT_USER', userData})
+            history.push("/entries")
+            
         })
     }
 }

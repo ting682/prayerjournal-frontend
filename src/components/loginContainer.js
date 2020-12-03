@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { fetchLogin } from '../actions/fetchLogin'
+
 
 class LoginContainer extends Component {
     constructor (props) {
@@ -21,11 +23,17 @@ class LoginContainer extends Component {
                 [event.target.name]: event.target.value
             }
         })
-        debugger
+        
     }
 
     handleSubmit = (event) => {
-        debugger
+        event.preventDefault()
+        //debugger
+        this.props.fetchLogin({
+            email: this.state.email,
+            password: this.state.password
+        },this.props.history)
+
     }
 
     render () {
@@ -60,6 +68,16 @@ class LoginContainer extends Component {
     }
 }
 
+function mapDispatchToProps(dispatch){
+    return { fetchLogin: (data, history) => dispatch(fetchLogin(data, history)) }
+  }
 
+  function mapStateToProps(state){
+    return {
+        router: state.router,
+        entries: state.entries.entries,
+        currentUser: state.currentUser
+    }
+  }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)
