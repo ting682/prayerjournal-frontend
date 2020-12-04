@@ -23,7 +23,7 @@ class EntriesContainer extends Component {
         
         //debugger
         const entries = this.props.entries.map(entry => <Entry key={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} />)
-        debugger
+        //debugger
         return (
             <React.Fragment>Entries
                 <button onClick={(event) => this.handleClick(event)} >Fetch entries</button>
