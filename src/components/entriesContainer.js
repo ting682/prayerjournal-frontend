@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { fetchEntries } from '../actions/fetchEntries'
 import { Entry }  from './entry'
 import TimeAgo from 'javascript-time-ago'
- 
+import EntryInput from './entryInput'
+
 // English.
 import en from 'javascript-time-ago/locale/en'
  
@@ -27,7 +28,7 @@ class EntriesContainer extends Component {
         return (
             <React.Fragment>Entries
                 <button onClick={(event) => this.handleClick(event)} >Fetch entries</button>
-                
+                <EntryInput />
                 {entries}
             </React.Fragment>
         )

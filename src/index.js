@@ -13,6 +13,7 @@ import { ConnectedRouter } from 'connected-react-router'
 import { Route, Switch } from 'react-router'
 import EntriesContainer from './components/entriesContainer'
 import LoginContainer from './components/loginContainer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const history = createBrowserHistory()
 
