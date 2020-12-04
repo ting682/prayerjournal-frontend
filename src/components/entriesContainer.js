@@ -23,13 +23,13 @@ class EntriesContainer extends Component {
         
         //debugger
         const entries = this.props.entries.map(entry => <Entry key={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} />)
-        //debugger
+        debugger
         return (
-            <div>Entries
+            <React.Fragment>Entries
                 <button onClick={(event) => this.handleClick(event)} >Fetch entries</button>
                 
                 {entries}
-            </div>
+            </React.Fragment>
         )
     }
 };
@@ -40,9 +40,10 @@ function mapDispatchToProps(dispatch){
 
   function mapStateToProps(state){
     return {
+        loggedIn: !!state.user.currentUser,
         router: state.router,
         entries: state.entries.entries,
-        currentUser: state.currentUser
+        currentUser: state.user.currentUser
     }
   }
 

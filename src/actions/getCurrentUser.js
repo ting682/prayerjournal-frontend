@@ -1,8 +1,8 @@
-export function fetchEntries() {
+export function getCurrentUser() {
     return (dispatch) => {
-      dispatch({ type: 'START_ADDING_ENTRIES_REQUEST' });
+      dispatch({ type: 'START_GET_CURRENT_USER_REQUEST' });
 
-      fetch('http://localhost:3000/api/v1/entries', {
+      fetch('http://localhost:3000/api/v1/get_current_user', {
         credentials: "include",
         method: "GET",
         headers: {
@@ -11,9 +11,9 @@ export function fetchEntries() {
         }
         })
         .then(response => response.json())
-        .then(entries => { 
+        .then(userData => { 
             //debugger
-            dispatch({ type: 'ADD_ENTRIES', entries})
+            dispatch({ type: 'SET_CURRENT_USER', userData})
 
 
         })

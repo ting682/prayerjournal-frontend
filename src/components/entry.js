@@ -6,7 +6,7 @@ export const Entry = (props) => {
     const timeAgo = new TimeAgo('en-US')
 
     return (
-        <div class="entry">
+        <div className="entry">
             <h3>Created by: {props.entry.name} </h3>
             <p>{timeAgo.format(new Date(props.entry.updated_at))}</p>
             <p>{props.entry.content}</p>

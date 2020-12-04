@@ -74,6 +74,7 @@ function mapDispatchToProps(dispatch){
 
   function mapStateToProps(state){
     return {
+        loggedIn: !!state.currentUser,
         router: state.router,
         entries: state.entries.entries,
         currentUser: state.currentUser

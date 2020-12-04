@@ -23,17 +23,9 @@ const store = createStore(rootReducer(history), compose(applyMiddleware(thunk, r
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}> { /* place ConnectedRouter under Provider */ }
-      <> { /* your usual react-router v4/v5 routing */ }
-        <Switch>
-          <Route exact path="/" render={() => (<App />)} />
-          <Route exact path="/entries" render={(props) => <EntriesContainer  {...props} />} />
-          <Route exact path="/login" render={(props) => <LoginContainer {...props} />} />
-        </Switch>
-      </>
-    </ConnectedRouter>
-    
-  </Provider>,
+    <App />
+  </Provider>
+  ,
   document.getElementById('root')
 );
 

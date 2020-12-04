@@ -4,7 +4,7 @@ import React from 'react'
 export const CommentsContainer = (props) => {
 
     let comments = props.comments.map(function (comment) {
-        return <Comment comment={comment} />
+        return <Comment key={comment.id} comment={comment} />
     })
 
     return (

@@ -4,13 +4,13 @@ export function fetchLogin(data, history) {
     return (dispatch) => {
         dispatch({type: 'LOGIN_REQUEST_STARTED'})
         
-        fetch('http://localhost:3000/api/v1/login', {
-            method: 'POST',
+        return fetch('http://localhost:3000/api/v1/login', {
             
+            credentials: "include",
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json"
             },
-
             body: JSON.stringify({
                 user: {
                     email_address: data.email,
