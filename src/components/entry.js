@@ -9,7 +9,7 @@ export const Entry = (props) => {
         <div className="entry">
             <h3>Created by: {props.entry.name} </h3>
             <p>{timeAgo.format(new Date(props.entry.updated_at))}</p>
-            <p>{props.entry.content}</p>
+            {props.entry.content}
             <p>Likes: {props.entry.likes_count}</p>
             <CommentsContainer comments={props.comments} />
         </div>

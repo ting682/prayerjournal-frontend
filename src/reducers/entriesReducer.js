@@ -14,13 +14,19 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                 requesting: true
             }
         
-        
+        // case "NEW_ENTRY":
+        //     return {
+        //         ...state,
+        //         entries: [action.entry, ...state.entries]
+        //     }
         
         case "ADD_ENTRIES":
             
             let entriesData = []
 
             for (const entry of action.entries.data) {
+
+                debugger
 
                 let comments = [];
                 let likes = [];

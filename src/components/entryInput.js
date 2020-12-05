@@ -14,10 +14,6 @@ class EntryInput extends Component {
 
     }
 
-    componentDidMount() {
-
-    }
-
     handleChange = (value) => {
 
         this.setState(previousState => {
@@ -31,7 +27,12 @@ class EntryInput extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         debugger
-
+        this.props.postEntry(
+            {
+                content: this.state.content,
+                user_id: parseInt(this.props.currentUser.id)
+            }, this.props.history
+        )
     }
 
     render () {
