@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchEntries } from '../actions/fetchEntries'
+import { getCurrentUser } from '../actions/getCurrentUser'
 import { Entry }  from './entry'
 import TimeAgo from 'javascript-time-ago'
 import EntryInput from './entryInput'
+
 
 // English.
 import en from 'javascript-time-ago/locale/en'
@@ -11,6 +13,15 @@ import en from 'javascript-time-ago/locale/en'
 TimeAgo.addDefaultLocale(en)
 
 class EntriesContainer extends Component {
+
+    constructor(props) {
+        super(props)
+        this.props.getCurrentUser()
+    }
+
+    componentDidMount() {
+        
+    }
 
     handleClick = (event) => {
         this.props.fetchEntries()
@@ -22,12 +33,14 @@ class EntriesContainer extends Component {
 
     render () {
         
-        //debugger
+        
         const entries = this.props.entries.map(entry => <Entry key={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} />)
         //debugger
         return (
-            <React.Fragment>Entries
-                <button onClick={(event) => this.handleClick(event)} >Fetch entries</button>
+            <React.Fragment>
+                
+                <br></br>
+                {/* <button onClick={(event) => this.handleClick(event)} >Fetch entries</button> */}
                 <EntryInput />
                 {entries}
             </React.Fragment>
@@ -36,10 +49,14 @@ class EntriesContainer extends Component {
 };
 
 function mapDispatchToProps(dispatch){
-    return { fetchEntries: () => dispatch(fetchEntries()) }
+    return { 
+        fetchEntries: () => dispatch(fetchEntries()),
+        getCurrentUser: () => dispatch(getCurrentUser())
+    }
   }
 
   function mapStateToProps(state){
+    //debugger
     return {
         loggedIn: !!state.user.currentUser,
         router: state.router,

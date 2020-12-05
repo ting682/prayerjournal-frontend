@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
+import { postEntry } from '../actions/postEntry'
 
 class EntryInput extends Component {
     constructor (props) {
@@ -10,6 +11,10 @@ class EntryInput extends Component {
         this.state = {
             content: ""
         }
+
+    }
+
+    componentDidMount() {
 
     }
 
@@ -26,6 +31,7 @@ class EntryInput extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         debugger
+
     }
 
     render () {
@@ -65,4 +71,17 @@ class EntryInput extends Component {
     }
 }
 
-export default connect(null, null)(EntryInput)
+function mapDispatchToProps(dispatch){
+    return { postEntry: (data, history) => dispatch(postEntry(data, history)) }
+}
+
+function mapStateToProps(state){
+    return {
+        loggedIn: !!state.user.currentUser,
+        router: state.router,
+        entries: state.entries.entries,
+        currentUser: state.user.currentUser
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(EntryInput)

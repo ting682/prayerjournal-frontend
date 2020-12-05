@@ -1,19 +1,19 @@
-export function getCurrentUser() {
+export function postEntry(data, history) {
     return (dispatch) => {
-      dispatch({ type: 'START_GET_CURRENT_USER_REQUEST' });
+      dispatch({ type: 'START_NEW_ENTRY' });
 
-      fetch('http://localhost:3000/api/v1/get_current_user', {
+      fetch('http://localhost:3000/api/v1/entries', {
         credentials: "include",
-        method: "GET",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           'Access-Control-Allow-Origin': 'http://localhost:3001'
         }
         })
         .then(response => response.json())
-        .then(userData => { 
+        .then(entries => { 
             //debugger
-            dispatch({ type: 'GET_CURRENT_USER', userData})
+            dispatch({ type: 'ADD_ENTRIES', entries})
 
 
         })

@@ -7,6 +7,15 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                 entries: [...state.entries],
                 requesting: true
             }
+        case "START_NEW_ENTRY":
+            return {
+                ...state,
+                entries: [...state.entries],
+                requesting: true
+            }
+        
+        
+        
         case "ADD_ENTRIES":
             
             let entriesData = []

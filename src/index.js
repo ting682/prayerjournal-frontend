@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+// import { ConnectedRouter } from 'connected-react-router'
+// import { Route, Switch } from 'react-router'
+// import EntriesContainer from './components/entriesContainer'
+// import LoginContainer from './components/loginContainer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { rootReducer } from './reducers/reducers'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -10,22 +16,21 @@ import thunk from 'redux-thunk';
 import { createBrowserHistory } from 'history'
 import { routerMiddleware } from 'connected-react-router'
 import { ConnectedRouter } from 'connected-react-router'
-import { Route, Switch } from 'react-router'
-import EntriesContainer from './components/entriesContainer'
-import LoginContainer from './components/loginContainer';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export const history = createBrowserHistory()
 
-// const middleware = routerMiddleware(history)
+// // const middleware = routerMiddleware(history)
 
 const store = createStore(rootReducer(history), compose(applyMiddleware(thunk, routerMiddleware(history)), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
-  </Provider>
+      <ConnectedRouter history={history}> { /* place ConnectedRouter under Provider */ }
+        <App />
+      </ConnectedRouter>
+    </Provider>
   ,
   document.getElementById('root')
 );

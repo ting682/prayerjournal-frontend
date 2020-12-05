@@ -16,13 +16,19 @@ export function loginReducer(state = { currentUser: [], requesting: false}, acti
                 requesting: true
             }
         
-        case "SET_CURRENT_USER":
+        case "GET_CURRENT_USER":
             //debugger
             return {
                 currentUser: action.userData.data,
                 requesting: false
             }
-
+        
+        case "SET_CURRENT_USER":
+            //debugger
+            return {
+                currentUser: action.userData.user.data,
+                requesting: false
+            }
         default:
             return state
     
