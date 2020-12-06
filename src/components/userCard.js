@@ -1,5 +1,6 @@
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 export const UserCard = (props) => {
 
@@ -14,7 +15,7 @@ export const UserCard = (props) => {
                 </Card.Text>
                 <Link to={{
                     pathname: `/users/${props.user.id}`
-                }} >{props.user.attributes.name}'s profile</Link>
+                }} ><Button>{props.user.attributes.name}'s profile</Button></Link>
             </Card.Body>
         </Card>
     )
