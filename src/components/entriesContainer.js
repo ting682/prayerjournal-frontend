@@ -40,7 +40,7 @@ class EntriesContainer extends Component {
             <React.Fragment>
                 
                 <br></br>
-                <button onClick={(event) => this.handleClick(event)} >Fetch entries</button>
+                {/* <button onClick={(event) => this.handleClick(event)} >Fetch entries</button> */}
                 <EntryInput />
                 {entries}
             </React.Fragment>

@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { UserCard } from './userCard'
+import { fetchUsers } from '../actions/fetchUsers'
 
 class UsersContainer extends Component {
 
     componentDidMount() {
-
+        this.props.fetchUsers()
     }
 
     render () {
-        let users = this.props.users.map(function (user) {
+        //debugger
+        let users = this.props.users.users.map(function (user) {
+            //debugger
             return (
-                <User key={user.id} user={user} />
+                <UserCard key={user.id} user={user} />
             )
         })
         return (
@@ -22,7 +26,7 @@ class UsersContainer extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-    return { fetchUser: (userId) => dispatch(fetchUser(userId)) }
+    return { fetchUsers: (userId) => dispatch(fetchUsers(userId)) }
 
 }
 

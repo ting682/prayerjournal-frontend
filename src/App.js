@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 import EntriesContainer from './components/entriesContainer'
 import LoginContainer from './components/loginContainer';
 import UserContainer from './components/userContainer'
+import UsersContainer from './components/usersContainer'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { Home } from './components/home'
@@ -53,6 +54,7 @@ class App extends React.Component {
                   <Route exact path="/" render={(props) => <Home  {...props} />} />
                   <Route exact path="/entries" render={(props) => <EntriesContainer  {...props} />} />
                   <Route exact path="/login" render={(props) => <LoginContainer {...props} />} />
+                  <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                   <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
                 </Switch>
              
