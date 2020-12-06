@@ -14,7 +14,7 @@ export function fetchEntries() {
         .then(response => response.json())
         .then(entries => { 
             //debugger
-            dispatch({ type: 'ADD_ENTRIES', entries})
+            dispatch({ type: 'GET_ENTRIES', entries})
 
 
         })

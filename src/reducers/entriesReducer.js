@@ -20,7 +20,7 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
         //         entries: [action.entry, ...state.entries]
         //     }
         
-        case "ADD_ENTRIES":
+        case "GET_ENTRIES":
             
             let entriesData = []
 
