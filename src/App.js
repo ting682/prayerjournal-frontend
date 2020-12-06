@@ -10,9 +10,11 @@ import { Link } from 'react-router-dom'
 
 import EntriesContainer from './components/entriesContainer'
 import LoginContainer from './components/loginContainer';
+import UserContainer from './components/userContainer'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { Home } from './components/home'
+import { User } from './components/user'
 // export const history = createBrowserHistory()
 
 // // // const middleware = routerMiddleware(history)
@@ -51,6 +53,7 @@ class App extends React.Component {
                   <Route exact path="/" render={(props) => <Home  {...props} />} />
                   <Route exact path="/entries" render={(props) => <EntriesContainer  {...props} />} />
                   <Route exact path="/login" render={(props) => <LoginContainer {...props} />} />
+                  <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
                 </Switch>
              
             

@@ -1,4 +1,4 @@
-export function getCurrentUser(userId) {
+export function fetchUser(userId) {
     return (dispatch) => {
       dispatch({ type: 'START_GET_USER_REQUEST' });
 

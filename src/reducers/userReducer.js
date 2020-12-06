@@ -13,7 +13,7 @@ export function userReducer(state = { users: [], requesting: false}, action) {
             //debugger
             return {
                 ...state,
-                users: action.data,
+                users: [...state.users, action.userData.data],
                 requesting: false
             }
 

@@ -26,7 +26,7 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
 
             for (const entry of action.entries.data) {
 
-                debugger
+                //debugger
 
                 let comments = [];
                 let likes = [];
