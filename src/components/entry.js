@@ -12,7 +12,7 @@ export const Entry = (props) => {
             <p>{timeAgo.format(new Date(props.entry.updated_at))}</p>
             {Parser(props.entry.content)}
             <p>Likes: {props.entry.likes_count}</p>
-            <CommentsContainer comments={props.comments} />
+            <CommentsContainer comments={props.comments} {...props}/>
         </div>
     )
 }

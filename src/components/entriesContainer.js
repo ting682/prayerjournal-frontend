@@ -34,7 +34,9 @@ class EntriesContainer extends Component {
     render () {
         
         
-        const entries = this.props.entries.map(entry => <Entry key={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} />)
+        const entries = this.props.entries.map(entry => {
+            return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} />
+        }, this)
         //debugger
         return (
             <React.Fragment>

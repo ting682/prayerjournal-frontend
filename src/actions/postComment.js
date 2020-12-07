@@ -13,13 +13,19 @@ export function postComment(data, history) {
         body: JSON.stringify({
             comment: {
                 content: data.content,
-                user_id: data.user_id
+                user_id: data.userId,
+                entry_id: data.entryId
             }
         })
         })
         .then(response => response.json())
         .then(comment => { 
             
+            dispatch({ type: 'ADD_COMMENT', payload: { 
+                entryId: data.entryId,
+                userId: data.userId,
+                comment: comment
+            }})
             //dispatch({ type: 'ADD_ENTRIES', entries})
 
             history.push("/entries")

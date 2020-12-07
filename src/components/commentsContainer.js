@@ -1,6 +1,6 @@
 import { Comment } from './comment'
 import React from 'react'
-import CommentInput from './commentInput'
+import { CommentInput } from './commentInput'
 
 export const CommentsContainer = (props) => {
 
@@ -8,7 +8,10 @@ export const CommentsContainer = (props) => {
         return <Comment key={comment.id} comment={comment} />
     })
 
+    debugger
+
     return (
+
         <React.Fragment>
             <CommentInput {...props} />
             {comments}
