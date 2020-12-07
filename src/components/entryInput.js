@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Form, Row, Col, Button } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
 import { postEntry } from '../actions/postEntry'
@@ -26,13 +26,17 @@ class EntryInput extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        debugger
+        //debugger
         this.props.postEntry(
             {
                 content: this.state.content,
                 user_id: parseInt(this.props.currentUser.id)
             }, this.props.history
         )
+
+        this.setState({
+            content: ''
+        })
     }
 
     render () {

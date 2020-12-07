@@ -12,7 +12,7 @@ export const Comment = (props) => {
     // Create formatter (English).
     const timeAgo = new TimeAgo('en-US')
  
-    
+    //debugger
 
     return (
         <div className="comment">
