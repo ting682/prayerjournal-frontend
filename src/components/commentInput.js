@@ -10,7 +10,7 @@ export const CommentInput = (props) => {
 
     const [content, setContent] = useState('')
     const currentUser = useSelector(state => state.user.currentUser)
-    const entryId = useState(props.entryId)
+    const entryId = props.entryId
 
     let history = useHistory()
 
@@ -20,22 +20,24 @@ export const CommentInput = (props) => {
         setContent(event.target.value)
     }
 
-    const handleSubmit = (event, entryId) => {
+    const handleSubmit = (event, entryId, history) => {
         event.preventDefault()
-        debugger
+        
         dispatch(postComment(
             {
                 comment: {
                     content: content,
-                    user_id: currentUser.id,
-
+                    user_id: parseInt(currentUser.id),
+                    entry_id: parseInt(entryId)
                 }
-            }
+            }, history
         ))
+
+        setContent('')
     }
 
     return (
-        <Form onSubmit={event => handleSubmit(event, entryId)}>
+        <Form onSubmit={event => handleSubmit(event, entryId, history)}>
             <Form.Control type="text" value={content} onChange={handleChange}></Form.Control>
             <Button variant="primary" type="submit">
                 Add comment
@@ -44,20 +46,5 @@ export const CommentInput = (props) => {
     )
 } 
 
-function mapDispatchToProps(dispatch){
-    return { 
-        postComment: () => dispatch(postComment()),
-        getCurrentUser: () => dispatch(getCurrentUser())
-    }
-  }
 
-  function mapStateToProps(state){
-    //debugger
-    return {
-        loggedIn: !!state.user.currentUser,
-        router: state.router,
-        entries: state.entries.entries,
-        currentUser: state.user.currentUser
-    }
-  }
 

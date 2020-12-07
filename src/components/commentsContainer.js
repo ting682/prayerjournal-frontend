@@ -8,7 +8,7 @@ export const CommentsContainer = (props) => {
         return <Comment key={comment.id} comment={comment} />
     })
 
-    debugger
+    //debugger
 
     return (
 

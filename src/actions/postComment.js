@@ -2,7 +2,7 @@ export function postComment(data, history) {
     return (dispatch) => {
       dispatch({ type: 'START_NEW_COMMENT' });
         //debugger
-      fetch('http://localhost:3000/api/v1/comments', {
+      fetch(`http://localhost:3000/api/v1/entries/${data.comment.entry_id}/comments`, {
         credentials: "include",
         method: "POST",
         headers: {
@@ -12,18 +12,18 @@ export function postComment(data, history) {
 
         body: JSON.stringify({
             comment: {
-                content: data.content,
-                user_id: data.userId,
-                entry_id: data.entryId
+                content: data.comment.content,
+                user_id: data.comment.user_id,
+                entry_id: data.comment.entry_id
             }
         })
         })
         .then(response => response.json())
         .then(comment => { 
-            
-            dispatch({ type: 'ADD_COMMENT', payload: { 
-                entryId: data.entryId,
-                userId: data.userId,
+            //debugger
+            dispatch({ type: 'NEW_COMMENT', payload: { 
+                entryId: data.comment.entry_id,
+                userId: data.comment.user_id,
                 comment: comment
             }})
             //dispatch({ type: 'ADD_ENTRIES', entries})

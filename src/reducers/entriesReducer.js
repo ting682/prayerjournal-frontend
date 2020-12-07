@@ -16,18 +16,22 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
         
         case "NEW_COMMENT":
             let entryIndex = state.entries.findIndex(function (entry) {
-                return entry.id === action.payload.entryId
+                //debugger
+                return parseInt(entry.id) === action.payload.entryId
             })
 
             let entry = state.entries.find(function(entry) {
-                return entry.id === action.payload.entryId
+                return parseInt(entry.id) === action.payload.entryId
             })
 
-            entry.comments.unshift(action.payload.comment)
+            
+            entry.comments.push(action.payload.comment.data)
+
+            //debugger
 
             return {
                 ...state,
-                entries: [...state.entries.slice(0, entryIndex), entry, ...state.entries.slice(entryIndex)],
+                entries: [...state.entries.slice(0, entryIndex), entry, ...state.entries.slice(entryIndex + 1)],
                 requesting: false
             }
         
