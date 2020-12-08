@@ -1,5 +1,6 @@
 export function entriesReducer(state = { entries: [], requesting: false}, action) {
-    //debugger
+    let entryIndex;
+    let entry;
     switch (action.type) {
         case "START_ADDING_ENTRIES_REQUEST":
             return {
@@ -13,19 +14,47 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                 entries: [...state.entries],
                 requesting: true
             }
-        
+        case 'START_DELETE_COMMENT':
+            return {
+                ...state,
+                entries: [...state.entries],
+                requesting: true
+            }
         case "NEW_COMMENT":
-            let entryIndex = state.entries.findIndex(function (entry) {
+            entryIndex = state.entries.findIndex(function (entry) {
                 //debugger
                 return parseInt(entry.id) === action.payload.entryId
             })
 
-            let entry = state.entries.find(function(entry) {
+            entry = state.entries.find(function(entry) {
                 return parseInt(entry.id) === action.payload.entryId
             })
 
             
             entry.comments.push(action.payload.comment.data)
+
+            //debugger
+
+            return {
+                ...state,
+                entries: [...state.entries.slice(0, entryIndex), entry, ...state.entries.slice(entryIndex + 1)],
+                requesting: false
+            }
+
+        case 'DELETE_COMMENT':
+            entryIndex = state.entries.findIndex(function (entry) {
+                //debugger
+                return parseInt(entry.id) === action.payload.entryId
+            })
+
+            entry = state.entries.find(function(entry) {
+                return parseInt(entry.id) === action.payload.entryId
+            })
+
+            
+            entry.comments = entry.comments.filter(function (comment) {
+                return comment.id !== action.payload.commentId
+            })
 
             //debugger
 

@@ -5,7 +5,9 @@ import { CommentInput } from './commentInput'
 export const CommentsContainer = (props) => {
 
     let comments = props.comments.map(function (comment) {
-        return <Comment key={comment.id} comment={comment} {...props}/>
+        return (
+            <Comment key={comment.id} comment={comment} {...props}/>
+        )
     }, props)
 
     //debugger
