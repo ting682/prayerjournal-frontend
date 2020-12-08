@@ -19,7 +19,7 @@ export function deleteComment(data, history) {
             }})
             //dispatch({ type: 'ADD_ENTRIES', entries})
 
-            history.push("/entries")
+            //history.push("/entries")
         })
     };
   }

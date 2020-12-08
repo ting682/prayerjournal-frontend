@@ -1,4 +1,4 @@
-export function postComment(data, history) {
+export function postComment(data) {
     return (dispatch) => {
       dispatch({ type: 'START_NEW_COMMENT' });
         //debugger
@@ -28,7 +28,7 @@ export function postComment(data, history) {
             }})
             //dispatch({ type: 'ADD_ENTRIES', entries})
 
-            history.push("/entries")
+            //history.push("/entries")
         })
     };
   }

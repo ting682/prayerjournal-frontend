@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { postComment } from '../actions/postComment'
 import { getCurrentUser } from '../actions/getCurrentUser'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+
 
 export const CommentInput = (props) => {
 
@@ -12,7 +12,7 @@ export const CommentInput = (props) => {
     const currentUser = useSelector(state => state.user.currentUser)
     const entryId = props.entryId
 
-    let history = useHistory()
+    
 
     const dispatch = useDispatch()
 
@@ -20,7 +20,7 @@ export const CommentInput = (props) => {
         setContent(event.target.value)
     }
 
-    const handleSubmit = (event, entryId, history) => {
+    const handleSubmit = (event, entryId) => {
         event.preventDefault()
         
         dispatch(postComment(
@@ -30,14 +30,14 @@ export const CommentInput = (props) => {
                     user_id: parseInt(currentUser.id),
                     entry_id: parseInt(entryId)
                 }
-            }, history
+            }
         ))
 
         setContent('')
     }
 
     return (
-        <Form onSubmit={event => handleSubmit(event, entryId, history)}>
+        <Form onSubmit={event => handleSubmit(event, entryId)}>
             <Form.Control type="text" value={content} onChange={handleChange}></Form.Control>
             <Button variant="primary" type="submit">
                 Add comment
