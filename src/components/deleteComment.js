@@ -16,7 +16,7 @@ export const DeleteComment = (props) => {
 
     //debugger
 
-    const handleClick = (event, commentId, entryId) => {
+    const handleClick = (commentId, entryId) => {
         //debugger
         dispatch(deleteComment({
             comment: {
@@ -28,7 +28,7 @@ export const DeleteComment = (props) => {
     //debugger
     if (props.comment.attributes.user_id === currentUserId) {
         return (
-            <Button onClick={event => handleClick(event, commentId, entryId)} >Delete comment</Button>
+            <Button onClick={() => handleClick(commentId, entryId)} >Delete comment</Button>
         )
     } else {
         return (

@@ -64,6 +64,31 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                 requesting: false
             }
         
+            case "EDIT_COMMENT":
+                entryIndex = state.entries.findIndex(function (entry) {
+                    //debugger
+                    return parseInt(entry.id) === action.payload.entryId
+                })
+    
+                entry = state.entries.find(function(entry) {
+                    return parseInt(entry.id) === action.payload.entryId
+                })
+                
+                entry.comments = entry.comments.filter(function (comment) {
+                    //debugger
+                    return comment.id !== action.payload.comment.data.id
+                })
+
+                entry.comments.push(action.payload.comment.data)
+    
+                //debugger
+    
+                return {
+                    ...state,
+                    entries: [...state.entries.slice(0, entryIndex), entry, ...state.entries.slice(entryIndex + 1)],
+                    requesting: false
+                }
+
         case "GET_ENTRIES":
             
             let entriesData = []
