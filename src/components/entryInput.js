@@ -31,7 +31,7 @@ class EntryInput extends Component {
             {
                 content: this.state.content,
                 user_id: parseInt(this.props.currentUser.id)
-            }, this.props.history
+            }
         )
 
         this.setState({

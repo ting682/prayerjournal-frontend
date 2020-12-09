@@ -12,7 +12,7 @@ export const EditCommentContainer = (props) => {
     const dispatch = useDispatch()
     const [content, setContent] = useState(props.comment.attributes.content)
 
-    const handleClick = (event) => {
+    const handleClick = () => {
         
         setShow(true)
 

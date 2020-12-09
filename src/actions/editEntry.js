@@ -1,10 +1,10 @@
-export function postEntry(data) {
+export function editEntry(data) {
     return (dispatch) => {
-      dispatch({ type: 'START_NEW_ENTRY' });
+      dispatch({ type: 'START_EDIT_ENTRY' });
         //debugger
-      fetch('http://localhost:3000/api/v1/entries', {
+      fetch(`http://localhost:3000/api/v1/entries/${data.entry.entry_id}`, {
         credentials: "include",
-        method: "POST",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           'Access-Control-Allow-Origin': 'http://localhost:3001'
@@ -12,15 +12,16 @@ export function postEntry(data) {
 
         body: JSON.stringify({
             entry: {
-                content: data.content,
-                user_id: data.user_id
+                content: data.entry.content,
+                user_id: data.entry.user_id
             }
         })
         })
         .then(response => response.json())
         .then(entry => { 
-            
-            dispatch({ type: 'NEW_ENTRY', entry})
+            //debugger
+            dispatch({ type: 'EDIT_ENTRY', entry})
+            //dispatch({ type: 'ADD_ENTRIES', entries})
 
             //history.push("/entries")
         })

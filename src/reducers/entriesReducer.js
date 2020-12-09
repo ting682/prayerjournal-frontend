@@ -1,6 +1,9 @@
 export function entriesReducer(state = { entries: [], requesting: false}, action) {
     let entryIndex;
     let entry;
+    let comments;
+    let likes;
+    let oldEntry;
     switch (action.type) {
         case "START_ADDING_ENTRIES_REQUEST":
             return {
@@ -20,6 +23,14 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                 entries: [...state.entries],
                 requesting: true
             }
+
+        case 'START_EDIT_ENTRY':
+            return {
+                ...state,
+                entries: [...state.entries],
+                requesting: true
+            }
+
         case "NEW_COMMENT":
             entryIndex = state.entries.findIndex(function (entry) {
                 //debugger
@@ -97,8 +108,8 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
 
                 //debugger
 
-                let comments = [];
-                let likes = [];
+                comments = [];
+                likes = [];
 
                 for(const includedData of action.entries.included) {
                     if (includedData.type === 'comment' && includedData.attributes.entry_id === parseInt(entry.id)) {
@@ -118,6 +129,51 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                 entries: entriesData,
                 requesting: false
             }
+
+        case 'NEW_ENTRY':
+            //debugger
+            entry = action.entry.data
+            
+            Object.assign(entry, { comments: [], likes: []} )
+
+            return {
+                ...state,
+                entries: [...state.entries, entry],
+                requesting: false
+            }
+
+        case 'EDIT_ENTRY':
+            
+            entryIndex = state.entries.findIndex(function (entry) {
+                //debugger
+                return parseInt(entry.id) === parseInt(action.entry.data.id)
+            })
+
+            oldEntry = state.entries.find(function(entry) {
+                return parseInt(entry.id) === parseInt(action.entry.data.id)
+            })
+
+            entry = action.entry.data    
+
+            comments = oldEntry.comments;
+            likes = oldEntry.likes;
+            //debugger
+            // for(const includedData of action.entries.included) {
+            //     if (includedData.type === 'comment' && includedData.attributes.entry_id === parseInt(entry.id)) {
+            //         comments.push(includedData)
+            //     } else if (includedData.type === 'like' && includedData.attributes.entry_id === parseInt(entry.id)) {
+            //         likes.push(includedData)
+            //     }
+            // }
+
+            Object.assign(entry, { comments: comments, likes: likes} )
+            //debugger
+            return {
+                ...state,
+                entries: [...state.entries.slice(0, entryIndex), ...state.entries.slice(entryIndex + 1), entry],
+                requesting: false
+            }
+
         default:
             return state
     }
