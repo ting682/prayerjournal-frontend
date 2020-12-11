@@ -30,7 +30,12 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                 entries: [...state.entries],
                 requesting: true
             }
-
+        case 'START_DELETE_ENTRY':
+            return {
+                ...state,
+                entries: [...state.entries],
+                requesting: true
+            }
         case "NEW_COMMENT":
             entryIndex = state.entries.findIndex(function (entry) {
                 //debugger
@@ -157,20 +162,26 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
 
             comments = oldEntry.comments;
             likes = oldEntry.likes;
-            //debugger
-            // for(const includedData of action.entries.included) {
-            //     if (includedData.type === 'comment' && includedData.attributes.entry_id === parseInt(entry.id)) {
-            //         comments.push(includedData)
-            //     } else if (includedData.type === 'like' && includedData.attributes.entry_id === parseInt(entry.id)) {
-            //         likes.push(includedData)
-            //     }
-            // }
+            
 
             Object.assign(entry, { comments: comments, likes: likes} )
             //debugger
             return {
                 ...state,
                 entries: [...state.entries.slice(0, entryIndex), ...state.entries.slice(entryIndex + 1), entry],
+                requesting: false
+            }
+        
+        case 'DELETE_ENTRY':
+            //debugger
+            entryIndex = state.entries.findIndex(function (entry) {
+                //debugger
+                return parseInt(entry.id) === parseInt(action.payload.entryId)
+            })
+
+            return {
+                ...state,
+                entries: [...state.entries.slice(0, entryIndex), ...state.entries.slice(entryIndex + 1)],
                 requesting: false
             }
 

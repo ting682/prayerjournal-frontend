@@ -16,6 +16,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { Home } from './components/home'
 import { User } from './components/user'
+import { Signup } from './components/signup';
 // export const history = createBrowserHistory()
 
 // // // const middleware = routerMiddleware(history)
@@ -40,6 +41,7 @@ class App extends React.Component {
                   <Link to="/" className="nav-link">Home</Link>
                   <Link to="/entries" className="nav-link">Entries</Link>
                   <Link to="/login" className="nav-link">Login</Link>
+                  <Link to="/signup" className="nav-link">Signup</Link>
                   <Link to="/users" className="nav-link">Users</Link>
                 </Nav>
                 {/* <Form inline>
@@ -56,6 +58,7 @@ class App extends React.Component {
                   <Route exact path="/login" render={(props) => <LoginContainer {...props} />} />
                   <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                   <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
+                  <Route exact path="/signup" render={(props) => <Signup {...props} />} />
                 </Switch>
              
             

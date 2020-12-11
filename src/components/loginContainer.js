@@ -28,7 +28,7 @@ class LoginContainer extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        //debugger
+        
         this.props.fetchLogin({
             email: this.state.email,
             password: this.state.password
