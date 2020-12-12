@@ -36,6 +36,21 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                 entries: [...state.entries],
                 requesting: true
             }
+        
+        case 'START_NEW_LIKE':
+            return {
+                ...state,
+                entries: [...state.entries],
+                requesting: true
+            }
+
+        case 'START_PATCH_LIKE':
+            return {
+                ...state,
+                entries: [...state.entries],
+                requesting: true
+            }
+
         case "NEW_COMMENT":
             entryIndex = state.entries.findIndex(function (entry) {
                 //debugger
@@ -182,6 +197,57 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
             return {
                 ...state,
                 entries: [...state.entries.slice(0, entryIndex), ...state.entries.slice(entryIndex + 1)],
+                requesting: false
+            }
+        
+        case 'NEW_LIKE':
+            //debugger
+            entryIndex = state.entries.findIndex(function (entry) {
+                //debugger
+                return parseInt(entry.id) === parseInt(action.like.data.attributes.entry_id)
+            })
+
+            entry = state.entries.find(function(entry) {
+                return parseInt(entry.id) === action.like.data.attributes.entry_id
+            })
+
+            entry.attributes.likes_count += 1
+
+            entry.likes.push(action.like.data)
+
+            return {
+                ...state,
+                entries: [...state.entries.slice(0, entryIndex), entry, ...state.entries.slice(entryIndex + 1)],
+                requesting: false
+            }
+        
+        case 'PATCH_LIKE':
+
+            entryIndex = state.entries.findIndex(function (entry) {
+                //debugger
+                return parseInt(entry.id) === parseInt(action.like.data.attributes.entry_id)
+            })
+
+            entry = state.entries.find(function(entry) {
+                return parseInt(entry.id) === action.like.data.attributes.entry_id
+            })
+
+            entry.likes = entry.likes.filter(function (like) {
+                return like.id !== action.like.id
+            })
+
+            //debugger
+            if (action.like.data.attributes.liked) {
+                entry.attributes.likes_count += 1
+            } else {
+                entry.attributes.likes_count -= 1
+            }
+
+            entry.likes.push(action.like)
+
+            return {
+                ...state,
+                entries: [...state.entries.slice(0, entryIndex), entry, ...state.entries.slice(entryIndex + 1)],
                 requesting: false
             }
 

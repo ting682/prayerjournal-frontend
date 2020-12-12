@@ -1,47 +1,66 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
+
 import { Button } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
-
-library.add(far)
-
+import { Heart } from './heart'
+import { postLike } from '../actions/postLike'
+import { patchLike } from '../actions/patchLike'
 
 export const LikeContainer = (props) => {
 
     const currentUserId = parseInt(useSelector(state => state.user.currentUser.id))
 
     const entryId = parseInt(props.entryId)
-    //debugger
     
     const dispatch = useDispatch()
+    //debugger
+    const currentUserLike = props.likes.find(function(like) {
+        //debugger
+        return like.attributes.user_id === currentUserId
+    }, currentUserId)
+
+    const [currentUserLikeExists, setCurrentUserLikeExists] = useState(false);
 
     let liked;
     //debugger
-    if ( props.likes.find(function(like) {
-        return like.user_id === currentUserId
-    },currentUserId) ) {
-        liked = true
+    if ( currentUserLike ) {
+       
+        liked = currentUserLike.attributes.liked
     } else {
+        
         liked = false
     }
 
     const [heart, setHeart] = useState(liked)
+    //debugger
 
-    const handleClick = () => {
-        debugger
+    const handleClick = (event, heart, currentUserLike) => {
+        //debugger
+        setHeart(!heart)
         
+        //debugger
+        if ( currentUserLike ) {
+            dispatch(patchLike(currentUserLike.id, {
+                user_id: currentUserId, 
+                entry_id: entryId,
+                liked: !heart
+            }))
+        } else {
+            dispatch(postLike({
+                user_id: currentUserId, 
+                entry_id: entryId,
+                liked: true
+            }))
+        }
     }
 
     useEffect(() => {
-        
+
     })
 
     return (
-        <Button variant="light" onClick={(event) => handleClick(event, currentUserId, entryId)}>
-            <FontAwesomeIcon icon={['far', 'heart']} />
+        <Button variant="light" onClick={(event) => handleClick(event, heart, currentUserLike, currentUserId, entryId)}>
+            <Heart heart={heart} />
         </Button>
     )
     

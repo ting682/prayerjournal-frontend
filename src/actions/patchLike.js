@@ -1,10 +1,10 @@
-export function postLike(like) {
+export function patchLike(likeId, like) {
     return (dispatch) => {
-      dispatch({ type: 'START_NEW_LIKE' });
+      dispatch({ type: 'START_PATCH_LIKE' });
         //debugger
-      fetch(`http://localhost:3000/api/v1/entries/${like.entry_id}/likes`, {
+      fetch(`http://localhost:3000/api/v1/entries/${like.entry_id}/likes/${likeId}`, {
         credentials: "include",
-        method: "POST",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           'Access-Control-Allow-Origin': 'http://localhost:3001'
@@ -17,7 +17,7 @@ export function postLike(like) {
         .then(response => response.json())
         .then(like => { 
             
-            dispatch({ type: 'NEW_LIKE', like})
+            dispatch({ type: 'PATCH_LIKE', like})
 
             //history.push("/entries")
         })

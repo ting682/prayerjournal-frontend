@@ -5,7 +5,7 @@ import { getCurrentUser } from '../actions/getCurrentUser'
 import { Entry }  from './entry'
 import TimeAgo from 'javascript-time-ago'
 import EntryInput from './entryInput'
-
+import { postLike } from '../actions/postLike'
 
 // English.
 import en from 'javascript-time-ago/locale/en'
@@ -31,10 +31,13 @@ class EntriesContainer extends Component {
         this.props.fetchEntries()
     }
 
+
+
     render () {
         
         
         const entries = this.props.entries.map(entry => {
+            
             return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} />
         }, this)
         //debugger
@@ -53,7 +56,8 @@ class EntriesContainer extends Component {
 function mapDispatchToProps(dispatch){
     return { 
         fetchEntries: () => dispatch(fetchEntries()),
-        getCurrentUser: () => dispatch(getCurrentUser())
+        getCurrentUser: () => dispatch(getCurrentUser()),
+        postLike: () => dispatch(postLike())
     }
   }
 
