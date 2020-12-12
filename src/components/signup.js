@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+// import { postSignup }
 
 export const Signup = (props) => {
 
@@ -10,7 +11,6 @@ export const Signup = (props) => {
     const email = useSelector(state => state.signupUser.email)
     const password = useSelector(state => state.signupUser.password)
     const passwordConfirmation = useSelector(state => state.signupUser.passwordConfirmation)
-    
     
 
     const handleEmailChange = (event) => {
@@ -28,6 +28,8 @@ export const Signup = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         debugger
+
+
     }
 
     return (

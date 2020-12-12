@@ -29,6 +29,13 @@ export function loginReducer(state = { currentUser: [], requesting: false}, acti
                 currentUser: action.userData.user.data,
                 requesting: false
             }
+
+        case 'SIGNUP_REQUEST_STARTED':
+
+            return {
+                currentUser: [],
+                requesting: true
+            }
         default:
             return state
     
