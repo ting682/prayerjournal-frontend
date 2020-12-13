@@ -40,16 +40,22 @@ const App = (props) => {
     return (
       
           <div>
-               <Navbar bg="primary" variant="dark">
+               <Navbar bg="primary" variant="dark" expand="md">
                 <Navbar.Brand href="#home">Prayer Journal</Navbar.Brand>
-                <Nav className="mr-auto">
-                  <Link to="/" className="nav-link">Home</Link>
-                  <Link to="/entries" className="nav-link">Entries</Link>
+                
+                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                    
+                  <Nav.Link as={Link} to="/" className="nav-link">Home</Nav.Link>
+                  <Nav.Link as={Link} to="/entries" className="nav-link">Entries</Nav.Link>
                   <Link to="/login" className="nav-link">Login</Link>
                   <Link to="/signup" className="nav-link">Signup</Link>
                   <Link to="/users" className="nav-link">Users</Link>
                   <Button onClick={() => handleLogout(history)}>Logout</Button>
-                </Nav>
+                  </Nav>
+                  </Navbar.Collapse>
+                
                 {/* <Form inline>
                   <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                   <Button variant="outline-light">Search</Button>
