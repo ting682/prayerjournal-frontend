@@ -1,4 +1,4 @@
-export function fetchLogin(data, history) {
+export function fetchLogin(user, history) {
     return (dispatch) => {
         dispatch({type: 'SIGNUP_REQUEST_STARTED'})
         
@@ -10,11 +10,7 @@ export function fetchLogin(data, history) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                user: {
-                    email_address: data.email,
-                    password: data.password
-
-                }
+                user
             })
         })
         .then(resp => resp.json())

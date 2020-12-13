@@ -222,28 +222,27 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
             }
         
         case 'PATCH_LIKE':
-
+            //debugger
             entryIndex = state.entries.findIndex(function (entry) {
                 //debugger
-                return parseInt(entry.id) === parseInt(action.like.data.attributes.entry_id)
+                return parseInt(entry.id) === parseInt(action.payload.like.data.attributes.entry_id)
             })
 
             entry = state.entries.find(function(entry) {
-                return parseInt(entry.id) === action.like.data.attributes.entry_id
+                return parseInt(entry.id) === action.payload.like.data.attributes.entry_id
             })
-
-            entry.likes = entry.likes.filter(function (like) {
-                return like.id !== action.like.id
-            })
-
+            
+            
+            entry.attributes.likes_count = action.payload.entry.data.attributes.likes_count
+            
             //debugger
-            if (action.like.data.attributes.liked) {
-                entry.attributes.likes_count += 1
-            } else {
-                entry.attributes.likes_count -= 1
-            }
+            entry.likes = entry.likes.filter(function (like) {
+                return like.id !== action.payload.like.data.id
+            })
 
-            entry.likes.push(action.like)
+            //debugger 
+
+            entry.likes.push(action.payload.like.data)
 
             return {
                 ...state,

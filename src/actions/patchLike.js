@@ -15,9 +15,9 @@ export function patchLike(likeId, like) {
         })
         })
         .then(response => response.json())
-        .then(like => { 
+        .then(payload => { 
             
-            dispatch({ type: 'PATCH_LIKE', like})
+            dispatch({ type: 'PATCH_LIKE', payload})
 
             //history.push("/entries")
         })

@@ -4,8 +4,10 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 library.add(far)
+
 export const Heart = (props) => {
     
+    //debugger
     if (props.heart) {
         return (
             <FontAwesomeIcon icon={faHeart} style={{color: "red"}}/>

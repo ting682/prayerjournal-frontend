@@ -8,8 +8,8 @@ import { patchLike } from '../actions/patchLike'
 
 export const LikeContainer = (props) => {
 
-    const currentUserId = parseInt(useSelector(state => state.user.currentUser.id))
-
+    const currentUserId = parseInt(props.currentUser.id)
+    //debugger
     const entryId = parseInt(props.entryId)
     
     const dispatch = useDispatch()
