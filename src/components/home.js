@@ -10,6 +10,7 @@ export const Home = (props) => {
             <p>
                 Please login or signup!
             </p>
+            
         </div>
     )
 }

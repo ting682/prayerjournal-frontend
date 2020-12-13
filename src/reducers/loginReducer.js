@@ -16,6 +16,13 @@ export function loginReducer(state = { currentUser: [], requesting: false}, acti
                 requesting: true
             }
         
+        case "LOGOUT_STARTED":
+            return {
+                ...state,
+                currentUser: [],
+                requesting: true
+            }
+
         case "GET_CURRENT_USER":
             //debugger
             return {

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
-import { connect } from 'react-redux'
-import { fetchLogin } from '../actions/fetchLogin'
 
+import { connect, compose } from 'react-redux'
+import { fetchLogin } from '../actions/fetchLogin'
+import { withRouter } from 'react-router-dom'
 
 class LoginContainer extends Component {
     constructor (props) {
@@ -28,7 +29,7 @@ class LoginContainer extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        
+        //debugger
         this.props.fetchLogin({
             email: this.state.email,
             password: this.state.password

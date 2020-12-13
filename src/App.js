@@ -17,21 +17,26 @@ import Nav from 'react-bootstrap/Nav'
 import { Home } from './components/home'
 import { User } from './components/user'
 import { Signup } from './components/signup';
+import { Button } from 'react-bootstrap'
+import { postLogout } from './actions/postLogout';
+import { useHistory } from 'react-router-dom'
 // export const history = createBrowserHistory()
-
+import { useDispatch } from 'react-redux'
 // // // const middleware = routerMiddleware(history)
 
 // const store = createStore(rootReducer(history), compose(applyMiddleware(thunk, routerMiddleware(history)), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
-class App extends React.Component {
+const App = (props) => {
 
-  componentDidMount() {
+  const history = useHistory()
+  const dispatch = useDispatch()
+
+  const handleLogout = (history) => {
     //debugger
-    // this.props.getCurrentUser()
+    dispatch(postLogout(history))
   }
-
-  render () {
-    //debugger
+  
+  
     return (
       
           <div>
@@ -43,6 +48,7 @@ class App extends React.Component {
                   <Link to="/login" className="nav-link">Login</Link>
                   <Link to="/signup" className="nav-link">Signup</Link>
                   <Link to="/users" className="nav-link">Users</Link>
+                  <Button onClick={() => handleLogout(history)}>Logout</Button>
                 </Nav>
                 {/* <Form inline>
                   <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -55,7 +61,7 @@ class App extends React.Component {
                 <Switch>
                   <Route exact path="/" render={(props) => <Home  {...props} />} />
                   <Route exact path="/entries" render={(props) => <EntriesContainer  {...props} />} />
-                  <Route exact path="/login" render={(props) => <LoginContainer {...props} />} />
+                  <Route exact path="/login" render={(props) => <LoginContainer {...props}/>} />
                   <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                   <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
                   <Route exact path="/signup" render={(props) => <Signup {...props} />} />
@@ -68,20 +74,27 @@ class App extends React.Component {
         
       
     )
-  }
+  
   
   
     
 }
 
-const mapStateToProps = state => {
-  return ({
-    loggedIn: !!state.currentUser,
-    router: state.router,
-    entries: state.entries.entries,
-    currentUser: state.currentUser
-  })
-}
+// const mapStateToProps = state => {
+//   return ({
+//     loggedIn: !!state.currentUser,
+//     router: state.router,
+//     entries: state.entries.entries,
+//     currentUser: state.currentUser
+//   })
+// }
 
-export default connect(mapStateToProps, { getCurrentUser })(App);
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     getCurrentUser: () => dispatch(getCurrentUser()),
+//     postLogout: () => dispatch(postLogout())
+//   }
+// }
+
+export default App;
 // export default connect(null, null)(App)
