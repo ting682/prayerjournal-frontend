@@ -1,4 +1,4 @@
-export function signupReducer(state = { signupUser: {email: '', password: '', passwordConfirmation: '', requesting: false}, requesting: false}, action) {
+export function signupReducer(state = { signupUser: {email: '', password: '', passwordConfirmation: '', name: '', bio: ''}, requesting: false}, action) {
     //debugger
     switch (action.type) {
 
@@ -31,7 +31,27 @@ export function signupReducer(state = { signupUser: {email: '', password: '', pa
                     passwordConfirmation: action.payload
                 }
             }
+
+        case 'CHANGE_NAME':
+            // debugger
+                return {
+                    ...state,
+                    signupUser: {
+                        ...state.signupUser,
+                        name: action.payload
+                    }
+                }
         
+        case 'CHANGE_BIO':
+            // debugger
+                return {
+                    ...state,
+                    signupUser: {
+                        ...state.signupUser,
+                        bio: action.payload
+                    }
+                }
+    
         case 'SIGNUP_CLEAR':
 
             return {

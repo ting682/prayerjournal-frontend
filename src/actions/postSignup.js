@@ -1,4 +1,4 @@
-export function fetchLogin(user, history) {
+export function postSignup(user, history) {
     return (dispatch) => {
         dispatch({type: 'SIGNUP_REQUEST_STARTED'})
         

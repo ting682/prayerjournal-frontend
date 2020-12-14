@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 
-import { connect, compose } from 'react-redux'
+import { connect } from 'react-redux'
 import { fetchLogin } from '../actions/fetchLogin'
-import { withRouter } from 'react-router-dom'
+// import { withRouter } from 'react-router-dom'
 
 class LoginContainer extends Component {
     constructor (props) {
@@ -40,6 +40,7 @@ class LoginContainer extends Component {
     render () {
         return (
             <React.Fragment>
+                <br></br>
                 <Form onSubmit={this.handleSubmit} >
                     <Form.Group as={Row} controlId="formHorizontalEmail">
                         <Form.Label column sm={2}>

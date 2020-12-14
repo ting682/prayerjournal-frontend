@@ -1,7 +1,7 @@
 export function postLogout(history) {
     return (dispatch) => {
         dispatch({type: 'LOGOUT_STARTED'})
-        debugger
+        //debugger
         return fetch('http://localhost:3000/api/v1/logout', {
             
             credentials: "include",

@@ -1,6 +1,6 @@
 
 import './App.css';
-import React from 'react'
+import React, { Component } from 'react'
 import { getCurrentUser } from './actions/getCurrentUser'
 
 import { connect } from 'react-redux'
@@ -19,88 +19,140 @@ import { User } from './components/user'
 import { Signup } from './components/signup';
 import { Button } from 'react-bootstrap'
 import { postLogout } from './actions/postLogout';
-import { useHistory } from 'react-router-dom'
-// export const history = createBrowserHistory()
-import { useDispatch } from 'react-redux'
+// import { useHistory } from 'react-router-dom'
+// // export const history = createBrowserHistory()
+// import { useDispatch } from 'react-redux'
 // // // const middleware = routerMiddleware(history)
 
 // const store = createStore(rootReducer(history), compose(applyMiddleware(thunk, routerMiddleware(history)), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
-const App = (props) => {
+class App extends Component {
 
-  const history = useHistory()
-  const dispatch = useDispatch()
+  // const history = useHistory()
+  // const dispatch = useDispatch()
 
-  const handleLogout = (history) => {
+  constructor(props) {
+    super(props)
+
+    this.handleLogout = this.handleLogout.bind(this)
+  }
+
+  handleLogout = (history) => {
     //debugger
-    dispatch(postLogout(history))
+    this.props.postLogout(history)
   }
   
-  
-    return (
+  render () {
+    // this.props.getCurrentUser()
+    //debugger
+    if (this.props.loggedIn) {
+      return (
       
-          <div>
-               <Navbar bg="primary" variant="dark" expand="md">
-                <Navbar.Brand href="#home">Prayer Journal</Navbar.Brand>
-                
-                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                    
-                  <Nav.Link as={Link} to="/" className="nav-link">Home</Nav.Link>
-                  <Nav.Link as={Link} to="/entries" className="nav-link">Entries</Nav.Link>
-                  <Link to="/login" className="nav-link">Login</Link>
-                  <Link to="/signup" className="nav-link">Signup</Link>
-                  <Link to="/users" className="nav-link">Users</Link>
-                  <Button onClick={() => handleLogout(history)}>Logout</Button>
-                  </Nav>
-                  </Navbar.Collapse>
-                
-                {/* <Form inline>
-                  <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                  <Button variant="outline-light">Search</Button>
-                </Form> */}
-
-              </Navbar> 
-            
+        <div>
+            <Navbar bg="primary" variant="dark" expand="md">
+              <Navbar.Brand href="#home">Prayer Journal</Navbar.Brand>
               
-                <Switch>
-                  <Route exact path="/" render={(props) => <Home  {...props} />} />
-                  <Route exact path="/entries" render={(props) => <EntriesContainer  {...props} />} />
-                  <Route exact path="/login" render={(props) => <LoginContainer {...props}/>} />
-                  <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
-                  <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
-                  <Route exact path="/signup" render={(props) => <Signup {...props} />} />
-                </Switch>
-             
-            
-            
-          </div>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                  <Navbar.Collapse id="basic-navbar-nav">
+                  <Nav className="mr-auto">
+                  
+                <Nav.Link as={Link} to="/" className="nav-link">Home</Nav.Link>
+                <Nav.Link as={Link} to="/entries" className="nav-link">Entries</Nav.Link>
+                {/* <Link to="/login" className="nav-link">Login</Link>
+                <Link to="/signup" className="nav-link">Signup</Link> 
+                <Link to="/users" className="nav-link">Users</Link>*/}
+                <Button onClick={() => this.handleLogout(this.props.history)}>Logout</Button>
+                </Nav>
+                </Navbar.Collapse>
+              
+              {/* <Form inline>
+                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                <Button variant="outline-light">Search</Button>
+              </Form> */}
+
+            </Navbar> 
           
-        
-      
-    )
-  
-  
-  
+            
+              <Switch>
+                <Route exact path="/" render={(props) => <Home  {...props} />} />
+                <Route exact path="/entries" render={(props) => 
+                  
+                  <EntriesContainer  {...props} />
+                } />
+                <Route exact path="/login" render={(props) => <LoginContainer {...props}/>} />
+                <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
+                <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
+                <Route exact path="/signup" render={(props) => <Signup {...props} />} />
+              </Switch>
+          
+        </div>
+      )
+    } else {
+      return (
+        <div>
+            <Navbar bg="primary" variant="dark" expand="md">
+              <Navbar.Brand href="#home">Prayer Journal</Navbar.Brand>
+              
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                  <Navbar.Collapse id="basic-navbar-nav">
+                  <Nav className="mr-auto">
+                  
+                <Nav.Link as={Link} to="/" className="nav-link">Home</Nav.Link>
+                
+                <Link to="/login" className="nav-link">Login</Link>
+                <Link to="/signup" className="nav-link">Signup</Link>
+                <Link to="/users" className="nav-link">Users</Link>
+                
+                </Nav>
+                </Navbar.Collapse>
+              
+              {/* <Form inline>
+                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                <Button variant="outline-light">Search</Button>
+              </Form> */}
+
+            </Navbar> 
+          
+            
+              <Switch>
+                <Route exact path="/" render={(props) => <Home  {...props} />} />
+                <Route exact path="/entries" render={(props) => 
+                  
+                  <EntriesContainer  {...props} />
+                } />
+                <Route exact path="/login" render={(props) => <LoginContainer {...props}/>} />
+                <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
+                <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
+                <Route exact path="/signup" render={(props) => <Signup {...props} />} />
+              </Switch>
+          
+        </div>
+      )
+    }
     
+
+    
+  }
+    
+
 }
 
-// const mapStateToProps = state => {
-//   return ({
-//     loggedIn: !!state.currentUser,
-//     router: state.router,
-//     entries: state.entries.entries,
-//     currentUser: state.currentUser
-//   })
-// }
+const mapStateToProps = state => {
+  //debugger
+  return ({
+    loggedIn: state.user.currentUser.length !== 0,
+    router: state.router,
+    entries: state.entries.entries,
+    currentUser: state.user.currentUser
+  })
+}
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     getCurrentUser: () => dispatch(getCurrentUser()),
-//     postLogout: () => dispatch(postLogout())
-//   }
-// }
+const mapDispatchToProps = dispatch => {
+  return {
+    getCurrentUser: () => dispatch(getCurrentUser()),
+    postLogout: (history) => dispatch(postLogout(history))
+  }
+}
 
-export default App;
-// export default connect(null, null)(App)
+// export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App)

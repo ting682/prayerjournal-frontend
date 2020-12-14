@@ -28,7 +28,7 @@ const store = createStore(rootReducer(history), compose(applyMiddleware(thunk, r
 ReactDOM.render(
   <Provider store={store}>
       <ConnectedRouter history={history}> { /* place ConnectedRouter under Provider */ }
-        <App />
+        <App history={history} />
       </ConnectedRouter>
     </Provider>
   ,
