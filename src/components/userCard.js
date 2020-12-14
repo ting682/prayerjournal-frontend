@@ -7,7 +7,7 @@ export const UserCard = (props) => {
     //debugger
     return (
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
+            {/*<Card.Img variant="top" src="holder.js/100px180" /> */}
             <Card.Body>
                 <Card.Title>{props.user.attributes.name}</Card.Title>
                 <Card.Text>

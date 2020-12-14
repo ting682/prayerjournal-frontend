@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { getCurrentUser } from './actions/getCurrentUser'
 
 import { connect } from 'react-redux'
-import { Route, Switch, withRouter } from 'react-router'
+import { Route, Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 
 
@@ -15,7 +15,7 @@ import UsersContainer from './components/usersContainer'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { Home } from './components/home'
-import { User } from './components/user'
+// import { User } from './components/user'
 import { Signup } from './components/signup';
 import { Button } from 'react-bootstrap'
 import { postLogout } from './actions/postLogout';
@@ -59,8 +59,8 @@ class App extends Component {
                 <Nav.Link as={Link} to="/" className="nav-link">Home</Nav.Link>
                 <Nav.Link as={Link} to="/entries" className="nav-link">Entries</Nav.Link>
                 {/* <Link to="/login" className="nav-link">Login</Link>
-                <Link to="/signup" className="nav-link">Signup</Link> 
-                <Link to="/users" className="nav-link">Users</Link>*/}
+                <Link to="/signup" className="nav-link">Signup</Link> */}
+                <Link to="/users" className="nav-link">Users</Link>
                 <Button onClick={() => this.handleLogout(this.props.history)}>Logout</Button>
                 </Nav>
                 </Navbar.Collapse>
@@ -101,7 +101,7 @@ class App extends Component {
                 
                 <Link to="/login" className="nav-link">Login</Link>
                 <Link to="/signup" className="nav-link">Signup</Link>
-                <Link to="/users" className="nav-link">Users</Link>
+                {/* <Link to="/users" className="nav-link">Users</Link> */}
                 
                 </Nav>
                 </Navbar.Collapse>
@@ -122,7 +122,7 @@ class App extends Component {
                 } />
                 <Route exact path="/login" render={(props) => <LoginContainer {...props}/>} />
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
-                <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
+                <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} /> 
                 <Route exact path="/signup" render={(props) => <Signup {...props} />} />
               </Switch>
           

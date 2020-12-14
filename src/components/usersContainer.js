@@ -6,22 +6,37 @@ import { fetchUsers } from '../actions/fetchUsers'
 class UsersContainer extends Component {
 
     componentDidMount() {
-        this.props.fetchUsers()
+        if(this.props.loggedIn) {
+            this.props.fetchUsers()
+        } else {
+            this.props.history.push('/')
+        }
+        
     }
 
     render () {
         //debugger
-        let users = this.props.users.users.map(function (user) {
-            //debugger
+        if (this.props.loggedIn) {
+            let users = this.props.users.users.map(function (user) {
+                //debugger
+                return (
+                    <UserCard key={user.id} user={user} />
+                )
+            })
             return (
-                <UserCard key={user.id} user={user} />
+                <React.Fragment>
+                    {users}
+                </React.Fragment>
             )
-        })
-        return (
-            <React.Fragment>
-                {users}
-            </React.Fragment>
-        )
+        } else {
+            this.props.history.push('/')
+            return (
+                <React.Fragment>
+
+                </React.Fragment>
+            )
+        }
+        
     }
 }
 
@@ -32,7 +47,7 @@ function mapDispatchToProps(dispatch){
 
 function mapStateToProps(state){
     return {
-        loggedIn: !!state.user.currentUser,
+        loggedIn: !!state.user.currentUser && state.user.currentUser.length !== 0,
         router: state.router,
         entries: state.entries.entries,
         currentUser: state.user.currentUser,

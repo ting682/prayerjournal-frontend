@@ -16,7 +16,7 @@ class EntriesContainer extends Component {
 
     constructor(props) {
         super(props)
-        this.props.getCurrentUser()
+        //this.props.getCurrentUser()
     }
 
     componentDidMount() {
@@ -28,28 +28,44 @@ class EntriesContainer extends Component {
     }
 
     componentDidMount = () => {
-        this.props.fetchEntries()
+        if (this.props.loggedIn) {
+            this.props.fetchEntries()
+        } else {
+            this.props.history.push('/')
+        }
+        
     }
 
 
 
     render () {
-        
-        
-        const entries = this.props.entries.map(entry => {
-            
-            return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} />
-        }, this)
         //debugger
-        return (
-            <React.Fragment>
-                
-                <br></br>
-                {/* <button onClick={(event) => this.handleClick(event)} >Fetch entries</button> */}
-                <EntryInput />
-                {entries}
-            </React.Fragment>
-        )
+        if(this.props.loggedIn) {
+            const entries = this.props.entries.map(entry => {
+            
+                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} />
+            }, this)
+            //debugger
+            return (
+                <React.Fragment>
+                    
+                    <br></br>
+                    {/* <button onClick={(event) => this.handleClick(event)} >Fetch entries</button> */}
+                    <EntryInput />
+                    {entries}
+                </React.Fragment>
+            )
+        } else {
+            this.props.history.push('/')
+            return (
+                <React.Fragment>
+
+                </React.Fragment>
+            )
+            
+        }
+        
+        
     }
 };
 
@@ -64,7 +80,7 @@ function mapDispatchToProps(dispatch){
   function mapStateToProps(state){
     //debugger
     return {
-        loggedIn: !!state.user.currentUser,
+        loggedIn: !!state.user.currentUser && state.user.currentUser.length !== 0,
         router: state.router,
         entries: state.entries.entries,
         currentUser: state.user.currentUser
