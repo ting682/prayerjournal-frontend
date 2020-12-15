@@ -109,7 +109,7 @@ export const Signup = (props) => {
                     </Form.Group>
                         <Form.Group as={Row}>
                             <Col sm={{ span: 10, offset: 2 }}>
-                            <Button type="submit">Sign in</Button>
+                            <Button type="submit">Signup</Button>
                             </Col>
                     </Form.Group>
                 </Form>
