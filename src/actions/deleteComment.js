@@ -1,8 +1,10 @@
+import { BASEURL } from './url'
+
 export function deleteComment(data, history) {
     return (dispatch) => {
       dispatch({ type: 'START_DELETE_COMMENT' });
         //debugger
-      fetch(`http://localhost:3000/api/v1/entries/${data.comment.entryId}/comments/${data.comment.commentId}`, {
+      fetch(`${BASEURL}/api/v1/entries/${data.comment.entryId}/comments/${data.comment.commentId}`, {
         credentials: "include",
         method: "DELETE",
         headers: {

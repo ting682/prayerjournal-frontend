@@ -1,8 +1,10 @@
+import { BASEURL } from './url'
+
 export function postSignup(user, history) {
     return (dispatch) => {
         dispatch({type: 'SIGNUP_REQUEST_STARTED'})
         
-        return fetch('http://localhost:3000/api/v1/signup', {
+        return fetch(`${BASEURL}/api/v1/signup`, {
             
             credentials: "include",
             method: "POST",

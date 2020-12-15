@@ -1,9 +1,11 @@
+import { BASEURL } from './url'
+
 export function fetchEntries() {
     return (dispatch) => {
         
       dispatch({ type: 'START_ADDING_ENTRIES_REQUEST' });
         
-      return fetch('http://localhost:3000/api/v1/entries', {
+      return fetch(`${BASEURL}/api/v1/entries`, {
         credentials: "include",
         method: "GET",
         headers: {

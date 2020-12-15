@@ -1,10 +1,10 @@
-
+import { BASEURL } from './url'
 
 export function fetchLogin(data, history) {
     return (dispatch) => {
         dispatch({type: 'LOGIN_REQUEST_STARTED'})
         
-        return fetch('http://localhost:3000/api/v1/login', {
+        return fetch(`${BASEURL}/api/v1/login`, {
             
             credentials: "include",
             method: "POST",
