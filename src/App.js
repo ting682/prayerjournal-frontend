@@ -19,6 +19,7 @@ import { Home } from './components/home'
 import { Signup } from './components/signup';
 import { Button } from 'react-bootstrap'
 import { postLogout } from './actions/postLogout';
+import EditUserProfile from './components/editUserProfile';
 // import { useHistory } from 'react-router-dom'
 // // export const history = createBrowserHistory()
 // import { useDispatch } from 'react-redux'
@@ -37,6 +38,10 @@ class App extends Component {
     this.handleLogout = this.handleLogout.bind(this)
   }
 
+  componentDidMount() {
+    this.props.getCurrentUser()
+  }
+
   handleLogout = (history) => {
     //debugger
     this.props.postLogout(history)
@@ -48,12 +53,12 @@ class App extends Component {
     if (this.props.loggedIn) {
       return (
       
-        <div>
-            <Navbar bg="primary" variant="dark" expand="md">
+        <React.Fragment>
+            <Navbar bg="primary" variant="dark" expand="md" class="w-auto p-3">
               <Navbar.Brand href="#home">Prayer Journal</Navbar.Brand>
               
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                  <Navbar.Collapse id="basic-navbar-nav">
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                  <Navbar.Collapse id="responsive-navbar-nav">
                   <Nav className="mr-auto">
                   
                 <Nav.Link as={Link} to="/" className="nav-link">Home</Nav.Link>
@@ -61,6 +66,7 @@ class App extends Component {
                 {/* <Link to="/login" className="nav-link">Login</Link>
                 <Link to="/signup" className="nav-link">Signup</Link> */}
                 <Link to="/users" className="nav-link">Users</Link>
+                <Nav.Link as={Link} to="/editprofile" className="nav-link">Profile</Nav.Link>
                 <Button onClick={() => this.handleLogout(this.props.history)}>Logout</Button>
                 </Nav>
                 </Navbar.Collapse>
@@ -83,9 +89,10 @@ class App extends Component {
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
                 <Route exact path="/signup" render={(props) => <Signup {...props} />} />
+                <Route exact path="/editprofile" render={props => <EditUserProfile {...props} />} />
               </Switch>
           
-        </div>
+        </React.Fragment>
       )
     } else {
       return (
@@ -140,7 +147,7 @@ class App extends Component {
 const mapStateToProps = state => {
   //debugger
   return ({
-    loggedIn: state.user.currentUser.length !== 0,
+    loggedIn: !!state.user.currentUser && state.user.currentUser.length !== 0,
     router: state.router,
     entries: state.entries.entries,
     currentUser: state.user.currentUser
