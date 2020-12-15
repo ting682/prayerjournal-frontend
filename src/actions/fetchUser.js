@@ -9,7 +9,7 @@ export function fetchUser(userId) {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': 'http://localhost:3001'
+          'Access-Control-Allow-Origin': `${BASEURL}`
         }
         })
         .then(response => response.json())
