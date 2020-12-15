@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { editUser } from '../actions/editUser'
+import { fetchUser } from '../actions/fetchUser'
 import { getCurrentUser } from '../actions/getCurrentUser'
 
 class EditUserProfile extends Component {
@@ -18,7 +19,7 @@ class EditUserProfile extends Component {
 
     componentDidMount() {
         if (this.props.loggedIn) {
-            //this.props.fetchUser(this.props.currentUser.id)
+            this.props.fetchUser(this.props.currentUser.id)
             // this.setState({
             //     email: this.props.currentUser.attributes.email_address,
             //     name: this.props.currentUser.attributes.name,
@@ -40,6 +41,7 @@ class EditUserProfile extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+        //debugger
         this.props.editUser({
             email_address: this.state.email,
             name: this.state.name,
@@ -90,9 +92,9 @@ class EditUserProfile extends Component {
 
 function mapDispatchToProps(dispatch){
     return { 
-        
+        fetchUser: (currentUserId) => dispatch(fetchUser(currentUserId)),
         getCurrentUser: () => dispatch(getCurrentUser()),
-        editUser: (user, currentUserId) => dispatch(editUser(user, currentUserId))
+        editUser: (user, currentUserId, history) => dispatch(editUser(user, currentUserId, history))
     }
   }
 

@@ -54,7 +54,7 @@ class App extends Component {
       return (
       
         <React.Fragment>
-            <Navbar bg="primary" variant="dark" expand="md" class="w-auto p-3">
+            <Navbar bg="primary" variant="dark" expand="md" className="w-auto p-3">
               <Navbar.Brand href="#home">Prayer Journal</Navbar.Brand>
               
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

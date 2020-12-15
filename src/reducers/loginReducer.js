@@ -23,6 +23,21 @@ export function loginReducer(state = { currentUser: [], requesting: false}, acti
                 requesting: true
             }
 
+        case "START_EDIT_PROFILE":
+            return {
+                ...state,
+                currentUser: [],
+                requesting: true
+            }
+        
+        case "EDIT_PROFILE":
+            //debugger
+            return {
+                ...state,
+                currentUser: action.payload.data,
+                requesting: true
+            }
+
         case "GET_CURRENT_USER":
             //debugger
             return {
