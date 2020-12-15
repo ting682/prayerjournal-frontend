@@ -1,8 +1,10 @@
+import { BASEURL } from './url'
+
 export function postLogout(history) {
     return (dispatch) => {
         dispatch({type: 'LOGOUT_STARTED'})
         //debugger
-        return fetch('http://localhost:3000/api/v1/logout', {
+        return fetch(`${BASEURL}/api/v1/logout`, {
             
             credentials: "include",
             method: "POST",

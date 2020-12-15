@@ -1,8 +1,10 @@
+import { BASEURL } from './url'
+
 export function postComment(data) {
     return (dispatch) => {
       dispatch({ type: 'START_NEW_COMMENT' });
         //debugger
-      fetch(`http://localhost:3000/api/v1/entries/${data.comment.entry_id}/comments`, {
+      fetch(`${BASEURL}/api/v1/entries/${data.comment.entry_id}/comments`, {
         credentials: "include",
         method: "POST",
         headers: {

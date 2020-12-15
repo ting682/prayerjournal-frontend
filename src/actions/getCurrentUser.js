@@ -1,8 +1,10 @@
+import { BASEURL } from './url'
+
 export function getCurrentUser() {
     return (dispatch) => {
       dispatch({ type: 'START_GET_CURRENT_USER_REQUEST' });
 
-      fetch('http://localhost:3000/api/v1/get_current_user', {
+      fetch(`${BASEURL}/api/v1/get_current_user`, {
         credentials: "include",
         method: "GET",
         headers: {

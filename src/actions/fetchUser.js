@@ -1,8 +1,10 @@
+import { BASEURL } from './url'
+
 export function fetchUser(userId) {
     return (dispatch) => {
       dispatch({ type: 'START_GET_USER_REQUEST' });
 
-      fetch(`http://localhost:3000/api/v1/users/${userId}`, {
+      fetch(`${BASEURL}/api/v1/users/${userId}`, {
         credentials: "include",
         method: "GET",
         headers: {

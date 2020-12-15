@@ -1,8 +1,10 @@
+import { BASEURL } from './url'
+
 export function postEntry(data) {
     return (dispatch) => {
       dispatch({ type: 'START_NEW_ENTRY' });
         //debugger
-      fetch('http://localhost:3000/api/v1/entries', {
+      fetch(`${BASEURL}/api/v1/entries`, {
         credentials: "include",
         method: "POST",
         headers: {

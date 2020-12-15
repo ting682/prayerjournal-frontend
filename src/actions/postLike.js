@@ -1,8 +1,10 @@
+import { BASEURL } from './url'
+
 export function postLike(like) {
     return (dispatch) => {
       dispatch({ type: 'START_NEW_LIKE' });
         //debugger
-      fetch(`http://localhost:3000/api/v1/entries/${like.entry_id}/likes`, {
+      fetch(`${BASEURL}/api/v1/entries/${like.entry_id}/likes`, {
         credentials: "include",
         method: "POST",
         headers: {

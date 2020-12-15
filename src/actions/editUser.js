@@ -1,8 +1,10 @@
+import { BASEURL } from './url'
+
 export function editUser(user, currentUserId, history) {
     return (dispatch) => {
       dispatch({ type: 'START_EDIT_PROFILE' });
         debugger
-      fetch(`http://localhost:3000/api/v1/users/${currentUserId}`, {
+      fetch(`${BASEURL}/api/v1/users/${currentUserId}`, {
         credentials: "include",
         method: "PATCH",
         headers: {

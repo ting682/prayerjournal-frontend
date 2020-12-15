@@ -1,8 +1,10 @@
+import { BASEURL } from './url'
+
 export function editComment(data, commentId) {
     return (dispatch) => {
       dispatch({ type: 'START_EDIT_COMMENT' });
         //debugger
-      fetch(`http://localhost:3000/api/v1/entries/${data.comment.entry_id}/comments/${commentId}`, {
+      fetch(`${BASEURL}/api/v1/entries/${data.comment.entry_id}/comments/${commentId}`, {
         credentials: "include",
         method: "PATCH",
         headers: {

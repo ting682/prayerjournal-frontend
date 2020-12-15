@@ -1,8 +1,10 @@
+import { BASEURL } from './url'
+
 export function patchLike(likeId, like) {
     return (dispatch) => {
       dispatch({ type: 'START_PATCH_LIKE' });
         //debugger
-      fetch(`http://localhost:3000/api/v1/entries/${like.entry_id}/likes/${likeId}`, {
+      fetch(`${BASEURL}/api/v1/entries/${like.entry_id}/likes/${likeId}`, {
         credentials: "include",
         method: "PATCH",
         headers: {
