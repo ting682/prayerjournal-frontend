@@ -3,7 +3,7 @@ import { BASEURL } from './url'
 export function editUser(user, currentUserId, history) {
     return (dispatch) => {
       dispatch({ type: 'START_EDIT_PROFILE' });
-        debugger
+        //debugger
       fetch(`${BASEURL}/api/v1/users/${currentUserId}`, {
         credentials: "include",
         method: "PATCH",
@@ -19,13 +19,9 @@ export function editUser(user, currentUserId, history) {
         .then(response => response.json())
         .then(userData => { 
             //debugger
-            dispatch({ type: 'EDIT_PROFILE', payload: { 
-                email: userData.data.attributes.email_address,
-                bio: userData.data.attributes.bio,
-                name: userData.data.attributes.name
-            }})
+            dispatch({ type: 'EDIT_PROFILE', payload: userData})
             
-            history.push('/users')
+            history.push(`/users/${currentUserId}`)
         })
     };
   }
