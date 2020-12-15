@@ -22,8 +22,8 @@ export const history = createBrowserHistory()
 
 // // const middleware = routerMiddleware(history)
 
-const store = createStore(rootReducer(history), compose(applyMiddleware(thunk, routerMiddleware(history)), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
-
+// const store = createStore(rootReducer(history), compose(applyMiddleware(thunk, routerMiddleware(history)), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+const store = createStore(rootReducer(history), compose(applyMiddleware(thunk, routerMiddleware(history))))
 
 ReactDOM.render(
   <Provider store={store}>
