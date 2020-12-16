@@ -4,6 +4,8 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
     let comments;
     let likes;
     let oldEntry;
+    let entryText;
+    let tempDiv;
     switch (action.type) {
         case "START_ADDING_ENTRIES_REQUEST":
             return {
@@ -63,7 +65,7 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
 
             
             entry.comments.push(action.payload.comment.data)
-
+            entry.entryText += action.payload.comment.data.attributes.content
             //debugger
 
             return {
@@ -131,15 +133,20 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                 comments = [];
                 likes = [];
 
+                tempDiv = document.createElement('div')
+                tempDiv.innerHTML = entry.attributes.content
+                entryText = tempDiv.textContent.toLowerCase()
+
                 for(const includedData of action.entries.included) {
                     if (includedData.type === 'comment' && includedData.attributes.entry_id === parseInt(entry.id)) {
+                        entryText += " " + includedData.attributes.content
                         comments.push(includedData)
                     } else if (includedData.type === 'like' && includedData.attributes.entry_id === parseInt(entry.id)) {
                         likes.push(includedData)
                     }
                 }
 
-                entriesData.push(Object.assign(entry, { comments: comments, likes: likes} ))
+                entriesData.push(Object.assign(entry, { comments: comments, likes: likes, entryText: entryText} ))
             }
 
             //debugger
@@ -154,7 +161,11 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
             //debugger
             entry = action.entry.data
             
-            Object.assign(entry, { comments: [], likes: []} )
+            tempDiv = document.createElement('div')
+            tempDiv.innerHTML = entry.attributes.content
+            entryText = tempDiv.textContent.toLowerCase()
+
+            Object.assign(entry, { comments: [], likes: [], entryText: entryText} )
 
             return {
                 ...state,

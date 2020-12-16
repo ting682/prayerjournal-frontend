@@ -51,7 +51,7 @@ class EntriesContainer extends Component {
     }
 
     mapEntries = () => {
-        let entries
+        
         if (this.state.searchTerm === '') {
                 //debugger
                 return this.props.entries.map(entry => {
@@ -62,13 +62,22 @@ class EntriesContainer extends Component {
         } else {
             return this.props.entries.filter(entry => {
                 //debugger
-                let tempDiv = document.createElement('div')
-                tempDiv.innerHTML = entry.attributes.content
+                // let tempDiv = document.createElement('div')
+                // tempDiv.innerHTML = entry.attributes.content
                 
-                return tempDiv.textContent.toLowerCase().includes(this.state.searchTerm)
+                // if (entry.comments.length > 0) {
+                //     for(const comment of entry.comments) {
+                //         tempDiv.innerHTML += " " + comment.attributes.content
+                //     }
+                // }
+                
+                //debugger
+
+                // return tempDiv.textContent.toLowerCase().includes(this.state.searchTerm)
+                return entry.entryText.includes(this.state.searchTerm)
             }, this).map(entry => {
             
-                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} />
+                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} search={this.state.searchTerm} />
             }, this)
         }
 
@@ -80,7 +89,7 @@ class EntriesContainer extends Component {
             
             //debugger
             return (
-                <React.Fragment>
+                <div id="entries">
                     
                     <br></br>
                     <SearchEntries {...this.props} handleSearch={this.handleSearch}/>
@@ -88,7 +97,7 @@ class EntriesContainer extends Component {
                     {/* <button onClick={(event) => this.handleClick(event)} >Fetch entries</button> */}
                     <EntryInput />
                     {this.mapEntries(this.state.searchTerm)}
-                </React.Fragment>
+                </div>
             )
         } else {
             this.props.history.push('/')

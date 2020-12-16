@@ -1,8 +1,8 @@
 import { Form, Button } from "react-bootstrap";
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import React, { useState } from 'react'
 import { postComment } from '../actions/postComment'
-import { getCurrentUser } from '../actions/getCurrentUser'
+// import { getCurrentUser } from '../actions/getCurrentUser'
 import { useDispatch, useSelector } from 'react-redux'
 
 

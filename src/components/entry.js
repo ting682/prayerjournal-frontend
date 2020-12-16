@@ -13,13 +13,25 @@ export const Entry = (props) => {
     const timeAgo = new TimeAgo('en-US')
     //const content = JSON.parse(props.entry.content)
     //debugger
+    // let entryContent = document.createElement('div')
+    // entryContent.innerHTML = props.entry.content
+    // let entrySearch;
+    // if (props.search) {
+    //     entrySearch = props.entry.content.replace(new RegExp(props.search, "gim"), (match) => `<mark>${match}</mark>`)
+    // } else {
+    //     entrySearch = props.entry.content
+    // }
+    
+    //debugger
     return (
         <div className="entry">
             <h3>Created by: {props.entry.name} </h3><EditEntryContainer {...props} /> <DeleteEntry {...props} />
             <p>{timeAgo.format(new Date(props.entry.updated_at))}</p>
-            {Parser(props.entry.content)}
+            <div className="entryContent">
+                {Parser(props.entry.content)}
+            </div>
             <p><LikeContainer {...props} likes={props.likes}/>Likes: {props.entry.likes_count}</p>
-            <CommentsContainer comments={props.comments} {...props}/>
+            <CommentsContainer comments={props.comments} {...props} search={props.search}/>
         </div>
     )
 }
