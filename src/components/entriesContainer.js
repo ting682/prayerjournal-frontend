@@ -9,6 +9,7 @@ import { postLike } from '../actions/postLike'
 
 // English.
 import en from 'javascript-time-ago/locale/en'
+import { SearchEntries } from './searchEntries'
  
 TimeAgo.addDefaultLocale(en)
 
@@ -17,6 +18,9 @@ class EntriesContainer extends Component {
     constructor(props) {
         super(props)
         //this.props.getCurrentUser()
+        this.state = {
+            searchTerm: ''
+        }
     }
 
     componentDidMount() {
@@ -36,23 +40,54 @@ class EntriesContainer extends Component {
         
     }
 
+    handleSearch = (term) => {
+        this.setState(previousState => {
+            return {
+                ...previousState,
+                searchTerm: term
+            }
+        })
+        this.mapEntries()
+    }
 
+    mapEntries = () => {
+        let entries
+        if (this.state.searchTerm === '') {
+                //debugger
+                return this.props.entries.map(entry => {
+            
+                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} />
+            }, this)
+    
+        } else {
+            return this.props.entries.filter(entry => {
+                //debugger
+                let tempDiv = document.createElement('div')
+                tempDiv.innerHTML = entry.attributes.content
+                
+                return tempDiv.textContent.toLowerCase().includes(this.state.searchTerm)
+            }, this).map(entry => {
+            
+                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} />
+            }, this)
+        }
+
+    }
 
     render () {
         //debugger
         if(this.props.loggedIn) {
-            const entries = this.props.entries.map(entry => {
             
-                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} />
-            }, this)
             //debugger
             return (
                 <React.Fragment>
                     
                     <br></br>
+                    <SearchEntries {...this.props} handleSearch={this.handleSearch}/>
+                    <br></br>
                     {/* <button onClick={(event) => this.handleClick(event)} >Fetch entries</button> */}
                     <EntryInput />
-                    {entries}
+                    {this.mapEntries(this.state.searchTerm)}
                 </React.Fragment>
             )
         } else {

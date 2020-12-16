@@ -28,7 +28,7 @@ export const DeleteComment = (props) => {
     //debugger
     if (props.comment.attributes.user_id === currentUserId) {
         return (
-            <Button onClick={() => handleClick(commentId, entryId)} >Delete comment</Button>
+            <Button variant="outline-danger" onClick={() => handleClick(commentId, entryId)} >Delete</Button>
         )
     } else {
         return (
