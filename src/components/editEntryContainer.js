@@ -45,7 +45,7 @@ export const EditEntryContainer = (props) => {
     if (props.entry.user_id === currentUserId) {
         return (
             <React.Fragment>
-                <Button onClick={() => handleClick()}>Edit entry</Button>
+                <Button variant="outline-info" onClick={() => handleClick()}>Edit</Button>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Body>
                         

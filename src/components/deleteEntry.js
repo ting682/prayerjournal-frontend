@@ -28,7 +28,7 @@ export const DeleteEntry = (props) => {
     //debugger
     if (props.entry.user_id === currentUserId) {
         return (
-            <Button onClick={event => handleClick(event, entryId, history)} >Delete entry</Button>
+            <Button variant="outline-danger" onClick={event => handleClick(event, entryId, history)} >Delete</Button>
         )
     } else {
         return (

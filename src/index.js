@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -9,6 +10,7 @@ import reportWebVitals from './reportWebVitals';
 // import EntriesContainer from './components/entriesContainer'
 // import LoginContainer from './components/loginContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './custom.scss';
 import { rootReducer } from './reducers/reducers'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';

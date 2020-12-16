@@ -43,7 +43,7 @@ export const EditCommentContainer = (props) => {
     if (props.comment.attributes.user_id === currentUserId) {
         return (
             <React.Fragment>
-                <Button onClick={() => handleClick()}>Edit comment</Button>
+                <Button variant="outline-info" onClick={() => handleClick()}>Edit</Button>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Body>
                         
