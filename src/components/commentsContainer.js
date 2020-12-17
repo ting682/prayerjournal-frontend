@@ -1,6 +1,7 @@
 import { Comment } from './comment'
 import React from 'react'
 import { CommentInput } from './commentInput'
+import Mark from 'mark.js'
 
 export const CommentsContainer = (props) => {
 
@@ -10,7 +11,19 @@ export const CommentsContainer = (props) => {
         )
     }, props)
 
-    //debugger
+    if (props.search === '') {
+        for(const comment of document.getElementsByClassName('commentContent')) {
+            let instance = new Mark(comment)
+            instance.unmark()
+        }
+    } else {
+        for(const comment of document.getElementsByClassName('commentContent')) {
+            let instance = new Mark(comment)
+            instance.mark(props.search)
+        }
+    }
+        
+    // }
 
     return (
 

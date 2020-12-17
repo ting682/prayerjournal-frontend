@@ -9,8 +9,7 @@ export function fetchLogin(data, history) {
             credentials: "include",
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-                'Access-Control-Allow-Origin': `${BASEURL}`
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 user: {

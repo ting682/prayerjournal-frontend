@@ -22,6 +22,7 @@ export const Entry = (props) => {
     //     entrySearch = props.entry.content
     // }
     
+    
     //debugger
     return (
         <div className="entry">

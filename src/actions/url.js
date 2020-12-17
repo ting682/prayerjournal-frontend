@@ -1,2 +1,2 @@
-// export const BASEURL = 'https://prayerjournalbackend.herokuapp.com'
-export const BASEURL = 'http://localhost:3000'
+export const BASEURL = 'https://api.prayerjournal.place'
+// export const BASEURL = 'https://localhost:3000'
