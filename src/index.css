@@ -15,3 +15,7 @@ code {
 img {
   width: 600px;
 }
+
+mark {
+  background-color: greenyellow;
+}

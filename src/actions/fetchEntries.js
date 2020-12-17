@@ -9,8 +9,7 @@ export function fetchEntries() {
         credentials: "include",
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': `${BASEURL}`
+          "Content-Type": "application/json"
         }
         })
         .then(response => response.json())

@@ -10,7 +10,8 @@ import { postLike } from '../actions/postLike'
 // English.
 import en from 'javascript-time-ago/locale/en'
 import { SearchEntries } from './searchEntries'
- 
+import Mark from 'mark.js'
+
 TimeAgo.addDefaultLocale(en)
 
 class EntriesContainer extends Component {
@@ -41,34 +42,66 @@ class EntriesContainer extends Component {
     }
 
     handleSearch = (term) => {
+        //debugger
         this.setState(previousState => {
             return {
                 ...previousState,
-                searchTerm: term
+                searchTerm: term.toLowerCase()
             }
         })
         this.mapEntries()
+        this.highlightSearch(term)
+        
+    }
+
+
+
+    highlightSearch = (term) => {
+        if (term === '') {
+            for (const entry of document.getElementsByClassName('entryContent')) {
+                //debugger
+                let instance = new Mark(entry)
+                instance.unmark()
+            }
+        } else {
+            for (const entry of document.getElementsByClassName('entryContent')) {
+                //debugger
+                let instance = new Mark(entry)
+                instance.mark(term)
+            }
+        }
+        
+
     }
 
     mapEntries = () => {
-        let entries
+        //debugger
         if (this.state.searchTerm === '') {
                 //debugger
                 return this.props.entries.map(entry => {
             
-                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} />
+                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} search={this.state.searchTerm}/>
             }, this)
     
         } else {
             return this.props.entries.filter(entry => {
                 //debugger
-                let tempDiv = document.createElement('div')
-                tempDiv.innerHTML = entry.attributes.content
+                // let tempDiv = document.createElement('div')
+                // tempDiv.innerHTML = entry.attributes.content
                 
-                return tempDiv.textContent.toLowerCase().includes(this.state.searchTerm)
+                // if (entry.comments.length > 0) {
+                //     for(const comment of entry.comments) {
+                //         tempDiv.innerHTML += " " + comment.attributes.content
+                //     }
+                // }
+                
+                //debugger
+
+                // return tempDiv.textContent.toLowerCase().includes(this.state.searchTerm)
+                return entry.entryText.includes(this.state.searchTerm)
             }, this).map(entry => {
             
-                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} />
+                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} search={this.state.searchTerm} />
             }, this)
         }
 
@@ -80,7 +113,7 @@ class EntriesContainer extends Component {
             
             //debugger
             return (
-                <React.Fragment>
+                <div id="entries">
                     
                     <br></br>
                     <SearchEntries {...this.props} handleSearch={this.handleSearch}/>
@@ -88,7 +121,7 @@ class EntriesContainer extends Component {
                     {/* <button onClick={(event) => this.handleClick(event)} >Fetch entries</button> */}
                     <EntryInput />
                     {this.mapEntries(this.state.searchTerm)}
-                </React.Fragment>
+                </div>
             )
         } else {
             this.props.history.push('/')

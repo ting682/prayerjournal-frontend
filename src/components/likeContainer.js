@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import { Button } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
@@ -19,7 +19,7 @@ export const LikeContainer = (props) => {
         return like.attributes.user_id === currentUserId
     }, currentUserId)
 
-    const [currentUserLikeExists, setCurrentUserLikeExists] = useState(false);
+    // const [currentUserLikeExists, setCurrentUserLikeExists] = useState(false);
 
     let liked;
     //debugger
