@@ -1,6 +1,6 @@
 import { BASEURL } from './url'
 
-export function fetchUser(userId) {
+export function fetchUser(userId, history) {
     return (dispatch) => {
       dispatch({ type: 'START_GET_USER_REQUEST' });
 
@@ -12,12 +12,22 @@ export function fetchUser(userId) {
           'Access-Control-Allow-Origin': `${BASEURL}`
         }
         })
-        .then(response => response.json())
+        .then(response => {
+          if(response.ok) {
+            return response.json()
+          } else {
+            history.push('/')
+          }
+          
+        })
         .then(userData => { 
             //debugger
             dispatch({ type: 'GET_USER', userData})
 
 
+        })
+        .catch(error => {
+          // history.push('/')
         })
     };
   }

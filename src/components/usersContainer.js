@@ -6,17 +6,18 @@ import { fetchUsers } from '../actions/fetchUsers'
 class UsersContainer extends Component {
 
     componentDidMount() {
-        if(this.props.loggedIn) {
-            this.props.fetchUsers()
-        } else {
-            this.props.history.push('/')
-        }
+        // if(this.props.loggedIn) {
+            //debugger
+            this.props.fetchUsers(this.props.history)
+        // } else {
+            // this.props.history.push('/')
+        // }
         
     }
 
     render () {
         //debugger
-        if (this.props.loggedIn) {
+        // if (this.props.loggedIn) {
             let users = this.props.users.users.map(function (user) {
                 //debugger
                 return (
@@ -28,20 +29,20 @@ class UsersContainer extends Component {
                     {users}
                 </React.Fragment>
             )
-        } else {
-            this.props.history.push('/')
-            return (
-                <React.Fragment>
+        // } else {
+        //     this.props.history.push('/')
+        //     return (
+        //         <React.Fragment>
 
-                </React.Fragment>
-            )
-        }
+        //         </React.Fragment>
+        //     )
+        // }
         
     }
 }
 
 function mapDispatchToProps(dispatch){
-    return { fetchUsers: (userId) => dispatch(fetchUsers(userId)) }
+    return { fetchUsers: (history) => dispatch(fetchUsers(history)) }
 
 }
 

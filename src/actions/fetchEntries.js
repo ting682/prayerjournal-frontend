@@ -1,6 +1,6 @@
 import { BASEURL } from './url'
 
-export function fetchEntries() {
+export function fetchEntries(history) {
     return (dispatch) => {
         
       dispatch({ type: 'START_ADDING_ENTRIES_REQUEST' });
@@ -12,12 +12,22 @@ export function fetchEntries() {
           "Content-Type": "application/json"
         }
         })
-        .then(response => response.json())
+        .then(response => {
+          //debugger
+          if (response.ok) {
+            return response.json()
+          } else {
+            history.push('/')
+          }
+          
+        })
         .then(entries => { 
             //debugger
             dispatch({ type: 'GET_ENTRIES', entries})
 
 
+        }).catch(error => {
+          //debugger
         })
     };
   }

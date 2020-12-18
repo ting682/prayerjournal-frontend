@@ -8,17 +8,18 @@ class UserContainer extends Component {
 
     componentDidMount() {
         //debugger
-        if(this.props.loggedIn) {
-            this.props.fetchUser(this.props.match.params.userId)
-        } else {
-            this.props.history.push('/')
-        }
+        // if(this.props.loggedIn) {
+            //debugger
+            this.props.fetchUser(this.props.match.params.userId, this.props.history)
+        // } else {
+            // this.props.history.push('/')
+        // }
          
     }
 
     render () {
         //debugger
-        if (this.props.loggedIn) {
+        // if (this.props.loggedIn) {
             let user = this.props.users.find(function (user) {
                 //debugger
                 return user.id === this.props.match.params.userId
@@ -37,14 +38,14 @@ class UserContainer extends Component {
                     </div>
                 )
             }
-        } else {
-            this.props.history.push('/')
-            return (
-                <React.Fragment>
+        // } else {
+        //     this.props.history.push('/')
+        //     return (
+        //         <React.Fragment>
 
-                </React.Fragment>
-            )
-        }
+        //         </React.Fragment>
+        //     )
+        // }
         
 
         
@@ -52,7 +53,7 @@ class UserContainer extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-    return { fetchUser: (userId) => dispatch(fetchUser(userId)) }
+    return { fetchUser: (userId, history) => dispatch(fetchUser(userId, history)) }
 
 }
 

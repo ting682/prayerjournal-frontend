@@ -33,11 +33,12 @@ class EntriesContainer extends Component {
     }
 
     componentDidMount = () => {
-        if (this.props.loggedIn) {
-            this.props.fetchEntries()
-        } else {
-            this.props.history.push('/')
-        }
+        // if (this.props.loggedIn) {
+            this.props.fetchEntries(this.props.history)
+        // } else {
+        //     //debugger
+        //     this.props.history.push('/')
+        // }
         
     }
 
@@ -109,29 +110,31 @@ class EntriesContainer extends Component {
 
     render () {
         //debugger
-        if(this.props.loggedIn) {
+        // if(this.props.loggedIn) {
             
             //debugger
             return (
                 <div id="entries">
                     
                     <br></br>
+                    
                     <SearchEntries {...this.props} handleSearch={this.handleSearch}/>
                     <br></br>
-                    {/* <button onClick={(event) => this.handleClick(event)} >Fetch entries</button> */}
+                    {/* <button onClick={(event) => this.handleClick(event)} >Fetch entries</button>*/} 
                     <EntryInput />
-                    {this.mapEntries(this.state.searchTerm)}
+                    {this.mapEntries(this.state.searchTerm)} 
                 </div>
             )
-        } else {
-            this.props.history.push('/')
-            return (
-                <React.Fragment>
-
-                </React.Fragment>
-            )
+        // } else {
+        //     //debugger
+        //     this.props.history.push('/')
+        //     return (
+        //         <React.Fragment>
+        //             hello
+        //         </React.Fragment>
+        //     )
             
-        }
+        // }
         
         
     }
@@ -139,7 +142,7 @@ class EntriesContainer extends Component {
 
 function mapDispatchToProps(dispatch){
     return { 
-        fetchEntries: () => dispatch(fetchEntries()),
+        fetchEntries: (history) => dispatch(fetchEntries(history)),
         getCurrentUser: () => dispatch(getCurrentUser()),
         postLike: () => dispatch(postLike())
     }
