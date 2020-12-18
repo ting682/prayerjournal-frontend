@@ -57,8 +57,7 @@ export const EditEntryContainer = (props) => {
                                 
                                 [{ 'header': '1' }, { 'header': '2' }, 'blockquote'],
                                 [{ 'list': 'ordered' }, { 'list': 'bullet'}], 
-                                [ 'link', 'image', 'video'], 
-                                [ 'clean' ]]}} />
+                                [ 'link', 'image', 'video']]}} />
                                 <br></br>
                             <Button type="submit">Edit entry</Button>
                         </Form>

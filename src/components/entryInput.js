@@ -61,8 +61,7 @@ class EntryInput extends Component {
                                 
                                 [{ 'header': '1' }, { 'header': '2' }, 'blockquote'],
                                 [{ 'list': 'ordered' }, { 'list': 'bullet'}], 
-                                [ 'link', 'image', 'video'], 
-                                [ 'clean' ]]}} />
+                                [ 'link', 'image', 'video']]}} />
                     
                         <Form.Group>
                             
