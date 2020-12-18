@@ -51,14 +51,13 @@ export const EditEntryContainer = (props) => {
                         
                         <Form onSubmit={(event) => handleSubmit(event, entryId, currentUserId)}>
                             <ReactQuill value={content} onChange={handleChange} modules={{ toolbar: [
-                                {/*[{ 'font': [] }, { 'size': [] }], */}
-                                [ 'bold', 'italic', 'underline'], {/* 'strike' ], */}
-                                [{ 'color': [] }, { 'background': [] }],
-                                {/* [{ 'script': 'super' }, { 'script': 'sub' }], */}
-                                [{ 'header': '1' }, { 'header': '2' }, 'blockquote'], {/* , 'code-block' ], */}
-                                [{ 'list': 'ordered' }, { 'list': 'bullet'}], {/* { 'indent': '-1' }, { 'indent': '+1' }], 
-                                [ 'direction', { 'align': [] }],*/}
-                                [ 'link', 'image', 'video'], {/* 'formula' ], */}
+                                
+                                [ 'bold', 'italic', 'underline'],
+                                
+                                
+                                [{ 'header': '1' }, { 'header': '2' }, 'blockquote'],
+                                [{ 'list': 'ordered' }, { 'list': 'bullet'}], 
+                                [ 'link', 'image', 'video'], 
                                 [ 'clean' ]]}} />
                                 <br></br>
                             <Button type="submit">Edit entry</Button>
