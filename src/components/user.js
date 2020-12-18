@@ -18,7 +18,7 @@ export const User = (props) => {
                         <Card>
                             <Card.Body>
                                 <h4>{props.user.attributes.name}</h4>
-                                <Button>Follow</Button>
+                                {/*<Button>Follow</Button> */}
                             </Card.Body>
                         </Card>
                     </Col>
