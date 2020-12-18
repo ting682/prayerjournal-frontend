@@ -81,15 +81,15 @@ class App extends Component {
             
               <Switch>
                 <Route exact path="/" render={(props) => <Home  {...props} />} />
-                <Route exact path="/entries" render={(props) => 
+                <Route path="/entries" render={(props) => 
                   
                   <EntriesContainer  {...props} />
                 } />
-                <Route exact path="/login" render={(props) => <LoginContainer {...props}/>} />
+                <Route path="/login" render={(props) => <LoginContainer {...props}/>} />
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
-                <Route exact path="/signup" render={(props) => <Signup {...props} />} />
-                <Route exact path="/editprofile" render={props => <EditUserProfile {...props} />} />
+                <Route path="/signup" render={(props) => <Signup {...props} />} />
+                <Route path="/editprofile" render={props => <EditUserProfile {...props} />} />
               </Switch>
           
         </React.Fragment>
@@ -123,14 +123,14 @@ class App extends Component {
             
               <Switch>
                 <Route exact path="/" render={(props) => <Home  {...props} />} />
-                <Route exact path="/entries" render={(props) => 
+                <Route path="/entries" render={(props) => 
                   
                   <EntriesContainer  {...props} />
                 } />
-                <Route exact path="/login" render={(props) => <LoginContainer {...props}/>} />
+                <Route path="/login" render={(props) => <LoginContainer {...props}/>} />
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} /> 
-                <Route exact path="/signup" render={(props) => <Signup {...props} />} />
+                <Route path="/signup" render={(props) => <Signup {...props} />} />
               </Switch>
           
         </div>
