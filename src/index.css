@@ -13,7 +13,7 @@ code {
 }
 
 img {
-  width: 600px;
+  max-width: 100%;
 }
 
 mark {
