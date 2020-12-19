@@ -1,4 +1,4 @@
-export function loginReducer(state = { currentUser: [], requesting: false}, action) {
+export function loginReducer(state = { currentUser: [], requesting: false, loggingOut: false}, action) {
     //debugger
     switch (action.type) {
 
@@ -20,9 +20,16 @@ export function loginReducer(state = { currentUser: [], requesting: false}, acti
             return {
                 ...state,
                 currentUser: [],
-                requesting: true
+                requesting: true,
+                loggingOut: true
             }
-
+        case "LOGGED_OUT":
+            return {
+                ...state,
+                currentUser: [],
+                requesting: true,
+                loggingOut: false
+            }
         case "START_EDIT_PROFILE":
             return {
                 ...state,

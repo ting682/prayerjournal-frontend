@@ -1,6 +1,6 @@
 import { BASEURL } from './url'
 
-export function getCurrentUser() {
+export function getCurrentUser(history) {
     return (dispatch) => {
       dispatch({ type: 'START_GET_CURRENT_USER_REQUEST' });
 
@@ -18,6 +18,9 @@ export function getCurrentUser() {
             dispatch({ type: 'GET_CURRENT_USER', userData})
 
 
+        })
+        .catch(error => {
+          history.push('/')
         })
     };
   }

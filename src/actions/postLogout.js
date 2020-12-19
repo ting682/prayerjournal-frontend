@@ -15,6 +15,8 @@ export function postLogout(history) {
         })
         .then(resp => {
             if (resp.ok) {
+                dispatch({type: 'LOGGED_OUT'})
+                dispatch({type: 'NEW_ALERT', payload: 'Logged out successfully.'})
                 history.push("/")
             }
         })

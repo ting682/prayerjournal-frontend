@@ -4,6 +4,7 @@ import { entriesReducer } from './entriesReducer'
 import { loginReducer } from "./loginReducer";
 import { userReducer } from './userReducer'
 import { signupReducer } from "./signupReducer";
+import { alertsReducer } from './alertsReducer'
 
 export const rootReducer = (history) => combineReducers({
     loggedIn: !!loginReducer.currentUser,
@@ -11,7 +12,8 @@ export const rootReducer = (history) => combineReducers({
     entries: entriesReducer,
     user: loginReducer,
     users: userReducer,
-    signupUser: signupReducer
+    signupUser: signupReducer,
+    alerts: alertsReducer
   });
 
 

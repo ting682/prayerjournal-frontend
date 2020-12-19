@@ -17,7 +17,7 @@ import Nav from 'react-bootstrap/Nav'
 import { Home } from './components/home'
 // import { User } from './components/user'
 import { Signup } from './components/signup';
-import { Button } from 'react-bootstrap'
+import { Alert, Button } from 'react-bootstrap'
 import { postLogout } from './actions/postLogout';
 import EditUserProfile from './components/editUserProfile';
 import NotFound from './components/404'
@@ -41,7 +41,10 @@ class App extends Component {
 
   componentDidMount() {
     //debugger
-    this.props.getCurrentUser()
+    this.props.getCurrentUser(this.props.history)
+    if (this.props.alerts.length > 0) {
+
+    }
   }
 
   handleLogout = (history) => {
@@ -119,7 +122,9 @@ class App extends Component {
               </Form> */}
 
             </Navbar> 
-          
+            <Alert variant="warning" show={this.props.alerts.display} onClose={() => this.props.closeAlert()} dismissible >
+                {this.props.alerts.alert[0]}
+              </Alert>
             
               <Switch>
                 <Route exact path="/" render={(props) => <Home  {...props} />} />
@@ -139,7 +144,7 @@ class App extends Component {
                   }}} />
                   <Route path="*" component={NotFound} />
               </Switch>
-          
+              
         </div>
       )
     }
@@ -157,14 +162,16 @@ const mapStateToProps = state => {
     loggedIn: !!state.user.currentUser && state.user.currentUser.length !== 0,
     router: state.router,
     entries: state.entries.entries,
-    currentUser: state.user.currentUser
+    currentUser: state.user.currentUser,
+    alerts: state.alerts
   })
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCurrentUser: () => dispatch(getCurrentUser()),
-    postLogout: (history) => dispatch(postLogout(history))
+    getCurrentUser: (history) => dispatch(getCurrentUser(history)),
+    postLogout: (history) => dispatch(postLogout(history)),
+    closeAlert: () => dispatch({type: 'CLOSE_ALERT'})
   }
 }
 

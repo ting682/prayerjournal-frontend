@@ -19,13 +19,23 @@ export function fetchLogin(data, history) {
                 }
             })
         })
-        .then(resp => resp.json())
+        .then(resp => {
+            if(resp.ok) {
+                return resp.json()
+            } else {
+                dispatch({type: 'NEW_ALERT', payload: 'Email and password do not match records.'})
+            }
+        
+        })
         .then(userData => {
             
             //debugger
             dispatch({type: 'SET_CURRENT_USER', userData})
             history.push("/entries")
             
+        })
+        .catch(error => {
+
         })
     }
 }

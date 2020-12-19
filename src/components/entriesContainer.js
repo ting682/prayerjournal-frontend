@@ -24,17 +24,15 @@ class EntriesContainer extends Component {
         }
     }
 
-    componentDidMount() {
-        
-    }
-
-    handleClick = (event) => {
-        this.props.fetchEntries()
-    }
+    // handleClick = (event) => {
+    //     this.props.fetchEntries()
+    // }
 
     componentDidMount = () => {
-        // if (this.props.loggedIn) {
+        
+        if (!this.props.loggingOut) {
             this.props.fetchEntries(this.props.history)
+        }
         // } else {
         //     //debugger
         //     this.props.history.push('/')
@@ -154,7 +152,8 @@ function mapDispatchToProps(dispatch){
         loggedIn: !!state.user.currentUser && state.user.currentUser.length !== 0,
         router: state.router,
         entries: state.entries.entries,
-        currentUser: state.user.currentUser
+        currentUser: state.user.currentUser,
+        loggingOut: state.user.loggingOut
     }
   }
 

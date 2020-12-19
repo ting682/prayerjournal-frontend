@@ -16,7 +16,10 @@ export function postSignup(user, history) {
                 user
             })
         })
-        .then(resp => resp.json())
+        .then(resp => {
+            
+            resp.json()
+        })
         .then(userData => {
             
             //debugger

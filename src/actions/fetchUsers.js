@@ -17,6 +17,7 @@ export function fetchUsers(history) {
           if(response.ok) {
             return response.json()
           } else {
+            dispatch({type: 'NEW_ALERT', payload: 'Please login'})
             history.push('/')
           }
           
