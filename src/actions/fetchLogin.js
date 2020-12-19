@@ -29,9 +29,13 @@ export function fetchLogin(data, history) {
         })
         .then(userData => {
             
-            //debugger
-            dispatch({type: 'SET_CURRENT_USER', userData})
-            history.push("/entries")
+            if(userData.error) {
+                dispatch({type: 'NEW_ALERT', payload: 'Email and password do not match records.'})
+            } else {
+                dispatch({type: 'SET_CURRENT_USER', userData})
+                history.push("/entries")
+            }
+            
             
         })
         .catch(error => {
