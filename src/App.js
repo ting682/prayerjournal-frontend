@@ -20,6 +20,7 @@ import { Signup } from './components/signup';
 import { Button } from 'react-bootstrap'
 import { postLogout } from './actions/postLogout';
 import EditUserProfile from './components/editUserProfile';
+import NotFound from './components/404'
 // import { useHistory } from 'react-router-dom'
 // // export const history = createBrowserHistory()
 // import { useDispatch } from 'react-redux'
@@ -88,6 +89,7 @@ class App extends Component {
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
                 <Route path="/signup" render={(props) => <Signup {...props} />} />
                 <Route path="/editprofile" render={props => <EditUserProfile {...props} />} />
+                <Route path="*" component={NotFound} />
               </Switch>
           
         </React.Fragment>
@@ -135,6 +137,7 @@ class App extends Component {
                   } else {
                     return <Redirect to="/" />
                   }}} />
+                  <Route path="*" component={NotFound} />
               </Switch>
           
         </div>
