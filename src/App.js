@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { getCurrentUser } from './actions/getCurrentUser'
 
 import { connect } from 'react-redux'
-import { Route, Switch } from 'react-router'
+import { Redirect, Route, Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 
 
@@ -39,6 +39,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    //debugger
     this.props.getCurrentUser()
   }
 
@@ -128,6 +129,12 @@ class App extends Component {
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} /> 
                 <Route path="/signup" render={(props) => <Signup {...props} />} />
+                <Route path="/editprofile" render={props => {
+                  if (this.props.loggedIn) {
+                    return <EditUserProfile {...props} />
+                  } else {
+                    return <Redirect to="/" />
+                  }}} />
               </Switch>
           
         </div>

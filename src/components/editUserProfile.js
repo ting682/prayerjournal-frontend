@@ -18,6 +18,7 @@ class EditUserProfile extends Component {
     }
 
     componentDidMount() {
+        //debugger
         if (this.props.loggedIn) {
             this.props.fetchUser(this.props.currentUser.id)
             // this.setState({
