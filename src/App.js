@@ -131,6 +131,7 @@ class App extends Component {
                   if (this.props.loggedIn) {
                     return <EntriesContainer  {...props} />
                   } else {
+                    this.props.newAlert('Please login')
                     this.props.newRouteRequest('/entries')
                     return <Redirect to="/login" />
                   }
@@ -144,6 +145,7 @@ class App extends Component {
                   if (this.props.loggedIn) {
                     return <EditUserProfile {...props} />
                   } else {
+                    this.props.newAlert('Please login')
                     this.props.newRouteRequest('/editprofile')
                     return <Redirect to="/login" />
                   }}} />
@@ -178,7 +180,8 @@ const mapDispatchToProps = dispatch => {
     getCurrentUser: (history) => dispatch(getCurrentUser(history)),
     postLogout: (history) => dispatch(postLogout(history)),
     closeAlert: () => dispatch({type: 'CLOSE_ALERT'}),
-    newRouteRequest: (payload) => dispatch({type: 'NEW_REQUEST', payload: payload})
+    newRouteRequest: (payload) => dispatch({type: 'NEW_REQUEST', payload: payload}),
+    newAlert: (payload) => dispatch({type: 'NEW_ALERT', payload: payload})
   }
 }
 
