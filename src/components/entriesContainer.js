@@ -27,16 +27,14 @@ class EntriesContainer extends Component {
     // handleClick = (event) => {
     //     this.props.fetchEntries()
     // }
+    
 
     componentDidMount = () => {
-        
+     //debugger
+        // if ((this.props.loggingOut !== undefined) && (!this.props.loggingOut)) {
         if (!this.props.loggingOut) {
             this.props.fetchEntries(this.props.history)
         }
-        // } else {
-        //     //debugger
-        //     this.props.history.push('/')
-        // }
         
     }
 
@@ -153,7 +151,8 @@ function mapDispatchToProps(dispatch){
         router: state.router,
         entries: state.entries.entries,
         currentUser: state.user.currentUser,
-        loggingOut: state.user.loggingOut
+        loggingOut: state.user.loggingOut,
+        requestingEntries: state.entries.requesting
     }
   }
 

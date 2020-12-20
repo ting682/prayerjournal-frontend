@@ -1,6 +1,6 @@
 import { BASEURL } from './url'
 
-export function fetchLogin(data, history) {
+export function fetchLogin(data, history, request) {
     return (dispatch) => {
         dispatch({type: 'LOGIN_REQUEST_STARTED'})
         
@@ -33,7 +33,16 @@ export function fetchLogin(data, history) {
                 dispatch({type: 'NEW_ALERT', payload: 'Email and password do not match records.'})
             } else {
                 dispatch({type: 'SET_CURRENT_USER', userData})
-                history.push("/entries")
+                //debugger
+                // if (request !== undefined || request.length === 0) {
+                //     //dispatch({type: 'CLEAR_REQUEST'})
+                //     // history.push(request)
+                
+                // } else {
+                //     history.push('/entries')
+                // }
+                
+                
             }
             
             

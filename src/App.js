@@ -39,12 +39,11 @@ class App extends Component {
     this.handleLogout = this.handleLogout.bind(this)
   }
 
+
   componentDidMount() {
     //debugger
     this.props.getCurrentUser(this.props.history)
-    if (this.props.alerts.length > 0) {
-
-    }
+    
   }
 
   handleLogout = (history) => {
@@ -137,10 +136,12 @@ class App extends Component {
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} /> 
                 <Route path="/signup" render={(props) => <Signup {...props} />} />
                 <Route path="/editprofile" render={props => {
+                  
                   if (this.props.loggedIn) {
                     return <EditUserProfile {...props} />
                   } else {
-                    return <Redirect to="/" />
+                    this.props.newRouteRequest('/editprofile')
+                    return <Redirect to="/login" />
                   }}} />
                   <Route path="*" component={NotFound} />
               </Switch>
@@ -163,7 +164,8 @@ const mapStateToProps = state => {
     router: state.router,
     entries: state.entries.entries,
     currentUser: state.user.currentUser,
-    alerts: state.alerts
+    alerts: state.alerts,
+    routeRequest: state.routeRequest
   })
 }
 
@@ -171,7 +173,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getCurrentUser: (history) => dispatch(getCurrentUser(history)),
     postLogout: (history) => dispatch(postLogout(history)),
-    closeAlert: () => dispatch({type: 'CLOSE_ALERT'})
+    closeAlert: () => dispatch({type: 'CLOSE_ALERT'}),
+    newRouteRequest: (payload) => dispatch({type: 'NEW_REQUEST', payload: payload})
   }
 }
 

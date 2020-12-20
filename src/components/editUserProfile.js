@@ -11,24 +11,35 @@ class EditUserProfile extends Component {
         super(props)
         //debugger
         this.state = {
-            email: this.props.currentUser.attributes.email_address,
-            bio: this.props.currentUser.attributes.bio,
-            name: this.props.currentUser.attributes.name
+            // email: this.props.currentUser.attributes.email_address,
+            // bio: this.props.currentUser.attributes.bio,
+            // name: this.props.currentUser.attributes.name
+            email: '',
+            bio: '',
+            name: ''
         }
+        
     }
 
     componentDidMount() {
         //debugger
-        if (this.props.loggedIn) {
-            this.props.fetchUser(this.props.currentUser.id)
-            // this.setState({
-            //     email: this.props.currentUser.attributes.email_address,
-            //     name: this.props.currentUser.attributes.name,
-            //     bio: this.props.currentUser.attributes.bio
-            // })
-        } else {
-            this.props.history.push('/')
+        //this.props.fetchUser(this.props.currentUser.id, this.props.history)
+        // debugger
+        if (this.props.currentUser !== undefined && this.props.currentUser.length !== 0) {
+            //debugger
+            this.setState({
+            email: this.props.currentUser.attributes.email_address,
+            bio: this.props.currentUser.attributes.bio,
+            name: this.props.currentUser.attributes.name
+            })
         }
+        
+        // if (this.props.loggedIn) {
+        //     this.props.fetchUser(this.props.currentUser.id)
+            
+        // } else {
+        //     this.props.history.push('/')
+        // }
     }
 
     handleChange = (event) => {
@@ -93,7 +104,7 @@ class EditUserProfile extends Component {
 
 function mapDispatchToProps(dispatch){
     return { 
-        fetchUser: (currentUserId) => dispatch(fetchUser(currentUserId)),
+        fetchUser: (currentUserId, history) => dispatch(fetchUser(currentUserId, history)),
         getCurrentUser: () => dispatch(getCurrentUser()),
         editUser: (user, currentUserId, history) => dispatch(editUser(user, currentUserId, history))
     }

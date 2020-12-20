@@ -6,14 +6,26 @@ import { fetchUsers } from '../actions/fetchUsers'
 class UsersContainer extends Component {
 
     componentDidMount() {
-        // if(this.props.loggedIn) {
-            //debugger
+        //debugger
+        //if ((this.props.loggingOut !== undefined) && (!this.props.loggingOut || !this.props.requestingUsers)) {
+        if (!this.props.loggingOut) {
             this.props.fetchUsers(this.props.history)
+        }
+            
         // } else {
             // this.props.history.push('/')
         // }
         
     }
+
+    // shouldComponentUpdate(nextProps) {
+    //     //debugger
+    //     if (nextProps.currentUser !== undefined || nextProps.requestingCurrentUser || !nextProps.requestingCurrentUser) {
+    //         return false
+    //     } else {
+    //         return true
+    //     }
+    // }
 
     render () {
         //debugger
@@ -52,7 +64,9 @@ function mapStateToProps(state){
         router: state.router,
         entries: state.entries.entries,
         currentUser: state.user.currentUser,
-        users: state.users
+        users: state.users,
+        loggingOut: state.user.loggingOut,
+        requestingCurrentUser: state.user.requesting
     }
 }
 
