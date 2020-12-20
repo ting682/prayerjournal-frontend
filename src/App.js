@@ -127,10 +127,14 @@ class App extends Component {
             
               <Switch>
                 <Route exact path="/" render={(props) => <Home  {...props} />} />
-                <Route path="/entries" render={(props) => 
-                  
-                  <EntriesContainer  {...props} />
-                } />
+                <Route path="/entries" render={(props) => {
+                  if (this.props.loggedIn) {
+                    return <EntriesContainer  {...props} />
+                  } else {
+                    this.props.newRouteRequest('/entries')
+                    return <Redirect to="/login" />
+                  }
+                }} />
                 <Route path="/login" render={(props) => <LoginContainer {...props}/>} />
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} /> 
