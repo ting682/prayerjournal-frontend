@@ -11,6 +11,7 @@ import { postLike } from '../actions/postLike'
 import en from 'javascript-time-ago/locale/en'
 import { SearchEntries } from './searchEntries'
 import Mark from 'mark.js'
+import { OurMannaVerse } from './ourMannaVerse'
 
 TimeAgo.addDefaultLocale(en)
 
@@ -35,6 +36,13 @@ class EntriesContainer extends Component {
         if (!this.props.loggingOut) {
             this.props.fetchEntries(this.props.history)
         }
+
+        // const script = document.createElement('script')
+
+        // script.src = 'https://beta.ourmanna.com/api/v1/js/?order=random'
+        // script.type = 'text/javascript'
+        // script.async = true
+        // document.body.appendChild(script)
         
     }
 
@@ -115,8 +123,10 @@ class EntriesContainer extends Component {
                     <br></br>
                     
                     <SearchEntries {...this.props} handleSearch={this.handleSearch}/>
+                    <OurMannaVerse verse={this.props.verse} />
                     <br></br>
                     {/* <button onClick={(event) => this.handleClick(event)} >Fetch entries</button>*/} 
+                    
                     <EntryInput />
                     {this.mapEntries(this.state.searchTerm)} 
                 </div>

@@ -6,6 +6,7 @@ import { userReducer } from './userReducer'
 import { signupReducer } from "./signupReducer";
 import { alertsReducer } from './alertsReducer'
 import { routeRequestReducer } from './routeRequestReducer'
+import { verseReducer } from "./verseReducer";
 
 export const rootReducer = (history) => combineReducers({
     loggedIn: !!loginReducer.currentUser,
@@ -15,7 +16,8 @@ export const rootReducer = (history) => combineReducers({
     users: userReducer,
     signupUser: signupReducer,
     alerts: alertsReducer,
-    routeRequest: routeRequestReducer
+    routeRequest: routeRequestReducer,
+    verse: verseReducer
   });
 
 

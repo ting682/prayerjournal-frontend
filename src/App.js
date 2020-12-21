@@ -21,6 +21,7 @@ import { Alert, Button } from 'react-bootstrap'
 import { postLogout } from './actions/postLogout';
 import EditUserProfile from './components/editUserProfile';
 import NotFound from './components/404'
+import { fetchVerse } from './actions/fetchVerse'
 // import { useHistory } from 'react-router-dom'
 // // export const history = createBrowserHistory()
 // import { useDispatch } from 'react-redux'
@@ -37,13 +38,14 @@ class App extends Component {
     super(props)
 
     this.handleLogout = this.handleLogout.bind(this)
+    
   }
 
 
   componentDidMount() {
     //debugger
     this.props.getCurrentUser(this.props.history)
-    
+    this.props.fetchVerse()
   }
 
   handleLogout = (history) => {
@@ -84,8 +86,8 @@ class App extends Component {
           
             
               <Switch>
-                <Route exact path="/" render={(props) => <Home  {...props} />} />
-                <Route path="/entries" render={(props) => <EntriesContainer  {...props} />} />
+                <Route exact path="/" render={(props) => <Home  {...props} verse={this.props.verse} />} />
+                <Route path="/entries" render={(props) => <EntriesContainer  {...props}  verse={this.props.verse} />} />
                 <Route path="/login" render={(props) => <LoginContainer {...props}/>} />
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
@@ -126,10 +128,10 @@ class App extends Component {
               </Alert>
             
               <Switch>
-                <Route exact path="/" render={(props) => <Home  {...props} />} />
+                <Route exact path="/" render={(props) => <Home  {...props} verse={this.props.verse} />} />
                 <Route path="/entries" render={(props) => {
                   if (this.props.loggedIn) {
-                    return <EntriesContainer  {...props} />
+                    return <EntriesContainer  {...props} verse={this.props.verse}/>
                   } else {
                     this.props.newAlert('Please login')
                     this.props.newRouteRequest('/entries')
@@ -171,7 +173,8 @@ const mapStateToProps = state => {
     entries: state.entries.entries,
     currentUser: state.user.currentUser,
     alerts: state.alerts,
-    routeRequest: state.routeRequest
+    routeRequest: state.routeRequest,
+    verse: state.verse
   })
 }
 
@@ -181,7 +184,8 @@ const mapDispatchToProps = dispatch => {
     postLogout: (history) => dispatch(postLogout(history)),
     closeAlert: () => dispatch({type: 'CLOSE_ALERT'}),
     newRouteRequest: (payload) => dispatch({type: 'NEW_REQUEST', payload: payload}),
-    newAlert: (payload) => dispatch({type: 'NEW_ALERT', payload: payload})
+    newAlert: (payload) => dispatch({type: 'NEW_ALERT', payload: payload}),
+    fetchVerse: () => dispatch(fetchVerse())
   }
 }
 
