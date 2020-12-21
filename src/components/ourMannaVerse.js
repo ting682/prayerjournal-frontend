@@ -26,11 +26,3 @@ export const OurMannaVerse = (props) => {
         </div>
     )
 }
-
-OurMannaVerse.defaultProps = {
-    verse: {
-        text: 'Loading...',
-        reference: '',
-        version: ''
-    }
-}
