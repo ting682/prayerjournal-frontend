@@ -174,7 +174,7 @@ const mapStateToProps = state => {
     currentUser: state.user.currentUser,
     alerts: state.alerts,
     routeRequest: state.routeRequest,
-    verse: state.verse
+    verse: state.verse.verse
   })
 }
 

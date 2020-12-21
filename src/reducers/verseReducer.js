@@ -6,7 +6,7 @@ export function verseReducer(state = { verse: [], requesting: false}, action) {
             //debugger
             return {
                 ...state,
-                verse: [action.payload],
+                verse: action.payload,
                 requesting: false
             }
 
