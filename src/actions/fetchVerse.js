@@ -1,7 +1,7 @@
 export function fetchVerse() {
     return (dispatch) => {
         dispatch({type: 'REQUESTING_VERSE'})
-        fetch('http://beta.ourmanna.com/api/v1/get/?format=json')
+        fetch('https://beta.ourmanna.com/api/v1/get/?format=json')
         .then(resp => resp.json())
         .then(data => {
             dispatch({
