@@ -11,9 +11,7 @@ class EditUserProfile extends Component {
         super(props)
         //debugger
         this.state = {
-            // email: this.props.currentUser.attributes.email_address,
-            // bio: this.props.currentUser.attributes.bio,
-            // name: this.props.currentUser.attributes.name
+           
             email: '',
             bio: '',
             name: ''

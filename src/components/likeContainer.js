@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 
 import { Button } from 'react-bootstrap'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Heart } from './heart'
 import { postLike } from '../actions/postLike'
 import { patchLike } from '../actions/patchLike'
@@ -53,10 +53,6 @@ export const LikeContainer = (props) => {
             }))
         }
     }
-
-    useEffect(() => {
-
-    })
 
     return (
         <Button variant="light" onClick={(event) => handleClick(event, heart, currentUserLike, currentUserId, entryId)}>

@@ -24,10 +24,6 @@ class EntriesContainer extends Component {
             searchTerm: ''
         }
     }
-
-    // handleClick = (event) => {
-    //     this.props.fetchEntries()
-    // }
     
 
     componentDidMount = () => {
@@ -37,12 +33,6 @@ class EntriesContainer extends Component {
             this.props.fetchEntries(this.props.history)
         }
 
-        // const script = document.createElement('script')
-
-        // script.src = 'https://beta.ourmanna.com/api/v1/js/?order=random'
-        // script.type = 'text/javascript'
-        // script.async = true
-        // document.body.appendChild(script)
         
     }
 
@@ -91,18 +81,7 @@ class EntriesContainer extends Component {
         } else {
             return this.props.entries.filter(entry => {
                 //debugger
-                // let tempDiv = document.createElement('div')
-                // tempDiv.innerHTML = entry.attributes.content
                 
-                // if (entry.comments.length > 0) {
-                //     for(const comment of entry.comments) {
-                //         tempDiv.innerHTML += " " + comment.attributes.content
-                //     }
-                // }
-                
-                //debugger
-
-                // return tempDiv.textContent.toLowerCase().includes(this.state.searchTerm)
                 return entry.entryText.includes(this.state.searchTerm)
             }, this).map(entry => {
             

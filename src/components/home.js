@@ -2,12 +2,6 @@ import { OurMannaVerse } from './ourMannaVerse'
 
 export const Home = (props) => {
 
-    // const script = document.createElement('script')
-
-    // script.src = 'https://beta.ourmanna.com/api/v1/js/?order=random'
-    // script.type = 'text/javascript'
-    // script.async = true
-    // document.body.appendChild(script)
     //debugger
     return (
         <div>

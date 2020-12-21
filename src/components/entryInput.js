@@ -45,15 +45,7 @@ class EntryInput extends Component {
             <React.Fragment>
                 
                 <Form onSubmit={this.handleSubmit} >
-                    {/* <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label >
-                            New journal entry
-                        </Form.Label>
-                        
-                        <Form.Control as="textarea" name="content" rows={3} onChange={this.handleChange} />
-                        
-                    </Form.Group>
-        */}
+                    
                     <ReactQuill value={this.state.content} onChange={this.handleChange} modules={{ toolbar: [
                                 
                                 [ 'bold', 'italic', 'underline'],

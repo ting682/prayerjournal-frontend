@@ -11,18 +11,7 @@ import { LikeContainer } from '../components/likeContainer'
 export const Entry = (props) => {
     //debugger
     const timeAgo = new TimeAgo('en-US')
-    //const content = JSON.parse(props.entry.content)
-    //debugger
-    // let entryContent = document.createElement('div')
-    // entryContent.innerHTML = props.entry.content
-    // let entrySearch;
-    // if (props.search) {
-    //     entrySearch = props.entry.content.replace(new RegExp(props.search, "gim"), (match) => `<mark>${match}</mark>`)
-    // } else {
-    //     entrySearch = props.entry.content
-    // }
-    
-    
+
     //debugger
     return (
         <div className="entry">
