@@ -9,7 +9,7 @@ export function postComment(data) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': 'http://localhost:3001'
+          'Access-Control-Allow-Origin': `${BASEURL}`
         },
 
         body: JSON.stringify({
