@@ -3,13 +3,11 @@ import { Container, Row, Col, Card } from 'react-bootstrap'
 
 export const User = (props) => {
 
+    let {name, email_address, bio} = props.user.attributes
     //debugger
     return (
         <React.Fragment>
-            
-            {/*<p>{props.user.attributes.name}</p>
-            <p>{props.user.attributes.email_address}</p>
-    <p>{props.user.attributes.bio}</p> */}
+        
 
         <Container>
             <div className="main-body-user">
@@ -17,7 +15,7 @@ export const User = (props) => {
                     <Col>
                         <Card>
                             <Card.Body>
-                                <h4>{props.user.attributes.name}</h4>
+                                <h4>{name}</h4>
                                 {/*<Button>Follow</Button> */}
                             </Card.Body>
                         </Card>
@@ -33,7 +31,7 @@ export const User = (props) => {
                                     </Col>
                                     
                                     <Col>
-                                        {props.user.attributes.name}
+                                        {name}
                                     </Col>
 
                                 </Row>
@@ -45,7 +43,7 @@ export const User = (props) => {
                                         </strong>
                                     </Col>
                                     <Col>
-                                        {props.user.attributes.email_address}
+                                        {email_address}
                                     </Col>
                                 </Row>
                                 <hr></hr>
@@ -57,7 +55,7 @@ export const User = (props) => {
                                         
                                     </Col>
                                     <Col>
-                                        {props.user.attributes.bio}
+                                        {bio}
                                     </Col>
                                 </Row>
                             </Card.Body>

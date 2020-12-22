@@ -21,7 +21,8 @@ class EntriesContainer extends Component {
         super(props)
         //this.props.getCurrentUser()
         this.state = {
-            searchTerm: ''
+            searchTerm: '',
+            sort: false
         }
     }
     
@@ -71,6 +72,17 @@ class EntriesContainer extends Component {
 
     mapEntries = () => {
         //debugger
+        // let allEntries = this.props.entries
+        // if (this.state.sort) {
+        //     allEntries = this.props.entries.sort(function(entryA, entryB) {
+        //         if(entryA.attributes.updated_at < entryB.attributes.updated_at) {
+        //             return 1
+        //         } else {
+        //             return -1
+        //         }
+
+        //     })
+        // }
         if (this.state.searchTerm === '') {
                 //debugger
                 return this.props.entries.map(entry => {
@@ -91,6 +103,16 @@ class EntriesContainer extends Component {
 
     }
 
+    // sortEntries = () => {
+    //     this.setState(previousState => (
+    //         {
+    //             ...previousState,
+    //             sort: true
+    //         }
+    //     ))
+    // }
+            
+
     render () {
         //debugger
         // if(this.props.loggedIn) {
@@ -100,14 +122,14 @@ class EntriesContainer extends Component {
                 <div id="entries">
                     
                     <br></br>
-                    
+                    {/*<button onClick={this.sortEntries} >Sort by newest</button> */}
                     <SearchEntries {...this.props} handleSearch={this.handleSearch}/>
                     <OurMannaVerse verse={this.props.verse} />
                     <br></br>
-                    {/* <button onClick={(event) => this.handleClick(event)} >Fetch entries</button>*/} 
+                     
                     
                     <EntryInput />
-                    {this.mapEntries(this.state.searchTerm)} 
+                    {this.mapEntries()} 
                 </div>
             )
         // } else {

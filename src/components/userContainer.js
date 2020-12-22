@@ -33,9 +33,9 @@ class UserContainer extends Component {
                 )
             } else {
                 return (
-                    <div>
+                    <React.Fragment>
                         Loading
-                    </div>
+                    </React.Fragment>
                 )
             }
         // } else {
