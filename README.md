@@ -9,6 +9,7 @@ This is the frontend code of my Prayer Journal app. This frontend was built usin
 * Stores application state via Redux store allowing universal source of truth.
 * Client-side routing performed to allow access to nested routes via React Router
 * Serializes data from Rails API via JSON fast API
+* Utlilized React Bootstrap for responsive interface.
 
 [![prayer journal](https://img.youtube.com/vi/DekNKan0DbA/0.jpg)](https://www.youtube.com/watch?v=DekNKan0DbA)
 
