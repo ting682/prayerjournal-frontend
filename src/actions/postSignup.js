@@ -17,15 +17,28 @@ export function postSignup(user, history) {
             })
         })
         .then(resp => {
-            
-            resp.json()
+
+            if(resp.ok) {
+                return resp.json()
+            } else {
+                dispatch({type: 'NEW_ALERT', payload: 'Signup did was not successful'})
+            }
         })
         .then(userData => {
             
             //debugger
-            dispatch({type: 'SET_CURRENT_USER', userData})
-            history.push("/entries")
+            if (userData.error !== undefined) {
+                dispatch({type: 'NEW_ALERT', payload: userData.error})
+            } else {
+                dispatch({type: 'NEW_ALERT', payload: "Signup successful!"})
+                dispatch({type: 'SET_CURRENT_USER', userData})
+                history.push("/entries")
+            }
             
+            
+        })
+        .catch(error => {
+            debugger
         })
     }
 }
