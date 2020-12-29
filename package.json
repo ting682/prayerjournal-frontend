@@ -27,6 +27,7 @@
     "react-router-redux": "^4.0.8",
     "react-scripts": "4.0.1",
     "sass-loader": "^10.1.0",
+    "video-react": "^0.14.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
