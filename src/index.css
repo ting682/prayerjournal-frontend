@@ -12,8 +12,18 @@ code {
     monospace;
 }
 
-.journalintro {
-  width: 70%;
+.journalintro.desktop {
+  width: 50%;
+  display: block;
+}
+
+.journalintro.mobile {
+  display: none;
+}
+
+.logo {
+  width: 280px;
+  height: 70px;
 }
 
 img {
@@ -40,6 +50,11 @@ mark {
 
 @media only screen and (max-width: 600px) {
 
+  .logo {
+    width: 200px;
+    height: 50px;
+  }
+
   .journalheading {
     text-align: center;
   }
@@ -48,11 +63,20 @@ mark {
     width: 100%;
   }
 
+  .journalintro.desktop {
+    display: none;
+  }
+  
+  .journalintro.mobile {
+    display: block;
+  }
+
   img {
     width: 100%;
   }
 
   .journalintro {
+    
     width: 100%;
   }
 }

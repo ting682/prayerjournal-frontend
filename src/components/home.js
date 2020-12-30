@@ -26,7 +26,8 @@ export const Home = (props) => {
     //debugger
     return (
         <div>
-            <img className="journalintro" src="prayer_journal_intro.png" alt="Prayer Journal Intro" />
+            <img className="journalintro desktop" src="prayer_journal_intro_picture_desktop.png" alt="Prayer Journal Intro" />
+            <img className="journalintro mobile" src="prayer_journal_intro_picture_mobile.png" alt="Prayer Journal Intro" />
             <h1 className="journalheading">Welcome to the</h1>
             <h1 className="journalheading">Prayer Journal app!</h1>
 
