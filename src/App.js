@@ -62,7 +62,7 @@ class App extends Component {
         <React.Fragment>
             <Navbar bg="light" expand="md" className="w-auto p-3">
               <Navbar.Brand href="#home">
-                <img src="prayer_journal_logo.gif" height="30" alt="Prayer Journal Logo" />
+              <img className="logo" src="prayer_journal_logo.gif" width="200" height="100" alt="Prayer Journal Logo" />
               </Navbar.Brand>
               
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
