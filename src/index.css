@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.journalintro {
+  width: 70%;
+}
+
 img {
   width: 600px;
   max-width: 100%;
@@ -33,3 +37,42 @@ mark {
   width: 60%;
   
 }
+
+@media only screen and (max-width: 600px) {
+
+  .journalheading {
+    text-align: center;
+  }
+
+  #ourmanna-verse {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .journalintro {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+
+  .journalheading {
+    text-align: center;
+  }
+
+  #ourmanna-verse {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .journalintro {
+    width: 100%;
+  }
+}
+

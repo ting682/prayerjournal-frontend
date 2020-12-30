@@ -1,0 +1,146 @@
+{
+    "main": {
+      "name":"Ting Chung",
+      "occupation":"aspiring software engineer",
+      "description":"I am currently a Flatiron school student studying full-stack web development with extensive aircraft systems engineering experience designing, integrating, testing, troubleshooting, and documenting",
+      "image":"profilepic.jpg",
+      "bio":"I am a Flatiron student studying full-stack web development. My previous experience as an aircraft system engineer designing, integrating, testing, troubleshooting, and documenting will contribute to building well-designed software projects.",
+      "contactmessage":"Please contact me using the form below for more information.",
+      "email": "tchung682@gmail.com",
+      "phone": "678-557-5088",
+      "address":{
+        "street":"113 Grimsby Rd",
+        "city":"Savannah",
+        "state":"GA",
+        "zip": "31407"
+      },
+      "website": "https://tingchung.netlify.app/",
+      "resumedownload":"https://tingchung.netlify.app/TingChungSEResume.pdf",
+      "social":[
+        {
+          "name":"github",
+          "url":"https://github.com/ting682",
+          "className":"fab fa-github"
+        },
+        {
+          "name":"dev",
+          "url":"https://dev.to/ting682",
+          "className":"fab fa-dev"
+        },
+        {
+          "name":"linkedin",
+          "url":"https://www.linkedin.com/in/ting-chung/",
+          "className":"fab fa-linkedin"
+        }
+        
+      ]
+    },
+    "resume":{
+      "skillmessage":"This is a list of my web development skills.",
+      "education":[
+        {
+          "school":"Flatiron School",
+          "degree":"Full-stack web development",
+          "graduated":"projected to finish December 2020",
+          "description":"Developed software development skills using Ruby, Ruby on Rails, Javascript, React, and Sinatra. Used languages and web frameworks to develop projects."
+        },
+        {
+          "school":"Georgia Institute of Technology",
+          "degree":"Electrical engineering",
+          "graduated":"June 2007",
+          "description":"Developed electronic design skills and learned hardware principles. Skilled in C++ for micro-controller unit designs. Performed electrical circuit analysis."
+        }
+      ],
+      "work":[
+        {
+          "company":"Gulfstream Aerospace Corporation",
+          "title":"Technical Specialist I",
+          "years":"May 2012 - May 2020",
+          "description":"Implemented electrical design solutions for brakes, landing gear, hydraulics, and doors systems. Investigated and resolved flight test and lab issues through troubleshooting and integration testing. Developed validation and verification for brake control system requirements."
+        },
+        {
+          "company":"Gulfstream Aerospace Corporation",
+          "title":"Service Center Coordinator",
+          "years":"September 2010 - May 2012",
+          "description":"Co-manager of Chinese aircraft maintenance visits. Created and maintained work scope and project accomplishments. Chartered and monitored customer invoices."
+        },
+        {
+          "company":"Universal Avionics Systems Corporation",
+          "title":"Electrical Engineer",
+          "years":"August 2008 - September 2010",
+          "description":"Developed electronic hardware for line replaceable units including analog and digital circuitry, A429 ICs, LED drivers, analog-to-digital and digital-to-analog converters, and amplifiers. Designed circuit simulation models for analysis. Performed electromagnetic interference susceptibility testing."
+        }
+      ],
+      "skills":[
+        {
+          "name":"Ruby",
+          "level":"75%"
+        },
+        {
+          "name":"Ruby on Rails",
+          "level":"75%"
+        },
+        {
+          "name":"Javascript",
+          "level":"70%"
+        },
+        {
+          "name":"HTML5",
+          "level":"80%"
+        },
+        {
+          "name":"ReactJS",
+          "level":"65%"
+        },
+        {
+          "name":"PostgreSQL",
+          "level":"70%"
+        }
+      ]
+    },
+    "portfolio":{
+      "projects": [
+        { 
+          "title":"Prayer journal",
+          "category": "Interactive React user interface allows a user to perform CRUD actions and updates instantly to web the application. Client-side routing performed to allow access to nested routes via React Router. Utilizes http-only cookies to store JSON web token encrypted user information client-side. Stores application state via Redux store allowing universal source of truth. Posts entries, comments, and likes via redux-thunk to Rails API using postgreSQL database.",
+          "image": "https://img.youtube.com/vi/DekNKan0DbA/0.jpg",
+          "url": "https://prayerjournal.place",
+          "github": "https://github.com/ting682/prayerjournal-frontend"
+        },
+        {
+          "title":"Small groups",
+          "category":"Utilized JSON Web Tokens and localStorage to store encrypted user information client-side. Performs fetch requests to Rails API backend using postgreSQL database. Rails API outputs ActiveRecord objects via JSON serializer. Used object oriented Javascript classes to encapsulate behavior which results in separation of concerns design pattern. Implemented Quill rich text editor to allow users to submit photos and videos along with blog.",
+          "image":"http://img.youtube.com/vi/gzb9VecaUb0/0.jpg",
+          "url":"https://smallgroups.netlify.app/",
+          "github": "https://github.com/ting682/smallgroup-frontend"
+        },
+        {
+          "title":"Prayer gathering",
+          "category":"Utilized model-view-controller design pattern resulting in separation of concerns. Validated login and event data by creating Rails validation models to ensure persisted data validity. Established ActiveRecord many-to-many associations to create join table resulting in object relational mapping of data persisted to postgreSQL database. Encrypted user login data persisting salted and hashed password in postgreSQL database",
+          "image":"http://img.youtube.com/vi/6oR-F2Y6AvA/0.jpg",
+          "url":"https://prayergathering.herokuapp.com/",
+          "github": "https://github.com/ting682/prayer_gathering"
+        },
+        {
+          "title":"Prayer Journal v1",
+          "category":"Persisted user’s journal entries using ActiveRecord one-to-many associations to postgreSQL database. Allows users to signup and login to the web application. Utilized model-view-controller design pattern for object relational mapping. Encrypted user login data persisting salted and hashed password in postgreSQL database. Used ActiveRecord model to validate user and journal entry data.",
+          "image":"http://img.youtube.com/vi/zZKlddr2upE/0.jpg",
+          "url":"https://prayerjournals.herokuapp.com/",
+          "github": "https://github.com/ting682/prayer_journalv1"
+        }
+      ]
+    },
+    "testimonials":{
+      "testimonials":[
+        {
+          "text":"Here you should write some nice things that someone has said about you. No lies though, employers can tell when you are lying.",
+          "user":"Kareem Abdul Jabbar"
+        },
+        {
+          "text":"That Tim Baker must be one of the most brilliant developers I've ever met! It is amazing that nobody has hired him yet. Hey you, you should hire this guy, he may be fresh out of University and have zero on the job experience but I am confident that he will be one of your best developers in no time!",
+          "user":"Steve Wozniak... impersonator"
+        }
+      ]
+    }
+  }
+  
