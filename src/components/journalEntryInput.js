@@ -45,11 +45,9 @@ class JournalEntryInput extends Component {
                 public: this.state.public
             }
         )
-
+        document.getElementsByClassName('ql-editor')[0].innerHTML = ""
         this.setState({
             content: ''
-        }, () => {
-            console.log('updated')
         })
     }
 
