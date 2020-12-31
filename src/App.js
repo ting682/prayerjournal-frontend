@@ -85,7 +85,9 @@ class App extends Component {
               </Form> */}
 
             </Navbar> 
-          
+            <Alert variant="warning" show={this.props.alerts.display} onClose={() => this.props.closeAlert()} dismissible >
+                {this.props.alerts.alert[0]}
+            </Alert>
             
               <Switch>
                 <Route exact path="/" render={(props) => <Home  {...props} verse={this.props.verse} />} />

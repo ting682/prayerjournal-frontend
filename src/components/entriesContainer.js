@@ -103,14 +103,6 @@ class EntriesContainer extends Component {
 
     }
 
-    // sortEntries = () => {
-    //     this.setState(previousState => (
-    //         {
-    //             ...previousState,
-    //             sort: true
-    //         }
-    //     ))
-    // }
             
 
     render () {
@@ -132,16 +124,7 @@ class EntriesContainer extends Component {
                     {this.mapEntries()} 
                 </div>
             )
-        // } else {
-        //     //debugger
-        //     this.props.history.push('/')
-        //     return (
-        //         <React.Fragment>
-        //             hello
-        //         </React.Fragment>
-        //     )
-            
-        // }
+ 
         
         
     }
@@ -163,7 +146,8 @@ function mapDispatchToProps(dispatch){
         entries: state.entries.entries,
         currentUser: state.user.currentUser,
         loggingOut: state.user.loggingOut,
-        requestingEntries: state.entries.requesting
+        requestingEntries: state.entries.requesting,
+        alerts: state.alerts,
     }
   }
 

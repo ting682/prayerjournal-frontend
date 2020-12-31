@@ -15,14 +15,21 @@ export function postEntry(data) {
         body: JSON.stringify({
             entry: {
                 content: data.content,
-                user_id: data.user_id
+                user_id: data.user_id,
+                public: data.public
             }
         })
         })
         .then(response => response.json())
         .then(entry => { 
-            
+          //debugger
+          if (entry.errors) {
+            //debugger
+            dispatch({ type: 'NEW_ALERT', payload: entry.errors})
+          } else {
             dispatch({ type: 'NEW_ENTRY', entry})
+          }
+            
 
             //history.push("/entries")
         })

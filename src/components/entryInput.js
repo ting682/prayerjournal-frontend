@@ -30,7 +30,8 @@ class EntryInput extends Component {
         this.props.postEntry(
             {
                 content: this.state.content,
-                user_id: parseInt(this.props.currentUser.id)
+                user_id: parseInt(this.props.currentUser.id),
+                public: true
             }
         )
 

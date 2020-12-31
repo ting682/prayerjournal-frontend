@@ -81,7 +81,16 @@ mark {
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 601px) and (max-width: 1025) {
+
+  .journalintro.desktop {
+    display: block;
+    width: 100%;
+  }
+  
+  .journalintro.mobile {
+    display: none;
+  }
 
   .journalheading {
     text-align: center;
@@ -95,8 +104,7 @@ mark {
     width: 100%;
   }
 
-  .journalintro {
-    width: 100%;
-  }
+  
 }
+
 
