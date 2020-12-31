@@ -5,11 +5,8 @@ import { getCurrentUser } from '../actions/getCurrentUser'
 import { Entry }  from './entry'
 import { postLike } from '../actions/postLike'
 
-
-import { SearchEntries } from './searchEntries'
 import Mark from 'mark.js'
-import { OurMannaVerse } from './ourMannaVerse'
-import JournalEntryInput from './journalEntryInput'
+
 
 
 class UserEntriesContainer extends Component {
@@ -68,18 +65,7 @@ class UserEntriesContainer extends Component {
     }
 
     mapEntries = () => {
-        //debugger
-        // let allEntries = this.props.entries
-        // if (this.state.sort) {
-        //     allEntries = this.props.entries.sort(function(entryA, entryB) {
-        //         if(entryA.attributes.updated_at < entryB.attributes.updated_at) {
-        //             return 1
-        //         } else {
-        //             return -1
-        //         }
-
-        //     })
-        // }
+        
         if (this.state.searchTerm === '') {
                 //debugger
                 return this.props.entries.map(entry => {

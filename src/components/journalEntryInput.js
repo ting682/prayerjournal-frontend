@@ -48,6 +48,8 @@ class JournalEntryInput extends Component {
 
         this.setState({
             content: ''
+        }, () => {
+            console.log('updated')
         })
     }
 
