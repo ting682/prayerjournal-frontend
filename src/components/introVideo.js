@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 
 export function IntroVideo (props) {
 
@@ -6,6 +6,7 @@ export function IntroVideo (props) {
 
     const handlePlay = (e) => {
         vidRef.current.play()
+        
     }
     
     return (

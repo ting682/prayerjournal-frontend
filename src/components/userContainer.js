@@ -10,7 +10,7 @@ class UserContainer extends Component {
         //debugger
         // if(this.props.loggedIn) {
             //debugger
-            this.props.fetchUser(this.props.match.params.userId, this.props.history)
+        this.props.fetchUser(this.props.match.params.userId, this.props.history)
         // } else {
             // this.props.history.push('/')
         // }

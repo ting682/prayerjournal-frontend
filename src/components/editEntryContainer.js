@@ -7,6 +7,7 @@ import ReactQuill from 'react-quill'
 export const EditEntryContainer = (props) => {
 
     const [show, setShow] = useState(false)
+    const [publicEntry, setPublicEntry] = useState(props.entry.public)
     const currentUserId = parseInt(props.currentUser.id)
     const entryId = props.entryId
 
@@ -28,6 +29,11 @@ export const EditEntryContainer = (props) => {
         setContent(value)
     }
 
+    const handlePublic = (event) => {
+        
+        setPublicEntry(event.target.checked)
+    }
+
     const handleSubmit = (event, entryId, currentUserId) => {
         event.preventDefault()
         dispatch(editEntry(
@@ -35,7 +41,8 @@ export const EditEntryContainer = (props) => {
                 entry: {
                     content: content,
                     entry_id: parseInt(entryId),
-                    user_id: currentUserId
+                    user_id: currentUserId,
+                    public: publicEntry
                 }
             }, entryId
         ))
@@ -59,6 +66,8 @@ export const EditEntryContainer = (props) => {
                                 [{ 'list': 'ordered' }, { 'list': 'bullet'}], 
                                 [ 'link', 'image', 'video']]}} />
                                 <br></br>
+
+                                <Form.Check type="checkbox" label="Make public" onChange={handlePublic} checked={publicEntry}/>
                             <Button type="submit">Edit entry</Button>
                         </Form>
                     </Modal.Body>

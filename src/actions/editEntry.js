@@ -15,7 +15,8 @@ export function editEntry(data) {
         body: JSON.stringify({
             entry: {
                 content: data.entry.content,
-                user_id: data.entry.user_id
+                user_id: data.entry.user_id,
+                public: data.entry.public
             }
         })
         })

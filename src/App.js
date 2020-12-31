@@ -22,6 +22,7 @@ import { postLogout } from './actions/postLogout';
 import EditUserProfile from './components/editUserProfile';
 import NotFound from './components/404'
 import { fetchVerse } from './actions/fetchVerse'
+import JournalEntriesContainer from './components/journalEntriesContainer'
 // import { useHistory } from 'react-router-dom'
 // // export const history = createBrowserHistory()
 // import { useDispatch } from 'react-redux'
@@ -75,6 +76,7 @@ class App extends Component {
                 <Link to="/signup" className="nav-link">Signup</Link> */}
                 <Link to="/users" className="nav-link">Users</Link>
                 <Nav.Link as={Link} to="/editprofile" className="nav-link">Profile</Nav.Link>
+                <Nav.Link as={Link} to="/myjournal" className="nav-link">Journal</Nav.Link>
                 <Button onClick={() => this.handleLogout(this.props.history)}>Logout</Button>
                 </Nav>
                 </Navbar.Collapse>
@@ -95,6 +97,7 @@ class App extends Component {
                 <Route path="/login" render={(props) => <LoginContainer {...props}/>} />
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
+                <Route path="/myjournal" render={(props) => <JournalEntriesContainer {...props} />} />
                 <Route path="/signup" render={(props) => <Signup {...props} />} />
                 <Route path="/editprofile" render={props => <EditUserProfile {...props} />} />
                 <Route path="*" component={NotFound} />

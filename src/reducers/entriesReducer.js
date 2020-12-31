@@ -169,7 +169,7 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
 
             return {
                 ...state,
-                entries: [...state.entries, entry],
+                entries: [entry, ...state.entries],
                 requesting: false
             }
 
@@ -194,7 +194,7 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
             //debugger
             return {
                 ...state,
-                entries: [...state.entries.slice(0, entryIndex), ...state.entries.slice(entryIndex + 1), entry],
+                entries: [entry, ...state.entries.slice(0, entryIndex), ...state.entries.slice(entryIndex + 1)],
                 requesting: false
             }
         

@@ -1,6 +1,5 @@
-import { getDefaultLocale } from 'javascript-time-ago'
+
 import { OurMannaVerse } from './ourMannaVerse'
-import { useEffect } from 'react'
 
 
 export const Home = (props) => {
