@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { User } from './user'
 import { fetchUser } from '../actions/fetchUser'
+import UserEntriesContainer from './userEntriesContainer'
 
 class UserContainer extends Component {
 
@@ -29,6 +30,7 @@ class UserContainer extends Component {
                 return (
                     <React.Fragment>
                         <User user={user} />
+                        <UserEntriesContainer user={user} />
                     </React.Fragment>
                 )
             } else {
