@@ -35,10 +35,10 @@ class EntryInput extends Component {
             }
         )
 
+        document.getElementsByClassName('ql-editor')[0].innerHTML = ""
+        
         this.setState({
             content: ''
-        }, () => {
-            console.log("updated")
         })
     }
 
