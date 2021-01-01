@@ -10,7 +10,7 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
         case "START_ADDING_ENTRIES_REQUEST":
             return {
                 ...state,
-                entries: [...state.entries],
+                entries: [],
                 requesting: true
             }
         case "START_NEW_ENTRY":

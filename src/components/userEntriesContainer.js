@@ -21,11 +21,12 @@ class UserEntriesContainer extends Component {
     }
     
 
-    componentDidMount = () => {
+    componentDidMount = async () => {
      //debugger
         // if ((this.props.loggingOut !== undefined) && (!this.props.loggingOut)) {
         if (!this.props.loggingOut) {
-            this.props.fetchUserEntries(this.props.history, this.props.user.id)
+            
+            await this.props.fetchUserEntries(this.props.history, this.props.user.id)
         }
 
         
