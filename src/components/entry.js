@@ -4,7 +4,7 @@ import Parser from 'html-react-parser'
 import { EditEntryContainer } from '../components/editEntryContainer'
 import { DeleteEntry } from '../components/deleteEntry'
 import { LikeContainer } from '../components/likeContainer'
-
+import { Card } from 'react-bootstrap'
 
 // import '@fortawesome/fontawesome-svg-core/styles.css'
 
@@ -15,13 +15,19 @@ export const Entry = (props) => {
     //debugger
     return (
         <div className="entry">
-            <h3>Created by: {props.entry.name} </h3><EditEntryContainer {...props} /> <DeleteEntry {...props} />
-            <p>{timeAgo.format(new Date(props.entry.updated_at))}</p>
-            <div className="entryContent">
-                {Parser(props.entry.content)}
-            </div>
-            <p><LikeContainer {...props} likes={props.likes}/>Likes: {props.entry.likes_count}</p>
-            <CommentsContainer comments={props.comments} {...props} search={props.search}/>
+            <Card>
+                <Card.Body>
+                    <Card.Title>Created by: {props.entry.name}</Card.Title>
+                    <EditEntryContainer {...props} /> <DeleteEntry {...props} />
+                    <p>{timeAgo.format(new Date(props.entry.updated_at))}</p>
+                    <div className="entryContent">
+                        {Parser(props.entry.content)}
+                    </div>
+                    <p><LikeContainer {...props} likes={props.likes}/>Likes: {props.entry.likes_count}</p>
+                    <CommentsContainer comments={props.comments} {...props} search={props.search}/>
+                </Card.Body>
+            </Card>
+            
         </div>
     )
 }
