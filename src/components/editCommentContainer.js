@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import React, { useState } from 'react'
 import { Button, Modal, Form } from 'react-bootstrap'
 import { editComment } from '../actions/editComment'
@@ -6,7 +6,12 @@ import { editComment } from '../actions/editComment'
 export const EditCommentContainer = (props) => {
 
     const [show, setShow] = useState(false)
-    const currentUserId = parseInt(props.currentUser.id)
+    const loggedIn = useSelector(state => !!state.user.currentUser && state.user.currentUser.length !== 0)
+    
+    
+    const currentUserId = parseInt(props.currentUser.id) || 0
+    
+    
     const commentId = props.comment.id
     const entryId = props.comment.attributes.entry_id
     const dispatch = useDispatch()
@@ -40,7 +45,7 @@ export const EditCommentContainer = (props) => {
         setShow(false)
     }
 
-    if (props.comment.attributes.user_id === currentUserId) {
+    if (loggedIn && props.comment.attributes.user_id === currentUserId) {
         return (
             <React.Fragment>
                 <Button variant="outline-info" onClick={() => handleClick()}>Edit</Button>

@@ -5,7 +5,7 @@ export function loginReducer(state = { currentUser: [], requesting: false, loggi
         case "START_GET_CURRENT_USER_REQUEST":
             return {
                 ...state,
-                currentUser: [],
+                currentUser: {id: 0},
                 requesting: true
             }
 

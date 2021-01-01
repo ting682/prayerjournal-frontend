@@ -47,6 +47,7 @@ class LoginContainer extends Component {
                 return <Redirect to="/entries" />
             } else {
                 this.props.clearRequest()
+                this.props.closeAlert()
                 return <Redirect to={{
                     pathname: this.props.routeRequest
                 }} />
@@ -90,13 +91,14 @@ class LoginContainer extends Component {
 function mapDispatchToProps(dispatch){
     return { 
         fetchLogin: (data, history, request) => dispatch(fetchLogin(data, history, request)),
-        clearRequest: () => dispatch({type: 'CLEAR_REQUEST'}) 
+        clearRequest: () => dispatch({type: 'CLEAR_REQUEST'}),
+        closeAlert: () => dispatch({type: 'CLOSE_ALERT'})
     }
   }
 
   function mapStateToProps(state){
     return {
-        loggedIn: !!state.user.currentUser && state.user.currentUser.length !== 0,
+        loggedIn: !!state.user.currentUser.id,
         router: state.router,
         entries: state.entries.entries,
         currentUser: state.currentUser,

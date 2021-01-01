@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import React from 'react'
 import { Button } from 'react-bootstrap'
@@ -7,8 +7,11 @@ import { deleteEntry } from '../actions/deleteEntry'
 export const DeleteEntry = (props) => {
 
     const history = useHistory()
-
-    const currentUserId = parseInt(props.currentUser.id)
+    
+    
+    const currentUserId = useSelector(state => parseInt(state.user.currentUser.id))
+    
+    
     //debugger
     const entryId = parseInt(props.entryId)
 

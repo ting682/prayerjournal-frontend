@@ -19,13 +19,19 @@ export function fetchUsers(history) {
           } else {
             dispatch({type: 'NEW_ALERT', payload: 'Please login'})
             dispatch({type: 'NEW_REQUEST', payload: '/users'})
+            // debugger
             history.push('/login')
           }
           
         })
         .then(userData => { 
             //debugger
-            dispatch({ type: 'GET_USERS', userData})
+            if (userData) {
+              dispatch({ type: 'GET_USERS', userData})
+            } else {
+              
+            }
+            
 
 
         })

@@ -15,8 +15,13 @@ export function getCurrentUser(history) {
         .then(response => response.json())
         .then(userData => { 
             //debugger
-            dispatch({ type: 'CLOSE_ALERT'})
-            dispatch({ type: 'GET_CURRENT_USER', userData})
+            if (userData.error) {
+              
+            } else {
+              dispatch({ type: 'CLOSE_ALERT'})
+              dispatch({ type: 'GET_CURRENT_USER', userData})
+            }
+            
 
 
         })

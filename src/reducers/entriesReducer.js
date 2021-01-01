@@ -13,6 +13,12 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                 entries: [],
                 requesting: true
             }
+        case "START_ENTRY_REQUEST":
+            return {
+                ...state,
+                entry: [],
+                requesting: true
+            }
         case "START_NEW_ENTRY":
             return {
                 ...state,
@@ -155,6 +161,14 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                 ...state,
                 entries: entriesData,
                 requesting: false
+            }
+
+        case 'GET_ENTRY':
+            
+            debugger
+            return {
+                ...state,
+                entry: [action.payload.data]
             }
 
         case 'NEW_ENTRY':

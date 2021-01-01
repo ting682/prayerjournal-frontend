@@ -11,7 +11,7 @@ export const CommentInput = (props) => {
     const [content, setContent] = useState('')
     const currentUser = useSelector(state => state.user.currentUser)
     const entryId = props.entryId
-
+    
     
 
     const dispatch = useDispatch()
@@ -35,15 +35,22 @@ export const CommentInput = (props) => {
 
         setContent('')
     }
-
-    return (
-        <Form onSubmit={event => handleSubmit(event, entryId)}>
-            <Form.Control type="text" value={content} onChange={handleChange}></Form.Control>
-            <Button variant="primary" type="submit">
-                Add comment
-            </Button>
-        </Form>
-    )
+    // debugger
+    if (currentUser.id !== 0) {
+        return (
+            <Form onSubmit={event => handleSubmit(event, entryId)}>
+                <Form.Control type="text" value={content} onChange={handleChange}></Form.Control>
+                <Button variant="primary" type="submit">
+                    Add comment
+                </Button>
+            </Form>
+        )
+    } else {
+        return (
+            <React.Fragment></React.Fragment>
+        )
+    }
+    
 } 
 
 

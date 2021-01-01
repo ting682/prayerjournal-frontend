@@ -1,5 +1,5 @@
-import { useDispatch } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
 import { Button } from 'react-bootstrap'
 import { useState } from 'react'
 import { Heart } from './heart'
@@ -8,11 +8,16 @@ import { patchLike } from '../actions/patchLike'
 
 export const LikeContainer = (props) => {
 
-    const currentUserId = parseInt(props.currentUser.id)
+    
+    const currentUserId = useSelector(state => parseInt(state.user.currentUser.id)) || 0
+    
+    
     //debugger
     const entryId = parseInt(props.entryId)
     
     const dispatch = useDispatch()
+
+    const loggedIn = useSelector(state => state.user.currentUser.id)
     //debugger
     const currentUserLike = props.likes.find(function(like) {
         //debugger
@@ -53,11 +58,17 @@ export const LikeContainer = (props) => {
             }))
         }
     }
-
-    return (
-        <Button variant="light" onClick={(event) => handleClick(event, heart, currentUserLike, currentUserId, entryId)}>
-            <Heart heart={heart} />
-        </Button>
-    )
+    if (loggedIn) {
+        return (
+            <Button variant="light" onClick={(event) => handleClick(event, heart, currentUserLike, currentUserId, entryId)}>
+                <Heart heart={heart} />
+            </Button>
+        ) 
+    } else {
+        return (
+            <React.Fragment></React.Fragment>
+        )
+    }
+    
     
 }

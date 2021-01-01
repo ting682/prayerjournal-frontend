@@ -23,6 +23,7 @@ import EditUserProfile from './components/editUserProfile';
 import NotFound from './components/404'
 import { fetchVerse } from './actions/fetchVerse'
 import JournalEntriesContainer from './components/journalEntriesContainer'
+
 // import { useHistory } from 'react-router-dom'
 // // export const history = createBrowserHistory()
 // import { useDispatch } from 'react-redux'
@@ -118,7 +119,7 @@ class App extends Component {
                   <Nav className="mr-auto">
                   
                 <Nav.Link as={Link} to="/" className="nav-link">Home</Nav.Link>
-                
+                <Nav.Link as={Link} to="/entries" className="nav-link">Entries</Nav.Link>
                 <Link to="/login" className="nav-link">Login</Link>
                 <Link to="/signup" className="nav-link">Signup</Link>
                 {/* <Link to="/users" className="nav-link">Users</Link> */}
@@ -138,7 +139,8 @@ class App extends Component {
             
               <Switch>
                 <Route exact path="/" render={(props) => <Home  {...props} verse={this.props.verse} />} />
-                <Route path="/entries" render={(props) => {
+                <Route path="/entries" render={(props) => <EntriesContainer  {...props}  verse={this.props.verse} />} />
+                {/* <Route path="/entries" render={(props) => {
                   if (this.props.loggedIn) {
                     return <EntriesContainer  {...props} verse={this.props.verse}/>
                   } else {
@@ -146,11 +148,12 @@ class App extends Component {
                     this.props.newRouteRequest('/entries')
                     return <Redirect to="/login" />
                   }
-                }} />
+                }} /> */}
                 <Route path="/login" render={(props) => <LoginContainer {...props}/>} />
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} /> 
                 <Route path="/signup" render={(props) => <Signup {...props} />} />
+                <Route path="/myjournal" render={(props) => <JournalEntriesContainer {...props} />} />
                 <Route path="/editprofile" render={props => {
                   
                   if (this.props.loggedIn) {
@@ -177,7 +180,7 @@ class App extends Component {
 const mapStateToProps = state => {
   //debugger
   return ({
-    loggedIn: !!state.user.currentUser && state.user.currentUser.length !== 0,
+    loggedIn: !!state.user.currentUser.id,
     router: state.router,
     entries: state.entries.entries,
     currentUser: state.user.currentUser,

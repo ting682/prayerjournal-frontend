@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { UserCard } from './userCard'
 import { fetchUsers } from '../actions/fetchUsers'
 
+
 class UsersContainer extends Component {
 
     componentDidMount() {
@@ -10,7 +11,8 @@ class UsersContainer extends Component {
         //if ((this.props.loggingOut !== undefined) && (!this.props.loggingOut || !this.props.requestingUsers)) {
         if (!this.props.loggingOut) {
             this.props.fetchUsers(this.props.history)
-        }
+
+        } 
             
         // } else {
             // this.props.history.push('/')
@@ -54,13 +56,18 @@ class UsersContainer extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-    return { fetchUsers: (history) => dispatch(fetchUsers(history)) }
+    return { 
+        fetchUsers: (history) => dispatch(fetchUsers(history)),
+        closeAlert: () => dispatch({type: 'CLOSE_ALERT'}),
+        newRouteRequest: (payload) => dispatch({type: 'NEW_REQUEST', payload: payload}),
+        newAlert: (payload) => dispatch({type: 'NEW_ALERT', payload: payload}),
+    }
 
 }
 
 function mapStateToProps(state){
     return {
-        loggedIn: !!state.user.currentUser && state.user.currentUser.length !== 0,
+        loggedIn: !!state.user.currentUser.id,
         router: state.router,
         entries: state.entries.entries,
         currentUser: state.user.currentUser,

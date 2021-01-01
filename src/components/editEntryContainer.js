@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import React, { useState } from 'react'
 import { Button, Modal, Form } from 'react-bootstrap'
 import { editEntry } from '../actions/editEntry'
@@ -8,9 +8,9 @@ export const EditEntryContainer = (props) => {
 
     const [show, setShow] = useState(false)
     const [publicEntry, setPublicEntry] = useState(props.entry.public)
-    const currentUserId = parseInt(props.currentUser.id)
+    const currentUserId = useSelector(state => parseInt(state.user.currentUser.id))
     const entryId = props.entryId
-
+    const loggedIn = useSelector(state => !!state.user.currentUser && state.user.currentUser.length !== 0)
     const dispatch = useDispatch()
     
     const [content, setContent] = useState(props.entry.content)
@@ -48,8 +48,8 @@ export const EditEntryContainer = (props) => {
         ))
         setShow(false)
     }
-    //debugger
-    if (props.entry.user_id === currentUserId) {
+    // debugger
+    if (loggedIn && props.entry.user_id === currentUserId) {
         return (
             <React.Fragment>
                 <Button variant="outline-info" onClick={() => handleClick()}>Edit</Button>
