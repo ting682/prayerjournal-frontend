@@ -165,10 +165,24 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
 
         case 'GET_ENTRY':
             
+            comments = [];
+            likes = [];
             debugger
+            for(const includedData of action.payload.included) {
+                if (includedData.type === 'comment' && includedData.attributes.entry_id === parseInt(entry.id)) {
+                    entryText += " " + includedData.attributes.content
+                    comments.push(includedData)
+                } else if (includedData.type === 'like' && includedData.attributes.entry_id === parseInt(entry.id)) {
+                    likes.push(includedData)
+                }
+            }
+            
+            Object.assign(entry, { comments: comments, likes: likes, entryText: entryText} )
+            
             return {
                 ...state,
-                entry: [action.payload.data]
+                entry: [entry],
+                requesting: false
             }
 
         case 'NEW_ENTRY':

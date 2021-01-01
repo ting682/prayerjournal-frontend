@@ -23,6 +23,7 @@ import EditUserProfile from './components/editUserProfile';
 import NotFound from './components/404'
 import { fetchVerse } from './actions/fetchVerse'
 import JournalEntriesContainer from './components/journalEntriesContainer'
+import EntryShow from './components/entryShow';
 
 // import { useHistory } from 'react-router-dom'
 // // export const history = createBrowserHistory()
@@ -94,7 +95,8 @@ class App extends Component {
             
               <Switch>
                 <Route exact path="/" render={(props) => <Home  {...props} verse={this.props.verse} />} />
-                <Route path="/entries" render={(props) => <EntriesContainer  {...props}  verse={this.props.verse} />} />
+                <Route exact path="/entries" render={(props) => <EntriesContainer  {...props}  verse={this.props.verse} />} />
+                <Route path="/entries/:entryId" render={(props) => <EntryShow {...props} />} />
                 <Route path="/login" render={(props) => <LoginContainer {...props}/>} />
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
@@ -139,7 +141,8 @@ class App extends Component {
             
               <Switch>
                 <Route exact path="/" render={(props) => <Home  {...props} verse={this.props.verse} />} />
-                <Route path="/entries" render={(props) => <EntriesContainer  {...props}  verse={this.props.verse} />} />
+                <Route exact path="/entries" render={(props) => <EntriesContainer  {...props}  verse={this.props.verse} />} />
+                <Route path="/entries/:entryId" render={(props) => <EntryShow {...props} />} />
                 {/* <Route path="/entries" render={(props) => {
                   if (this.props.loggedIn) {
                     return <EntriesContainer  {...props} verse={this.props.verse}/>
