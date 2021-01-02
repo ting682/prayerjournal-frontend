@@ -13,9 +13,9 @@ export const OurMannaVerse = (props) => {
     return (
         <div id="ourmanna-verse">
             <div id="mannaverse-container">
-                <p id="mannaverse">
+                <h2 id="mannaverse">
                     {mannaverse}
-                </p>
+                </h2>
                 <p id="mannaverse-reference">
                     {mannaverse_reference}
                 </p>
