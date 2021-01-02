@@ -4,7 +4,8 @@ import { OurMannaVerse } from './ourMannaVerse'
 export default function VerseOfTheDay(props) {
 
     const verseStyle = {
-        backgroundImage: `url(${Background})`
+        backgroundImage: `url(${Background})`,
+        height: "300px"
     }
 
     return (

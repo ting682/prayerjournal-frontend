@@ -28,7 +28,7 @@ code {
 
 .verse {
   
-  width: 600px;
+  width: 70vw;
   height: 600px;
 }
 
@@ -61,6 +61,12 @@ mark {
   -moz-border-radius: 5px;
   border-radius: 5px;
   
+}
+
+#myjournalintrobutton {
+  position: relative;
+  top: 14rem;
+  left: 8rem;
 }
 
 .ourmanna-verse-entries {

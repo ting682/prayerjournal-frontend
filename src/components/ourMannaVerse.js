@@ -1,4 +1,6 @@
 import React from 'react'
+import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 export const OurMannaVerse = (props) => {
 
@@ -14,22 +16,23 @@ export const OurMannaVerse = (props) => {
     
     return (
         <React.Fragment>
-        <div className="verseheading" style={{position: "relative", top: "20px", textAlign: 'center', color: 'pink', fontFamily: "Georgia, serif"}}>
-                <h1>Verse of the day</h1>
+        <div className="verseheading" style={{position: "relative", top: "30%", textAlign: 'center', color: 'pink', fontFamily: "Georgia, serif"}}>
+                <div style={{fontSize: "1.5rem"}}>Verse of the day</div>
         </div>
         <div className={props.location.pathname === '/' ? "ourmanna-verse" : "ourmanna-verse-entries"}>
             
             <div id="mannaverse-container">
                 
-                <h2 id="mannaverse">
+                <h2 id="mannaverse" style={{fontSize: ".8rem"}}>
                     {mannaverse}
                 </h2>
-                <p id="mannaverse-reference">
+                <p id="mannaverse-reference" style={{fontSize: ".8rem"}}>
                     {mannaverse_reference}
                 </p>
                 <small id="mannaverse-version">
                     <i>{mannaverse_version}</i>
-                </small>
+                </small><br />
+                <Button variant="secondary" as={Link} to="/entries">Learn more about the community page</Button>
             </div>
         </div>
         </React.Fragment>
