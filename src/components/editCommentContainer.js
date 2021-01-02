@@ -9,7 +9,7 @@ export const EditCommentContainer = (props) => {
     const loggedIn = useSelector(state => !!state.user.currentUser && state.user.currentUser.length !== 0)
     
     
-    const currentUserId = parseInt(props.currentUser.id) || 0
+    const currentUserId = useSelector(state => parseInt(state.user.currentUser.id))
     
     
     const commentId = props.comment.id

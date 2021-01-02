@@ -18,19 +18,19 @@ export default function EntryShow() {
         dispatch(fetchEntry(history, entryId))
     }, [dispatch, entryId, history])
 
-    // debugger
+    //debugger
     
-    if (loading) {
+    if (entry === undefined || loading) {
         return (
             <div>
                 Loading...
             </div>
         )
     } else {
-        debugger
+        //debugger
         return (
             <React.Fragment>
-                {/*<Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} />*/}
+                <Entry entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} search={""}/>
             </React.Fragment>
             
         )

@@ -17,14 +17,14 @@ export function fetchEntry(history, entryId) {
           if (response.ok) {
             return response.json()
           } else {
-            dispatch({type: 'NEW_ALERT', payload: 'Something went wrong. Please try again'})
-            dispatch({type: 'NEW_REQUEST', payload: `/entries/${entryId}`})
-            history.push('/login')
+            dispatch({type: 'NEW_ALERT', payload: 'Entry not found'})
+            // dispatch({type: 'NEW_REQUEST', payload: `/entries/${entryId}`})
+            history.push('/')
           }
           
         })
         .then(entry => { 
-            debugger
+            //debugger
             dispatch({ type: 'GET_ENTRY', payload: entry})
 
 

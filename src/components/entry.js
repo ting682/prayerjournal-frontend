@@ -5,6 +5,7 @@ import { EditEntryContainer } from '../components/editEntryContainer'
 import { DeleteEntry } from '../components/deleteEntry'
 import { LikeContainer } from '../components/likeContainer'
 import { Card } from 'react-bootstrap'
+import FbShare from './fbShare'
 
 // import '@fortawesome/fontawesome-svg-core/styles.css'
 
@@ -15,9 +16,11 @@ export const Entry = (props) => {
     //debugger
     return (
         <div className="entry">
+            
             <Card>
                 <Card.Body>
                     <Card.Title>Created by: {props.entry.name}</Card.Title>
+                    <FbShare route={"https://prayerjournal.place/entries"} entryRoute={props.entry.id} />
                     <EditEntryContainer {...props} /> <DeleteEntry {...props} />
                     <p>{timeAgo.format(new Date(props.entry.updated_at))}</p>
                     <div className="entryContent">

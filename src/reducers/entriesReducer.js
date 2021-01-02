@@ -167,21 +167,26 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
             
             comments = [];
             likes = [];
-            debugger
+            entry = action.payload.data
+
+            tempDiv = document.createElement('div')
+            tempDiv.innerHTML = entry.attributes.content
+            entryText = tempDiv.textContent.toLowerCase()
+
             for(const includedData of action.payload.included) {
-                if (includedData.type === 'comment' && includedData.attributes.entry_id === parseInt(entry.id)) {
+                if (includedData.type === 'comment') {
                     entryText += " " + includedData.attributes.content
                     comments.push(includedData)
-                } else if (includedData.type === 'like' && includedData.attributes.entry_id === parseInt(entry.id)) {
+                } else if (includedData.type === 'like') {
                     likes.push(includedData)
                 }
             }
-            
+            // debugger
             Object.assign(entry, { comments: comments, likes: likes, entryText: entryText} )
-            
+            // debugger
             return {
                 ...state,
-                entry: [entry],
+                entry: entry,
                 requesting: false
             }
 
