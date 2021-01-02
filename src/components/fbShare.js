@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
 
 export default function FbShare (props) {
 
@@ -11,8 +12,9 @@ export default function FbShare (props) {
         <React.Fragment>
 
         
-        <FontAwesomeIcon icon={['fab', 'facebook']} />
-            <div class="fb-share-button" data-href={url + props.route} data-layout="button" data-size="small"><a target="_blank" href={entryRoute} class="fb-xfbml-parse-ignore">Share</a></div>
+        
+        <div class="fb-share-button" data-href={url + props.route} data-layout="button" data-size="small"><a target="_blank" href={entryRoute} class="fb-xfbml-parse-ignore"><FontAwesomeIcon icon={faFacebookSquare} size="lg"/></a></div>
+       
 
             </React.Fragment>
         
