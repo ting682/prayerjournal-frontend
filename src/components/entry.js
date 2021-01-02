@@ -13,15 +13,17 @@ export const Entry = (props) => {
     //debugger
     const timeAgo = new TimeAgo('en-US')
 
-    debugger
+    //debugger
     return (
         <div className="entry">
             
             <Card>
                 <Card.Body>
                     <Card.Title>Created by: {props.entry.name}</Card.Title>
-                    <FbShare route={"https://prayerjournal.place/entries"} entryRoute={props.entryId} />
+                    
                     <EditEntryContainer {...props} /> <DeleteEntry {...props} />
+                    <br />
+                    <FbShare route={"https://prayerjournal.place/entries"} entryRoute={props.entryId} />
                     <p>{timeAgo.format(new Date(props.entry.updated_at))}</p>
                     <div className="entryContent">
                         {Parser(props.entry.content)}
