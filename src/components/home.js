@@ -9,8 +9,8 @@ export const Home = (props) => {
     return (
         <div>
             
-            <img className="journalintro desktop" src="prayer_journal_intro_picture_desktop.png" alt="Prayer Journal Intro" />
-            <img className="journalintro mobile" src="prayer_journal_intro_picture_mobile.png" alt="Prayer Journal Intro" />
+            {/* <img className="journalintro desktop" src="prayer_journal_intro_picture_desktop.png" alt="Prayer Journal Intro" />
+            <img className="journalintro mobile" src="prayer_journal_intro_picture_mobile.png" alt="Prayer Journal Intro" /> */}
             {/* <h1 className="journalheading">Welcome to the</h1>
             <h1 className="journalheading">Prayer Journal app!</h1> */}
             {/*This website is made for people who want to keep a prayer journal. Also, we have a prayer wall so all who participate can pray together! */}
@@ -26,7 +26,7 @@ export const Home = (props) => {
             </p> */}
             <VerseOfTheDay {...props} verse={props.verse} ></VerseOfTheDay>
             
-
+            <IntroCard title={"Learn more about prayer journal"} text={["A prayer journal is simply a way of expressing your thoughts to God and yourself by writing them down. We want a prayer journal to help reflect on God, ourselves, and everything around us that's happening.  Sometimes we just want to express it somewhere even if it doesn't always make sense. Also, sometimes we want to share that with each other. Sometimes we want the Lord to teach us something through writing down our thoughts. Other times we want to express our joy to answered prayers. We also want a place to keep the bible verses that are important to us."]}/>
 
             <IntroCard image={"https://prayerjournal.place/good_news_intro.png"} title={"Is the concept of a prayer journal biblical?"} text={["I believe the concept of a prayer journal is biblical. In the book of Psalms, David and many others wrote about their feelings and about their relationship with God. Here is a link I found interesting:", <p><a href="https://www.gotquestions.org/prayer-journal.html">Got questions? Is the concept of a prayer journal biblical?</a></p>]}/>
 
