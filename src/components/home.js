@@ -25,7 +25,7 @@ export const Home = (props) => {
             </p> */}
             <VerseOfTheDay {...props} verse={props.verse} />
             
-            <IntroCard />
+            <IntroCard image={"https://prayerjournal.place/good_news_intro.png"}title={"The Good News!"} text={"Jesus died for our sins and we're forgiven by His blood for all who believe."}/>
 
         </div>
     )
