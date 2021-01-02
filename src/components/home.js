@@ -26,7 +26,9 @@ export const Home = (props) => {
             </p> */}
             <VerseOfTheDay {...props} verse={props.verse} ></VerseOfTheDay>
             
-            {/* <IntroCard image={"https://prayerjournal.place/good_news_intro.png"} title={"The Good News!"} text={"Jesus died for our sins and we're forgiven by His blood for all who believe."}/> */}
+
+
+            <IntroCard image={"https://prayerjournal.place/good_news_intro.png"} title={"Is the concept of a prayer journal biblical?"} text={["I believe the concept of a prayer journal is biblical. In the book of Psalms, David and many others wrote about their feelings and about their relationship with God. Here is a link I found interesting:", <a href="https://www.gotquestions.org/prayer-journal.html">Is the concept of a prayer journal biblical?</a>]}/>
 
         </div>
     )
