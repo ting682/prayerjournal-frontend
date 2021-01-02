@@ -13,7 +13,7 @@ code {
 }
 
 .journalintro.desktop {
-  width: 50%;
+  width: 70vw;
   display: block;
 }
 
@@ -41,14 +41,18 @@ mark {
   background-color: greenyellow;
 }
 
-#ourmanna-verse {
+.introcard.card {
+  width: 70vw;
+}
+
+.ourmanna-verse {
   
-  top: 40%;
+  top: 30%;
   color: pink;
   position: relative;
   text-align: center;
-  
-  padding: 10px;
+  font-family: Georgia, serif;
+  padding: 0px 20px;
   margin:10px 0px;
   
   border-color: rgba(0, 0, 0, 0.3);
@@ -56,6 +60,22 @@ mark {
   -moz-border-radius: 5px;
   border-radius: 5px;
   
+}
+
+.ourmanna-verse-entries {
+  
+  top: 40%;
+  color: black;
+  position: relative;
+  text-align: center;
+  font-family: Georgia, serif;
+  padding: 10px;
+  margin:10px 0px;
+  
+  border-color: rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
   
 }
 
@@ -95,7 +115,7 @@ mark {
     width: 100%;
   }
 
-  .introcard {
+  .introcard.card {
     width: 100%;
   }
 }

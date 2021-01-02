@@ -107,7 +107,7 @@ class EntriesContainer extends Component {
 
     render () {
         //debugger
-        // if(this.props.loggedIn) {
+        if(this.props.loggedIn) {
             
             //debugger
             return (
@@ -116,7 +116,7 @@ class EntriesContainer extends Component {
                     <br></br>
                     {/*<button onClick={this.sortEntries} >Sort by newest</button> */}
                     <SearchEntries {...this.props} handleSearch={this.handleSearch}/>
-                    <OurMannaVerse verse={this.props.verse} />
+                    {/* <OurMannaVerse {...this.props} verse={this.props.verse} /> */}
                     <br></br>
                      
                     
@@ -124,7 +124,17 @@ class EntriesContainer extends Component {
                     {this.mapEntries()} 
                 </div>
             )
- 
+        } else {
+            return (
+                <div id="entries">
+                    <br></br>
+                    <SearchEntries {...this.props} handleSearch={this.handleSearch}/>
+                    {this.mapEntries()} 
+                </div>
+            )
+            
+            
+        }
         
         
     }
@@ -141,7 +151,7 @@ function mapDispatchToProps(dispatch){
   function mapStateToProps(state){
     //debugger
     return {
-        loggedIn: !!state.user.currentUser && state.user.currentUser.length !== 0,
+        loggedIn: !!state.user.currentUser.id,
         router: state.router,
         entries: state.entries.entries,
         currentUser: state.user.currentUser,

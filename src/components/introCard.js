@@ -4,11 +4,12 @@ export const IntroCard = (props) => {
 
 
     return (
-        <Card className="introcard" style={{width: '18rem'}}>
+        <Card className="introcard">
             <Card.Img variant='top' src={props.image}/>
             <Card.Body>
-                <Card.Title>{props.title}</Card.Title>
-                <Card.Text>
+                
+                <Card.Title style={{textAlign: "center"}}>{props.title}</Card.Title>
+                <Card.Text style={{textAlign: "center"}}>
                     {props.text}
                 </Card.Text>
             </Card.Body>
