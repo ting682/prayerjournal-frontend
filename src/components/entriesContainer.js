@@ -35,6 +35,8 @@ class EntriesContainer extends Component {
         }
 
         
+          
+        
     }
 
     handleSearch = (term) => {
