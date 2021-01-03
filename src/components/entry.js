@@ -6,7 +6,6 @@ import { DeleteEntry } from '../components/deleteEntry'
 import { LikeContainer } from '../components/likeContainer'
 import { Card } from 'react-bootstrap'
 import FbShare from './fbShare'
-import { useEffect } from 'react'
 // import '@fortawesome/fontawesome-svg-core/styles.css'
 
 export const Entry = (props) => {

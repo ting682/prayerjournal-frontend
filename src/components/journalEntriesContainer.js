@@ -4,11 +4,10 @@ import { fetchUserEntries } from '../actions/fetchUserEntries'
 import { getCurrentUser } from '../actions/getCurrentUser'
 import { Entry }  from './entry'
 import { postLike } from '../actions/postLike'
-
+import VerseOfTheDay from './verseOfTheDay'
 
 import { SearchEntries } from './searchEntries'
 import Mark from 'mark.js'
-import { OurMannaVerse } from './ourMannaVerse'
 import JournalEntryInput from './journalEntryInput'
 
 
@@ -112,12 +111,15 @@ class JournalEntriesContainer extends Component {
                     
                     <br></br>
                     {/*<button onClick={this.sortEntries} >Sort by newest</button> */}
-                    <SearchEntries {...this.props} handleSearch={this.handleSearch}/>
-                    <OurMannaVerse verse={this.props.verse} />
+                    <VerseOfTheDay {...this.props} verse={this.props.verse} ></VerseOfTheDay><br />
+                    
+                    
                     <br></br>
                      
                     
                     <JournalEntryInput />
+
+                    <SearchEntries {...this.props} handleSearch={this.handleSearch}/>
                     {this.mapEntries()} 
                 </div>
             )

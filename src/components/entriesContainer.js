@@ -11,7 +11,6 @@ import { postLike } from '../actions/postLike'
 import en from 'javascript-time-ago/locale/en'
 import { SearchEntries } from './searchEntries'
 import Mark from 'mark.js'
-import { OurMannaVerse } from './ourMannaVerse'
 
 TimeAgo.addDefaultLocale(en)
 

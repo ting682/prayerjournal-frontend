@@ -27,10 +27,10 @@ export default function FbShare (props) {
             </Share>
         </FacebookProvider> */}
         
-        <div className="fb-share-button" data-href={url + props.route} data-layout="button" data-size="small"><a target="_blank" href={entryRoute} className="fb-xfbml-parse-ignore"><FontAwesomeIcon icon={faFacebookSquare} size="lg"/></a></div>
+        <div className="fb-share-button" data-href={url + props.route} data-layout="button" data-size="small"><a target="_blank" href={entryRoute} className="fb-xfbml-parse-ignore" rel="noopener noreferrer"><FontAwesomeIcon icon={faFacebookSquare} size="lg"/></a></div>
        
 
-            </React.Fragment>
+        </React.Fragment>
         
     )
 }
