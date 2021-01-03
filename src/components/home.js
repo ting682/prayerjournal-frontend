@@ -1,5 +1,3 @@
-
-import { OurMannaVerse } from './ourMannaVerse'
 import VerseOfTheDay from './verseOfTheDay'
 import { IntroCard } from './introCard'
 import MyJournalIntroCard  from './myJournalIntroCard'
@@ -31,7 +29,7 @@ export const Home = (props) => {
             
             <MyJournalIntroCard />
 
-            <IntroCard image={"https://prayerjournal.place/good_news_intro.png"} title={"Is the concept of a prayer journal biblical?"} text={["I believe the concept of a prayer journal is biblical. In the book of Psalms, David and many others wrote about their feelings and about their relationship with God. Here is a link I found interesting:", <p><a href="https://www.gotquestions.org/prayer-journal.html">Got questions? Is the concept of a prayer journal biblical?</a></p>]}/>
+            <IntroCard title={"Is the concept of a prayer journal biblical?"} text={["I believe the concept of a prayer journal is biblical. In the book of Psalms, David and many others wrote about their feelings and about their relationship with God. Here is a link I found interesting:", <p><a href="https://www.gotquestions.org/prayer-journal.html">Got questions? Is the concept of a prayer journal biblical?</a></p>]}/>
 
         </div>
     )

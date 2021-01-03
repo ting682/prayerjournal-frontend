@@ -13,7 +13,7 @@ export default function FbShare (props) {
 
         
         
-        <div class="fb-share-button" data-href={url + props.route} data-layout="button" data-size="small"><a target="_blank" href={entryRoute} class="fb-xfbml-parse-ignore"><FontAwesomeIcon icon={faFacebookSquare} size="lg"/></a></div>
+        <div className="fb-share-button" data-href={url + props.route} data-layout="button" data-size="small"><a target="_blank" href={entryRoute} className="fb-xfbml-parse-ignore"><FontAwesomeIcon icon={faFacebookSquare} size="lg"/></a></div>
        
 
             </React.Fragment>

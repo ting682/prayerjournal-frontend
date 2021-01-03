@@ -156,7 +156,17 @@ class App extends Component {
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} /> 
                 <Route path="/signup" render={(props) => <Signup {...props} />} />
-                <Route path="/myjournal" render={(props) => <JournalEntriesContainer {...props} />} />
+                <Route path="/myjournal" render={(props) => {
+                  
+                  if (this.props.loggedIn) {
+                    return <JournalEntriesContainer {...props} />
+                  } else {
+                    this.props.newAlert('Please login')
+                    this.props.newRouteRequest('/myjournal')
+                    
+                    return <Redirect to="/login" />
+                  }}} />
+                
                 <Route path="/editprofile" render={props => {
                   
                   if (this.props.loggedIn) {

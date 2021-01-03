@@ -3,6 +3,7 @@ import { Form, Row, Col, Button } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { postSignup } from '../actions/postSignup'
+import { Link } from 'react-router-dom'
 
 export const Signup = (props) => {
 
@@ -113,6 +114,11 @@ export const Signup = (props) => {
                             </Col>
                     </Form.Group>
                 </Form>
+                <Row>
+                        <Col sm={{ span: 10, offset: 2 }}>Already a user? 
+                        <Link to="/login"> Login</Link>
+                        </Col>
+                </Row>
             </React.Fragment>
     )
 }

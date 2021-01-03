@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
-
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { fetchLogin } from '../actions/fetchLogin'
@@ -81,6 +81,11 @@ class LoginContainer extends Component {
                                 </Col>
                         </Form.Group>
                     </Form>
+                    <Row>
+                        <Col sm={{ span: 10, offset: 2 }}>Not a user? 
+                        <Link to="/signup"> Signup!</Link>
+                        </Col>
+                    </Row>
                 </React.Fragment>
             )
         }

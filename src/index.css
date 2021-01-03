@@ -30,6 +30,21 @@ code {
   
   width: 70vw;
   height: 600px;
+  background-size: cover;
+}
+
+.myjournalintrocard {
+  width: 70vw;
+  background-size: cover;
+  height: 500px;
+}
+
+#myjournalintrobutton {
+  font-size: xx-large;
+  text-align: center;
+  position: relative;
+  top: 80%;
+  left: -20%;
 }
 
 img {
@@ -63,11 +78,7 @@ mark {
   
 }
 
-#myjournalintrobutton {
-  position: relative;
-  top: 14rem;
-  left: 8rem;
-}
+
 
 .ourmanna-verse-entries {
   
@@ -120,6 +131,21 @@ mark {
   .verse {
     
     width: 100%;
+    background-size: 100vw;
+    height: 300px;
+  }
+
+  .myjournalintrocard {
+    width: 100vw;
+    background-size: 100vw;
+    height: 59vw;
+  }
+
+  #myjournalintrobutton {
+    text-align: left;
+    top: 40vw;
+    left: 15vw;
+    width: 70vw;
   }
 
   .introcard.card {
@@ -127,7 +153,7 @@ mark {
   }
 }
 
-@media only screen and (min-width: 601px) and (max-width: 1025) {
+@media only screen and (min-device-width: 601px) and (max-device-width: 1024) {
 
   .journalintro.desktop {
     display: block;
@@ -153,6 +179,16 @@ mark {
   .verse {
     
     width: 100%;
+  }
+
+  #myjournalintrobutton {
+    position: relative;
+    top: 14rem;
+    left: 8rem;
+  }
+
+  @media only screen and (min-device-width: 1025) {
+    
   }
   
 }

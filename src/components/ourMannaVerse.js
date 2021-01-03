@@ -19,7 +19,7 @@ export const OurMannaVerse = (props) => {
         <div className="verseheading" style={{position: "relative", top: "30%", textAlign: 'center', color: 'pink', fontFamily: "Georgia, serif"}}>
                 <div style={{fontSize: "1.5rem"}}>Verse of the day</div>
         </div>
-        <div className={props.location.pathname === '/' ? "ourmanna-verse" : "ourmanna-verse-entries"}>
+        <div className="ourmanna-verse">
             
             <div id="mannaverse-container">
                 
