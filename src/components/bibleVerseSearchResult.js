@@ -1,12 +1,9 @@
 import { Button } from 'react-bootstrap'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { useState } from 'react'
 
 export const BibleVerseSearchResult = (props) => {
 
     const copyText = props.verseText + " - " + props.passage
-
-    
 
     return (
         <tr>

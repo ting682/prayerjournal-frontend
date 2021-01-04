@@ -27,7 +27,7 @@ export const SearchEntries = (props) => {
     }
 
     return (
-        <Form onSubmit={event => handleSubmit(event, props.handleSearch)} >
+        <Form onSubmit={event => handleSubmit(event, props.handleSearch)} style={{margin: "20px 0px"}}>
             <Form.Control name="search" input="text" onChange={event => handleChange(event, props.handleSearch)} value={searchTerm}>
 
             </Form.Control>

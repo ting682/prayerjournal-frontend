@@ -64,6 +64,7 @@ class EntryInput extends Component {
                             
                     </Form.Group>
                 </Form>
+                
             </React.Fragment>
         )
     }

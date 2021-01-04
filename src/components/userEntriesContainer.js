@@ -68,7 +68,7 @@ class UserEntriesContainer extends Component {
 
     mapEntries = () => {
         
-        if (this.props.entries.length === 0) {
+        if (this.props.entries.length === 0  && this.props.entries.requesting) {
             return <Loader visible={this.state.loading} type="Grid" color="#00BFFF" height={80} width={80} style={{textAlign: "center"}}/>
         } else {
             if (this.state.searchTerm === '') {

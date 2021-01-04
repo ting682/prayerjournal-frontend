@@ -1,16 +1,16 @@
-import { BASEURL } from './url'
+// import { BASEURL } from './url'
 
 export function postLogout(history) {
     return (dispatch) => {
         dispatch({type: 'LOGOUT_STARTED'})
         //debugger
-        return fetch(`${BASEURL}/api/v1/logout`, {
+        return fetch(`${process.env.REACT_APP_API_URL}/api/v1/logout`, {
             
             credentials: "include",
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                'Access-Control-Allow-Origin': `${BASEURL}`
+                'Access-Control-Allow-Origin': `${process.env.REACT_APP_API_URL}`
             }
         })
         .then(resp => {

@@ -1,15 +1,15 @@
-import { BASEURL } from './url'
+// import { BASEURL } from './url'
 
 export function postLike(like) {
     return (dispatch) => {
       dispatch({ type: 'START_NEW_LIKE' });
         //debugger
-      fetch(`${BASEURL}/api/v1/entries/${like.entry_id}/likes`, {
+      fetch(`${process.env.REACT_APP_API_URL}/api/v1/entries/${like.entry_id}/likes`, {
         credentials: "include",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': `${BASEURL}`
+          'Access-Control-Allow-Origin': `${process.env.REACT_APP_API_URL}`
         },
 
         body: JSON.stringify({

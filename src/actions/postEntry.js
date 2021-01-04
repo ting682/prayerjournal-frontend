@@ -1,15 +1,15 @@
-import { BASEURL } from './url'
+// import { BASEURL } from './url'
 
 export function postEntry(data) {
     return (dispatch) => {
       dispatch({ type: 'START_NEW_ENTRY' });
         //debugger
-      fetch(`${BASEURL}/api/v1/entries`, {
+      fetch(`${process.env.REACT_APP_API_URL}/api/v1/entries`, {
         credentials: "include",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': `${BASEURL}`
+          'Access-Control-Allow-Origin': `${process.env.REACT_APP_API_URL}`
         },
 
         body: JSON.stringify({

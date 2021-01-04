@@ -1,15 +1,15 @@
-import { BASEURL } from './url'
+
 
 export function postComment(data) {
     return (dispatch) => {
       dispatch({ type: 'START_NEW_COMMENT' });
         //debugger
-      fetch(`${BASEURL}/api/v1/entries/${data.comment.entry_id}/comments`, {
+      fetch(`${process.env.REACT_APP_API_URL}/api/v1/entries/${data.comment.entry_id}/comments`, {
         credentials: "include",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': `${BASEURL}`
+          'Access-Control-Allow-Origin': `${process.env.REACT_APP_API_URL}`
         },
 
         body: JSON.stringify({

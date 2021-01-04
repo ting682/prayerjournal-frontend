@@ -1,11 +1,11 @@
-import { BASEURL } from './url'
+
 
 export function fetchUserEntries(history, userId) {
     return (dispatch) => {
         
       dispatch({ type: 'START_ADDING_ENTRIES_REQUEST' });
         
-      return fetch(`${BASEURL}/api/v1/users/${userId}/entries`, {
+      return fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/${userId}/entries`, {
         credentials: "include",
         method: "GET",
         headers: {

@@ -8,7 +8,7 @@ export function postSearchBible(searchTerm, bibleVersion) {
         
         method: "GET",
         headers: {
-            'api-key': '3adcd0e3924f6be49af85be2ff69384f',
+            'api-key': process.env.REACT_APP_BIBLE_SEARCH_API_KEY,
             "Content-Type": "application/json"
 
         }

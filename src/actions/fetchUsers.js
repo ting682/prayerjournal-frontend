@@ -1,15 +1,15 @@
-import { BASEURL } from './url'
+
 
 export function fetchUsers(history) {
     return (dispatch) => {
       dispatch({ type: 'START_GET_USERS_REQUEST' });
       //debugger
-      fetch(`${BASEURL}/api/v1/users/`, {
+      fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/`, {
         credentials: "include",
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': `${BASEURL}`
+          'Access-Control-Allow-Origin': `${process.env.REACT_APP_API_URL}`
         }
         })
         .then(response => {

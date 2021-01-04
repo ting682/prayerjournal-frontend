@@ -1,15 +1,15 @@
-import { BASEURL } from './url'
+
 
 export function patchLike(likeId, like) {
     return (dispatch) => {
       dispatch({ type: 'START_PATCH_LIKE' });
         //debugger
-      fetch(`${BASEURL}/api/v1/entries/${like.entry_id}/likes/${likeId}`, {
+      fetch(`${process.env.REACT_APP_API_URL}/api/v1/entries/${like.entry_id}/likes/${likeId}`, {
         credentials: "include",
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': `${BASEURL}`
+          'Access-Control-Allow-Origin': `${process.env.REACT_APP_API_URL}`
         },
 
         body: JSON.stringify({

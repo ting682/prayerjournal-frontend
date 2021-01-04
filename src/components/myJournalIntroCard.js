@@ -8,7 +8,7 @@ export default function MyJournalIntroCard() {
         backgroundImage: `url(${Background})`,
         
         backgroundRepeat: 'no-repeat',
-        
+        fontFamily: "Georgia, serif"
         
     }
 

@@ -22,16 +22,16 @@ export const OurMannaVerse = (props) => {
 
             <React.Fragment>
             <div className="verseheading" style={{position: "relative", top: "30%", textAlign: 'center', color: 'pink', fontFamily: "Georgia, serif"}}>
-                    <div style={{fontSize: "1.5rem"}}>Verse of the day</div>
+                    <div style={{fontSize: "3vh"}}>Verse of the day</div>
             </div>
             <div className="ourmanna-verse">
                 
                 <div id="mannaverse-container">
                     
-                    <h2 id="mannaverse" style={{fontSize: ".8rem"}}>
+                    <h2 id="mannaverse" style={{fontSize: "2vh"}}>
                         {mannaverse}
                     </h2>
-                    <p id="mannaverse-reference" style={{fontSize: ".8rem"}}>
+                    <p id="mannaverse-reference" style={{fontSize: "2vh"}}>
                         {mannaverse_reference}
                     </p>
                     <small id="mannaverse-version">

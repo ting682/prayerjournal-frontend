@@ -1,11 +1,11 @@
-import { BASEURL } from './url'
+
 
 export function fetchEntry(history, entryId) {
     return (dispatch) => {
         
       dispatch({ type: 'START_ENTRY_REQUEST' });
         
-      return fetch(`${BASEURL}/api/v1/entries/${entryId}`, {
+      return fetch(`${process.env.REACT_APP_API_URL}/api/v1/entries/${entryId}`, {
         credentials: "include",
         method: "GET",
         headers: {

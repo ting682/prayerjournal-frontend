@@ -8,6 +8,7 @@ import EntryInput from './entryInput'
 import { postLike } from '../actions/postLike'
 import Loader from 'react-loader-spinner'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import { BibleVerseSearch } from './bibleVerseSearch'
 
 import en from 'javascript-time-ago/locale/en'
 import { SearchEntries } from './searchEntries'
@@ -86,7 +87,7 @@ class EntriesContainer extends Component {
 
         //     })
         // }
-        if (this.props.entries.length === 0) {
+        if (this.props.entries.length === 0 && this.props.entries.requesting) {
             return <Loader visible={this.state.loading} type="Grid" color="#00BFFF" height={80} width={80} style={{textAlign: "center"}}/>
         } else {
 
@@ -132,6 +133,7 @@ class EntriesContainer extends Component {
                      
                     
                     <EntryInput />
+                    <BibleVerseSearch />
                     {this.mapEntries()} 
                 </div>
             )

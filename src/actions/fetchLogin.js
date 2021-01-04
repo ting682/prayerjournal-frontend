@@ -1,10 +1,10 @@
-import { BASEURL } from './url'
+
 
 export function fetchLogin(data, history, request) {
     return (dispatch) => {
         dispatch({type: 'LOGIN_REQUEST_STARTED'})
         
-        return fetch(`${BASEURL}/api/v1/login`, {
+        return fetch(`${process.env.REACT_APP_API_URL}/api/v1/login`, {
             
             credentials: "include",
             method: "POST",

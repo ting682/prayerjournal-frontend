@@ -1,16 +1,16 @@
-import { BASEURL } from './url'
+// import { BASEURL } from './url'
 
 export function postSignup(user, history) {
     return (dispatch) => {
         dispatch({type: 'SIGNUP_REQUEST_STARTED'})
         
-        return fetch(`${BASEURL}/api/v1/signup`, {
+        return fetch(`${process.env.REACT_APP_API_URL}/api/v1/signup`, {
             
             credentials: "include",
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                'Access-Control-Allow-Origin': `${BASEURL}`
+                'Access-Control-Allow-Origin': `${process.env.REACT_APP_API_URL}`
             },
             body: JSON.stringify({
                 user

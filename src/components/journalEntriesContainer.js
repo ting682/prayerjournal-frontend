@@ -118,7 +118,7 @@ class JournalEntriesContainer extends Component {
                      
                     
                     <JournalEntryInput />
-
+                    <br></br>
                     <SearchEntries {...this.props} handleSearch={this.handleSearch}/>
                     {this.mapEntries()} 
                 </div>

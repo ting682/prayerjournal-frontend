@@ -1,15 +1,15 @@
-import { BASEURL } from './url'
+
 
 export function deleteEntry(data) {
     return (dispatch) => {
       dispatch({ type: 'START_DELETE_ENTRY' });
         //debugger
-      fetch(`${BASEURL}/api/v1/entries/${data.entry.entryId}`, {
+      fetch(`${process.env.REACT_APP_API_URL}/api/v1/entries/${data.entry.entryId}`, {
         credentials: "include",
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': `${BASEURL}`
+          'Access-Control-Allow-Origin': `${process.env.REACT_APP_API_URL}`
         }
         })
         .then(response => response.json())

@@ -1,15 +1,15 @@
-import { BASEURL } from './url'
+
 
 export function deleteComment(data, history) {
     return (dispatch) => {
       dispatch({ type: 'START_DELETE_COMMENT' });
         //debugger
-      fetch(`${BASEURL}/api/v1/entries/${data.comment.entryId}/comments/${data.comment.commentId}`, {
+      fetch(`${process.env.REACT_APP_API_URL}/api/v1/entries/${data.comment.entryId}/comments/${data.comment.commentId}`, {
         credentials: "include",
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': `${BASEURL}`
+          'Access-Control-Allow-Origin': `${process.env.REACT_APP_API_URL}`
         }
         })
         .then(response => response.json())

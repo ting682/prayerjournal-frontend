@@ -54,6 +54,9 @@ export const EditEntryContainer = (props) => {
             <React.Fragment>
                 <Button variant="outline-info" onClick={() => handleClick()}>Edit</Button>
                 <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Edit entry</Modal.Title>
+                    </Modal.Header>
                     <Modal.Body>
                         
                         <Form onSubmit={(event) => handleSubmit(event, entryId, currentUserId)}>

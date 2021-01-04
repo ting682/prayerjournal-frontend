@@ -1,15 +1,15 @@
-import { BASEURL } from './url'
+
 
 export function editEntry(data) {
     return (dispatch) => {
       dispatch({ type: 'START_EDIT_ENTRY' });
-        //debugger
-      fetch(`${BASEURL}/api/v1/entries/${data.entry.entry_id}`, {
+      
+      fetch(`${process.env.REACT_APP_API_URL}/api/v1/entries/${data.entry.entry_id}`, {
         credentials: "include",
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': `${BASEURL}`
+          'Access-Control-Allow-Origin': `${process.env.REACT_APP_API_URL}`
         },
 
         body: JSON.stringify({

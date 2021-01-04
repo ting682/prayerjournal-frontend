@@ -1,9 +1,9 @@
-import { BASEURL } from './url'
+
 
 export function fetchComments() {
     return (dispatch) => {
       dispatch({ type: 'START_ADDING_COMMENTS_REQUEST' });
-      fetch(`${BASEURL}/api/v1/comments`)
+      fetch(`${process.env.REACT_APP_API_URL}/api/v1/comments`)
         .then(response => response.json())
         .then(comments => { 
             
