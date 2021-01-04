@@ -6,7 +6,8 @@ import { Entry }  from './entry'
 import { postLike } from '../actions/postLike'
 
 import Mark from 'mark.js'
-
+import Loader from 'react-loader-spinner'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 
 class UserEntriesContainer extends Component {
@@ -67,23 +68,29 @@ class UserEntriesContainer extends Component {
 
     mapEntries = () => {
         
-        if (this.state.searchTerm === '') {
+        if (this.props.entries.length === 0) {
+            return <Loader visible={this.state.loading} type="Grid" color="#00BFFF" height={80} width={80} style={{textAlign: "center"}}/>
+        } else {
+            if (this.state.searchTerm === '') {
                 //debugger
                 return this.props.entries.map(entry => {
             
                 return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} search={this.state.searchTerm}/>
             }, this)
     
-        } else {
-            return this.props.entries.filter(entry => {
-                //debugger
+            } else {
+                return this.props.entries.filter(entry => {
+                    //debugger
+                    
+                    return entry.entryText.includes(this.state.searchTerm)
+                }, this).map(entry => {
                 
-                return entry.entryText.includes(this.state.searchTerm)
-            }, this).map(entry => {
-            
-                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} search={this.state.searchTerm} />
-            }, this)
+                    return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} search={this.state.searchTerm} />
+                }, this)
+            }
         }
+
+        
 
     }
 

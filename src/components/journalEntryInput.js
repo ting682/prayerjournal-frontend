@@ -4,6 +4,7 @@ import { Form, Button } from 'react-bootstrap'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
 import { postEntry } from '../actions/postEntry'
+import { BibleVerseSearch } from './bibleVerseSearch'
 
 class JournalEntryInput extends Component {
     constructor (props) {
@@ -69,10 +70,11 @@ class JournalEntryInput extends Component {
                     
                         <Form.Group>
                             <Form.Check type="checkbox" label="Make public" onChange={this.handlePublic}/>   
-                            <Button type="submit">Submit journal entry</Button>
+                            <Button type="submit">Submit journal entry</Button> 
                             
                     </Form.Group>
                 </Form>
+                <BibleVerseSearch />
             </React.Fragment>
         )
     }

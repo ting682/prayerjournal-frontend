@@ -6,8 +6,9 @@ import { Entry }  from './entry'
 import TimeAgo from 'javascript-time-ago'
 import EntryInput from './entryInput'
 import { postLike } from '../actions/postLike'
+import Loader from 'react-loader-spinner'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
-// English.
 import en from 'javascript-time-ago/locale/en'
 import { SearchEntries } from './searchEntries'
 import Mark from 'mark.js'
@@ -21,7 +22,8 @@ class EntriesContainer extends Component {
         //this.props.getCurrentUser()
         this.state = {
             searchTerm: '',
-            sort: false
+            sort: false,
+            loading: true
         }
     }
     
@@ -84,30 +86,38 @@ class EntriesContainer extends Component {
 
         //     })
         // }
-        if (this.state.searchTerm === '') {
+        if (this.props.entries.length === 0) {
+            return <Loader visible={this.state.loading} type="Grid" color="#00BFFF" height={80} width={80} style={{textAlign: "center"}}/>
+        } else {
+
+            if (this.state.searchTerm === '') {
                 //debugger
                 return this.props.entries.map(entry => {
             
                 return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} search={this.state.searchTerm}/>
             }, this)
-    
-        } else {
-            return this.props.entries.filter(entry => {
-                //debugger
+        
+            } else {
+                return this.props.entries.filter(entry => {
+                    //debugger
+                    
+                    return entry.entryText.includes(this.state.searchTerm)
+                }, this).map(entry => {
                 
-                return entry.entryText.includes(this.state.searchTerm)
-            }, this).map(entry => {
-            
-                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} search={this.state.searchTerm} />
-            }, this)
+                    return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} search={this.state.searchTerm} />
+                }, this)
+            }
         }
+
+        
 
     }
 
             
 
     render () {
-        //debugger
+        
+
         if(this.props.loggedIn) {
             
             //debugger
