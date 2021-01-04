@@ -38,6 +38,9 @@ export const BibleVerseSearch = (props) => {
         <React.Fragment>
                 <Button onClick={handleClick} >Bible verse search</Button>
                 <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Bible verse search</Modal.Title>
+                    </Modal.Header>
                     <Modal.Body>
                         
                         <Form onSubmit={handleSubmit}>
