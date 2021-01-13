@@ -23,7 +23,7 @@ export function fetchUser(userId, history) {
           
         })
         .then(userData => { 
-            //debugger
+            // debugger
             dispatch({ type: 'GET_USER', userData})
 
 

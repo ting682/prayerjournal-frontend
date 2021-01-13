@@ -1,9 +1,20 @@
 import React, { Component } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
+import FormFileInput from 'react-bootstrap/esm/FormFileInput'
 import { connect } from 'react-redux'
 import { editUser } from '../actions/editUser'
 import { fetchUser } from '../actions/fetchUser'
 import { getCurrentUser } from '../actions/getCurrentUser'
+import S3FileUpload from 'react-s3'
+import imageCompression from 'browser-image-compression'
+
+const config = {
+    bucketName: process.env.REACT_APP_AWS_BUCKET_NAME,
+    dirName: process.env.REACT_APP_AWS_BUCKET_DIRECTORY_NAME,
+    region: 'us-east-1',
+    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY
+}
 
 class EditUserProfile extends Component {
 
@@ -59,6 +70,34 @@ class EditUserProfile extends Component {
         }, this.props.currentUser.id, this.props.history)
     }
 
+    handleUpload = async (event) => {
+        const imageFile = event.target.files[0];
+        console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
+        console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+        
+        const options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 300,
+            useWebWorker: true
+        }
+        try {
+            const compressedFile = await imageCompression(imageFile, options);
+            console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
+            console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+        
+            S3FileUpload.uploadFile(compressedFile, config)
+                .then(data => {
+                    // console.log(data)
+                    this.props.editUser({
+                        profile_url: data.location
+                    }, this.props.currentUser.id, this.props.history)
+                })
+                .catch(err => console.error(err)) 
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     render () {
         return (
             <React.Fragment>
@@ -89,11 +128,20 @@ class EditUserProfile extends Component {
                         <Form.Control rows={3} as="textarea" name="bio" type="text" placeholder="Bio" onChange={this.handleChange} value={this.state.bio} />
                         </Col>
                     </Form.Group>
-                        <Form.Group as={Row}>
+                    <Form.Group as={Row} controlId="formHorizontalProfilePicture">
+                        <Form.Label column sm={2}>
+                            Profile picture
+                        </Form.Label>
+                        <Col sm={10}>
+                            <FormFileInput onChange={this.handleUpload}/>
+                        </Col>
+                    </Form.Group>
+                    <Form.Group as={Row}>
                             <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="submit">Edit profile</Button>
                             </Col>
                     </Form.Group>
+                    
                 </Form>
             </React.Fragment>
         )

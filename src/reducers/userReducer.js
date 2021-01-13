@@ -17,7 +17,7 @@ export function userReducer(state = { users: [], requesting: false}, action) {
             }
 
         case "GET_USER":
-            //debugger
+            // debugger
             return {
                 ...state,
                 users: [...state.users, action.userData.data],
