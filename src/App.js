@@ -24,6 +24,7 @@ import NotFound from './components/404'
 import { fetchVerse } from './actions/fetchVerse'
 import JournalEntriesContainer from './components/journalEntriesContainer'
 import EntryShow from './components/entryShow';
+import { SeriesUpload } from './components/seriesUpload';
 
 // import { useHistory } from 'react-router-dom'
 // // export const history = createBrowserHistory()
@@ -102,6 +103,7 @@ class App extends Component {
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
                 <Route path="/myjournal" render={(props) => <JournalEntriesContainer {...props} />} />
                 <Route path="/signup" render={(props) => <Signup {...props} />} />
+                <Route path="/seriesupload" render={(props) => <SeriesUpload {...props} />} />
                 <Route path="/editprofile" render={props => <EditUserProfile {...props} />} />
                 <Route path="*" component={NotFound} />
               </Switch>
@@ -156,6 +158,7 @@ class App extends Component {
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} /> 
                 <Route path="/signup" render={(props) => <Signup {...props} />} />
+                <Route path="/seriesupload" render={(props) => <SeriesUpload {...props} />} />
                 <Route path="/myjournal" render={(props) => {
                   
                   if (this.props.loggedIn) {

@@ -13,7 +13,6 @@ export const Entry = (props) => {
     const timeAgo = new TimeAgo('en-US')
 
     
-    
     return (
         <div className="entry">
             
