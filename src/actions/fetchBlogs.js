@@ -24,8 +24,8 @@ export function fetchBlogs(history) {
           
         })
         .then(blogs => { 
-            //debugger
-            dispatch({ type: 'GET_BLOGS', blogs})
+            // debugger
+            dispatch({ type: 'GET_BLOGS', payload: blogs})
 
 
         }).catch(error => {

@@ -25,6 +25,7 @@ import { fetchVerse } from './actions/fetchVerse'
 import JournalEntriesContainer from './components/journalEntriesContainer'
 import EntryShow from './components/entryShow';
 import { SeriesUpload } from './components/seriesUpload';
+import { BlogsContainer } from './components/blogsContainer';
 
 // import { useHistory } from 'react-router-dom'
 // // export const history = createBrowserHistory()
@@ -102,6 +103,7 @@ class App extends Component {
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} />
                 <Route path="/myjournal" render={(props) => <JournalEntriesContainer {...props} />} />
+                <Route path="/series" render={(props) => <BlogsContainer {...props} />} />
                 <Route path="/signup" render={(props) => <Signup {...props} />} />
                 <Route path="/seriesupload" render={(props) => <SeriesUpload {...props} />} />
                 <Route path="/editprofile" render={props => <EditUserProfile {...props} />} />
@@ -170,6 +172,17 @@ class App extends Component {
                     return <Redirect to="/login" />
                   }}} />
                 
+                <Route path="/series" render={(props) => {
+                  
+                  if (this.props.loggedIn) {
+                    return <BlogsContainer {...props} />
+                  } else {
+                    this.props.newAlert('Please login')
+                    this.props.newRouteRequest('/series')
+                    
+                    return <Redirect to="/login" />
+                }}} />
+
                 <Route path="/editprofile" render={props => {
                   
                   if (this.props.loggedIn) {
