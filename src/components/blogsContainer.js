@@ -28,6 +28,7 @@ export const BlogsContainer = (props) => {
         // debugger
         return (
             <React.Fragment>
+                
                 {blogs.map(blog => {
             // debugger
                 return <Blog key={blog.id} blogId={blog.id} userId={blog.attributes.user_id} entries={blog.entries} updatedAt={blog.attributes.updated_at} imageUrl={blog.attributes.image_url} title={blog.attributes.title} description={blog.attributes.description} published={blog.attributes.published} videoUrl={blog.attributes.video_url} />

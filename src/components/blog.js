@@ -1,8 +1,9 @@
 import React from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { EditBlog } from './editBlog'
 import Parser from 'html-react-parser'
+import { Link } from 'react-router-dom'
 
 export const Blog = (props) => {
 
@@ -15,11 +16,11 @@ export const Blog = (props) => {
             <React.Fragment>
                 
                 <Card>
-                    <Card.Img variant="top" src={props.imageUrl} style={{width: "300px", height: "300px"}} />
+                    <Card.Img variant="top" src={props.imageUrl} style={{width: "700px"}} />
     
                     <Card.Body>
-                        <Card.Title>{props.title}</Card.Title>
-                        <EditBlog {...props} /> <Button>Delete</Button>
+                        <Card.Title><Link to={{pathname: `/series/${props.blogId}`}} >{props.title}</Link></Card.Title>
+                        <EditBlog {...props} />
                         <Card.Text>
                             {Parser(props.description)}
                             

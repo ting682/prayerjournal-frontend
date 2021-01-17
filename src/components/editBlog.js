@@ -1,8 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useState } from 'react'
-import { Button, Modal, Form } from 'react-bootstrap'
+import { Button, Modal, Form, FormLabel } from 'react-bootstrap'
+import FormFileInput from 'react-bootstrap/esm/FormFileInput'
 import { editBlog } from '../actions/patchBlog'
 import ReactQuill from 'react-quill'
+import S3FileUpload from 'react-s3'
+import imageCompression from 'browser-image-compression'
+
+const config = {
+    bucketName: process.env.REACT_APP_AWS_BUCKET_NAME,
+    dirName: process.env.REACT_APP_AWS_BUCKET_DIRECTORY_NAME,
+    region: 'us-east-1',
+    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY
+}
 
 export const EditBlog = (props) => {
     //debugger
@@ -34,18 +45,46 @@ export const EditBlog = (props) => {
         setPublish(event.target.checked)
     }
 
-    const handleSubmit = (event, blogId, currentUserId) => {
+    const handleUpload = async (event) => {
+        const imageFile = event.target.files[0];
+        console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
+        console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+        
+        const options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 700,
+            useWebWorker: true
+        }
+        try {
+            const compressedFile = await imageCompression(imageFile, options);
+            console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
+            console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+        
+            S3FileUpload.uploadFile(compressedFile, config)
+                .then(data => {
+                    // console.log(data)
+                    dispatch(editBlog({
+                        image_url: data.location
+                    }, blogId))
+                })
+                .catch(err => console.error(err)) 
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleSubmit = (event, blogId) => {
         event.preventDefault()
         dispatch(editBlog(
             {
                 
                 description: description,
-                blog_id: parseInt(blogId),
                 // user_id: currentUserId,
-                publish: publish
+                published: publish
                 
             }, blogId
         ))
+        
         setShow(false)
     }
     // debugger
@@ -70,7 +109,12 @@ export const EditBlog = (props) => {
                                 [ 'link', 'image', 'video']]}} />
                                 <br></br>
 
+                                
                                 <Form.Check type="checkbox" label="Publish" onChange={handlePublish} checked={publish}/>
+                                <br></br>
+                                <FormLabel>Change picture</FormLabel>
+                                <FormFileInput onChange={handleUpload}/>
+                                <br></br>
                             <Button type="submit">Edit blog</Button>
                         </Form>
                     </Modal.Body>

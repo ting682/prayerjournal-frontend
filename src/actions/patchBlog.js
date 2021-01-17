@@ -16,7 +16,7 @@ export function editBlog(blog, blogId) {
         .then(response => response.json())
         .then(blog => { 
             //debugger
-            dispatch({ type: 'EDIT_blog', blog})
+            dispatch({ type: 'EDIT_BLOG', blog})
             
         })
     };

@@ -9,6 +9,7 @@ import { routeRequestReducer } from './routeRequestReducer'
 import { verseReducer } from "./verseReducer";
 import { bibleSearchReducer } from './bibleSearchReducer'
 import { blogsReducer } from './blogsReducer'
+import { blogReducer } from './blogReducer'
 
 export const rootReducer = (history) => combineReducers({
     loggedIn: !!loginReducer.currentUser,
@@ -22,6 +23,7 @@ export const rootReducer = (history) => combineReducers({
     verse: verseReducer,
     bibleSearchReducer,
     blogs: blogsReducer,
+    blog: blogReducer
   });
 
 

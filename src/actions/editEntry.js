@@ -1,6 +1,6 @@
 
 
-export function editEntry(data) {
+export function editEntry(data, blogId) {
     return (dispatch) => {
       dispatch({ type: 'START_EDIT_ENTRY' });
       
@@ -22,8 +22,13 @@ export function editEntry(data) {
         })
         .then(response => response.json())
         .then(entry => { 
-            //debugger
-            dispatch({ type: 'EDIT_ENTRY', entry})
+            
+            if (blogId) {
+              dispatch({ type: 'EDIT_BLOG_ENTRY', entry})
+            } else {
+              dispatch({ type: 'EDIT_ENTRY', entry})
+            }
+            
             //dispatch({ type: 'ADD_ENTRIES', entries})
 
             //history.push("/entries")
