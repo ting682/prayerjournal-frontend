@@ -17,7 +17,7 @@ export const AddBlog = (props) => {
     
     const currentUser = useSelector(state => state.user.currentUser)
 
-    const loggedIn = useSelector(state => !!state.user.currentUser && state.user.currentUser.length !== 0)
+    // const loggedIn = useSelector(state => !!state.user.currentUser && state.user.currentUser.length !== 0)
     const dispatch = useDispatch()
     
     const [description, setDescription] = useState('')
@@ -102,7 +102,7 @@ export const AddBlog = (props) => {
         setShow(false)
     }
     // debugger
-    if (loggedIn && (currentUser.attributes.editor || currentUser.attributes.admin)) {
+    if (currentUserId && (currentUser.attributes.editor || currentUser.attributes.admin)) {
         return (
             <React.Fragment>
                 <br></br>

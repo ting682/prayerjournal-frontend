@@ -44,7 +44,7 @@ class BlogEntryInput extends Component {
     }
 
     render () {
-        if (this.props.currentUser.attributes.editor) {
+        if (this.props.currentUser.id && this.props.currentUser.attributes.editor) {
             return (
                 <React.Fragment>
                     

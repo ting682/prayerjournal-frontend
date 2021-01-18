@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Blog } from './blog'
 import { fetchBlogs } from '../actions/fetchBlogs'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { AddBlog } from './addBlog'
+import { Breadcrumb } from 'react-bootstrap'
 
 export const BlogsContainer = (props) => {
 
@@ -29,6 +30,13 @@ export const BlogsContainer = (props) => {
         // debugger
         return (
             <React.Fragment>
+                <Breadcrumb>
+                    <Breadcrumb.Item ><Link to="/">Home</Link></Breadcrumb.Item>
+                    <Breadcrumb.Item active>
+                        Series
+                    </Breadcrumb.Item>
+                    
+                </Breadcrumb>
                 <AddBlog />
                 {blogs.map(blog => {
                     
