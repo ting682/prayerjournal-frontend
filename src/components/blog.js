@@ -16,7 +16,7 @@ export const Blog = (props) => {
             <React.Fragment>
                 
                 <Card>
-                    <Card.Img variant="top" src={props.imageUrl} style={{width: "700px"}} />
+                    <Link to={{pathname: `/series/${props.blogId}`}} ><Card.Img variant="top" src={props.imageUrl} style={{width: "700px"}} /></Link>
     
                     <Card.Body>
                         <Card.Title><Link to={{pathname: `/series/${props.blogId}`}} >{props.title}</Link></Card.Title>
