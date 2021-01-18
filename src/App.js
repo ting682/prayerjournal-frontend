@@ -128,6 +128,7 @@ class App extends Component {
                   
                 <Nav.Link as={Link} to="/" className="nav-link">Home</Nav.Link>
                 <Nav.Link as={Link} to="/entries" className="nav-link">Entries</Nav.Link>
+                <Nav.Link as={Link} to="/series" className="nav-link">Series</Nav.Link>
                 <Link to="/login" className="nav-link">Login</Link>
                 <Link to="/signup" className="nav-link">Signup</Link>
                 {/* <Link to="/users" className="nav-link">Users</Link> */}
@@ -162,7 +163,8 @@ class App extends Component {
                 <Route exact path="/users" render={(props) => <UsersContainer {...props} />} />
                 <Route path="/users/:userId" render={(props) => <UserContainer {...props} />} /> 
                 <Route path="/signup" render={(props) => <Signup {...props} />} />
-                
+                <Route exact path="/series" render={(props) => <BlogsContainer {...props} />} />
+                <Route path="/series/:blogId" render={(props) => <BlogContainer {...props} />} />
                 <Route path="/myjournal" render={(props) => {
                   
                   if (this.props.loggedIn) {
@@ -174,7 +176,7 @@ class App extends Component {
                     return <Redirect to="/login" />
                   }}} />
                 
-                <Route exact path="/series" render={(props) => {
+                {/* <Route exact path="/series" render={(props) => {
                   
                   if (this.props.loggedIn) {
                     return <BlogsContainer {...props} />
@@ -183,7 +185,7 @@ class App extends Component {
                     this.props.newRouteRequest('/series')
                     
                     return <Redirect to="/login" />
-                }}} />
+                }}} /> */}
 
                 <Route path="/editprofile" render={props => {
                   
