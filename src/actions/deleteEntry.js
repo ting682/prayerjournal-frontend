@@ -1,6 +1,6 @@
 
 
-export function deleteEntry(data) {
+export function deleteEntry(data, history, blogId) {
     return (dispatch) => {
       dispatch({ type: 'START_DELETE_ENTRY' });
         //debugger
@@ -15,9 +15,18 @@ export function deleteEntry(data) {
         .then(response => response.json())
         .then(entry => { 
             //debugger
-            dispatch({ type: 'DELETE_ENTRY', payload: { 
+
+            if (blogId !== null) {
+              dispatch({ type: 'DELETE_BLOG_ENTRY', payload: { 
                 entryId: data.entry.entryId
-            }})
+              }})
+            } else {
+              dispatch({ type: 'DELETE_ENTRY', payload: { 
+                entryId: data.entry.entryId
+              }})
+            }
+
+            
             
         })
     };

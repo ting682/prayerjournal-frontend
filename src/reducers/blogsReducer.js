@@ -72,7 +72,26 @@ export function blogsReducer(state = { blogs: [], loaded: false, requesting: fal
             
             return {
                 ...state,
-                blogs: [blog, ...state.blogs.slice(0, blogIndex), ...state.blogs.slice(blogIndex + 1)]
+                blogs: [blog, ...state.blogs.slice(0, blogIndex), ...state.blogs.slice(blogIndex + 1)],
+                loaded: true,
+                requesting: false
+            }
+        
+        case 'NEW_BLOG':
+
+            blog = action.payload.data
+
+            tempDiv = document.createElement('div')
+            tempDiv.innerHTML = blog.attributes.description
+            blogText = tempDiv.textContent.toLowerCase()
+
+            Object.assign(blog, {blogText: blogText})
+
+            return {
+                ...state,
+                blogs: [blog, ...state.blogs],
+                requesting: false,
+                loaded: true
             }
 
         default:

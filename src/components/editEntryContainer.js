@@ -36,6 +36,7 @@ export const EditEntryContainer = (props) => {
 
     const handleSubmit = (event, entryId, currentUserId) => {
         event.preventDefault()
+        
         dispatch(editEntry(
             {
                 entry: {
@@ -44,7 +45,7 @@ export const EditEntryContainer = (props) => {
                     user_id: currentUserId,
                     public: publicEntry
                 }
-            }, entryId
+            }, props.entry.blog_id
         ))
         setShow(false)
     }

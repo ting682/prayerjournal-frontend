@@ -26,7 +26,7 @@ export const DeleteEntry = (props) => {
                 
                 entryId
             }
-        }, history))
+        }, history, props.entry.blog_id))
     }
     //debugger
     if (props.entry.user_id === currentUserId) {

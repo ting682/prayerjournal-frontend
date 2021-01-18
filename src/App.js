@@ -81,6 +81,7 @@ class App extends Component {
                 <Link to="/users" className="nav-link">Users</Link>
                 <Nav.Link as={Link} to="/editprofile" className="nav-link">Profile</Nav.Link>
                 <Nav.Link as={Link} to="/myjournal" className="nav-link">Journal</Nav.Link>
+                <Nav.Link as={Link} to="/series" className="nav-link">Series</Nav.Link>
                 <Button onClick={() => this.handleLogout(this.props.history)}>Logout</Button>
                 </Nav>
                 </Navbar.Collapse>

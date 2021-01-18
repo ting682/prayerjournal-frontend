@@ -21,15 +21,21 @@ export const Blog = (props) => {
                     <Card.Body>
                         <Card.Title><Link to={{pathname: `/series/${props.blogId}`}} >{props.title}</Link></Card.Title>
                         <EditBlog {...props} />
-                        <Card.Text>
-                            {Parser(props.description)}
+                        
+                        {Parser(props.description)}
                             
-                        </Card.Text>
+                        
                         
                     </Card.Body>
                 </Card>
                 
                 
+            </React.Fragment>
+        )
+    } else {
+        return (
+            <React.Fragment>
+
             </React.Fragment>
         )
     }

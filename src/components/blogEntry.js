@@ -10,12 +10,13 @@ export const BlogEntry = (props) => {
     const timeAgo = new TimeAgo('en-US')
 
     
+    
     return (
         <div className="entry">
             
             <Card>
                 <Card.Body>
-                    <Card.Title>Created by: {props.entry.name}</Card.Title>
+                    
                     
                     <EditEntryContainer {...props} /> <DeleteEntry {...props} />
                     <br />

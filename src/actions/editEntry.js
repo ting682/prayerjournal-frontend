@@ -22,8 +22,8 @@ export function editEntry(data, blogId) {
         })
         .then(response => response.json())
         .then(entry => { 
-            
-            if (blogId) {
+            // debugger
+            if (blogId !== null) {
               dispatch({ type: 'EDIT_BLOG_ENTRY', entry})
             } else {
               dispatch({ type: 'EDIT_ENTRY', entry})

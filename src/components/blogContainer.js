@@ -6,6 +6,8 @@ import { fetchBlog } from '../actions/fetchBlog'
 import { useHistory } from 'react-router-dom'
 import TimeAgo from 'javascript-time-ago'
 import { BlogEntry } from './blogEntry'
+import BlogEntryInput from './blogEntryInput'
+import { BibleVerseSearch } from './bibleVerseSearch'
 
 export const BlogContainer = (props) => {
 
@@ -16,6 +18,8 @@ export const BlogContainer = (props) => {
     const dispatch = useDispatch()
 
     const history = useHistory()
+
+    const currentUser = useSelector(state => state.user.currentUser)
 
     const blog = useSelector(state => state.blog.blog)
 
@@ -40,16 +44,20 @@ export const BlogContainer = (props) => {
                     <Card.Body>
                         <Card.Title>{title}</Card.Title>
                         
-                        <Card.Text>
+                        
                         <p>created {timeAgo.format(new Date(updated_at))}</p>
                         <p>by {name}</p>
                             {Parser(description)}
                             
-                        </Card.Text>
+                        
                         
                     </Card.Body>
                 </Card>
                 
+                <BlogEntryInput {...props} />
+
+                {currentUser.attributes.editor && <BibleVerseSearch />}
+                <br></br>
                 {blog.entries.map(entry => {
                     return <BlogEntry key={entry.id} entryId={entry.id} entry={entry.attributes} {...props} />
                 })}

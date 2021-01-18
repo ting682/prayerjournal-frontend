@@ -2,22 +2,29 @@ import { useDispatch, useSelector } from 'react-redux'
 import React, { useState } from 'react'
 import { Button, Modal, Form, FormLabel } from 'react-bootstrap'
 import FormFileInput from 'react-bootstrap/esm/FormFileInput'
-import { editBlog } from '../actions/patchBlog'
 import ReactQuill from 'react-quill'
 import S3FileUpload from 'react-s3'
 import imageCompression from 'browser-image-compression'
+import { postBlog } from '../actions/postBlog'
 
 
-export const EditBlog = (props) => {
+
+export const AddBlog = (props) => {
     //debugger
     const [show, setShow] = useState(false)
-    const [publish, setPublish] = useState(props.published)
+    const [publish, setPublish] = useState(false)
     const currentUserId = useSelector(state => parseInt(state.user.currentUser.id))
-    const blogId = props.blogId
+    
+    const currentUser = useSelector(state => state.user.currentUser)
+
     const loggedIn = useSelector(state => !!state.user.currentUser && state.user.currentUser.length !== 0)
     const dispatch = useDispatch()
-    const [title, setTitle] = useState(props.title)
-    const [description, setDescription] = useState(props.description)
+    
+    const [description, setDescription] = useState('')
+
+    const [imageUrl, setImageUrl] = useState('')
+
+    const [title, setTitle] = useState('')
 
     const handleClick = () => {
         
@@ -43,6 +50,7 @@ export const EditBlog = (props) => {
     }
 
     const handleUpload = async (event) => {
+        event.preventDefault()
         const imageFile = event.target.files[0];
         console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
         console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
@@ -68,9 +76,7 @@ export const EditBlog = (props) => {
             S3FileUpload.uploadFile(compressedFile, config)
                 .then(data => {
                     // console.log(data)
-                    dispatch(editBlog({
-                        image_url: data.location
-                    }, blogId))
+                    setImageUrl(data.location)
                 })
                 .catch(err => console.error(err)) 
         } catch (error) {
@@ -78,32 +84,37 @@ export const EditBlog = (props) => {
         }
     }
 
-    const handleSubmit = (event, blogId) => {
+    const handleSubmit = (event) => {
         event.preventDefault()
-        dispatch(editBlog(
+        dispatch(postBlog(
             {
                 title: title,
                 description: description,
-                // user_id: currentUserId,
-                published: publish
+                image_url: imageUrl,
+                published: publish,
+                user_id: currentUserId
                 
-            }, blogId
+            }
         ))
-        
+        setTitle('')
+        setDescription('')
+        setImageUrl('')
         setShow(false)
     }
     // debugger
-    if (loggedIn && props.userId === currentUserId) {
+    if (loggedIn && (currentUser.attributes.editor || currentUser.attributes.admin)) {
         return (
             <React.Fragment>
-                <Button variant="outline-info" onClick={() => handleClick()}>Edit</Button>
+                <br></br>
+                <Button variant="outline-info" onClick={() => handleClick()} style={{marginBottom: "30px"}}>New series</Button>
+                <br></br>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Edit series</Modal.Title>
+                        <Modal.Title>New series</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         
-                        <Form onSubmit={(event) => handleSubmit(event, blogId, currentUserId)}>
+                        <Form onSubmit={(event) => handleSubmit(event, props.blogId, currentUserId)}>
                             <Form.Label>Title</Form.Label>
                             <Form.Control type="text" value={title} onChange={handleTitleChange}></Form.Control>
                             <br></br>
@@ -124,7 +135,7 @@ export const EditBlog = (props) => {
                                 <FormLabel>Change picture</FormLabel>
                                 <FormFileInput onChange={handleUpload}/>
                                 <br></br>
-                            <Button type="submit">Edit blog</Button>
+                            <Button type="submit">Add new series</Button>
                         </Form>
                     </Modal.Body>
                 </Modal>

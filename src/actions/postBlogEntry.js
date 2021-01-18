@@ -1,7 +1,7 @@
-export function postEntry(data) {
+export function postBlogEntry(data) {
     return (dispatch) => {
-      dispatch({ type: 'START_NEW_ENTRY' });
-        //debugger
+      
+       
       fetch(`${process.env.REACT_APP_API_URL}/api/v1/entries`, {
         credentials: "include",
         method: "POST",
@@ -14,7 +14,8 @@ export function postEntry(data) {
             entry: {
                 content: data.content,
                 user_id: data.user_id,
-                public: data.public
+                public: data.public,
+                blog_id: data.blog_id
             }
         })
         })
@@ -25,11 +26,9 @@ export function postEntry(data) {
             //debugger
             dispatch({ type: 'NEW_ALERT', payload: entry.errors})
           } else {
-            dispatch({ type: 'NEW_ENTRY', entry})
+            dispatch({ type: 'NEW_BLOG_ENTRY', payload: entry})
           }
             
-
-            //history.push("/entries")
         })
     };
   }

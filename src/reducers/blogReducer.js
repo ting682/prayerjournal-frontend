@@ -47,15 +47,15 @@ export function blogReducer(state = { blog: [], requesting: false, loaded: false
 
         case 'EDIT_BLOG_ENTRY': 
 
-            entry = action.payload
-
-            entryIndex = state.blog.blog.entries.findIndex(entry => {
-                return parseInt(entry.id) === parseInt(action.payload.id)
+            entry = action.entry.data
+            
+            entryIndex = state.blog.entries.findIndex(entry => {
+                return parseInt(entry.id) === parseInt(action.entry.data.id)
             })
 
-            entries = [entry, ...state.entries.slice(0, entryIndex), ...state.entries.slice(entryIndex + 1)]
+            entries = [entry, ...state.blog.entries.slice(0, entryIndex), ...state.blog.entries.slice(entryIndex + 1)]
 
-            blog = [...state.blog]
+            blog = {...state.blog}
 
             blog.entries = entries
 
@@ -64,6 +64,39 @@ export function blogReducer(state = { blog: [], requesting: false, loaded: false
                 blog: blog
             }
         
+        case 'NEW_BLOG_ENTRY':
+
+            entries = [action.payload.data, ...state.blog.entries]
+
+            blog = {...state.blog}
+
+            blog.entries = entries
+
+            return {
+                ...state,
+                blog: blog
+            }
+
+        case 'DELETE_BLOG_ENTRY':
+
+            entryIndex = state.blog.entries.findIndex(function (entry) {
+                //debugger
+                return parseInt(entry.id) === parseInt(action.payload.entryId)
+            })
+
+            blog = {...state.blog}
+
+            
+            entries = [...state.blog.entries.slice(0, entryIndex), ...state.blog.entries.slice(entryIndex + 1)]
+
+            blog.entries = entries
+
+            return {
+                ...state,
+                blog: blog,
+                requesting: false
+            }
+
         default:
             return state
     }

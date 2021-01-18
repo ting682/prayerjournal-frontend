@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Blog } from './blog'
 import { fetchBlogs } from '../actions/fetchBlogs'
 import { useHistory } from 'react-router-dom'
+import { AddBlog } from './addBlog'
 
 export const BlogsContainer = (props) => {
 
@@ -28,11 +29,12 @@ export const BlogsContainer = (props) => {
         // debugger
         return (
             <React.Fragment>
-                
+                <AddBlog />
                 {blogs.map(blog => {
-            // debugger
-                return <Blog key={blog.id} blogId={blog.id} userId={blog.attributes.user_id} entries={blog.entries} updatedAt={blog.attributes.updated_at} imageUrl={blog.attributes.image_url} title={blog.attributes.title} description={blog.attributes.description} published={blog.attributes.published} videoUrl={blog.attributes.video_url} />
-            })}
+                    
+                    return <Blog key={blog.id} blogId={blog.id} userId={blog.attributes.user_id} entries={blog.entries} updatedAt={blog.attributes.updated_at} imageUrl={blog.attributes.image_url} title={blog.attributes.title} description={blog.attributes.description} published={blog.attributes.published} videoUrl={blog.attributes.video_url} />
+                    
+                })}
             </React.Fragment>
         )
     } else {

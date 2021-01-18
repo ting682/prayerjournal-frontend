@@ -8,13 +8,7 @@ import { getCurrentUser } from '../actions/getCurrentUser'
 import S3FileUpload from 'react-s3'
 import imageCompression from 'browser-image-compression'
 
-const config = {
-    bucketName: process.env.REACT_APP_AWS_BUCKET_NAME,
-    dirName: process.env.REACT_APP_AWS_BUCKET_DIRECTORY_NAME,
-    region: 'us-east-1',
-    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY
-}
+
 
 class EditUserProfile extends Component {
 
@@ -27,6 +21,8 @@ class EditUserProfile extends Component {
             bio: '',
             name: ''
         }
+
+        
         
     }
 
@@ -84,7 +80,15 @@ class EditUserProfile extends Component {
             const compressedFile = await imageCompression(imageFile, options);
             console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
             console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
-        
+            
+            const config = {
+                bucketName: process.env.REACT_APP_AWS_BUCKET_NAME,
+                dirName: "users/" + this.props.currentUser.id,
+                region: 'us-east-1',
+                accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+                secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY
+            }
+
             S3FileUpload.uploadFile(compressedFile, config)
                 .then(data => {
                     // console.log(data)
