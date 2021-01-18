@@ -4,10 +4,10 @@ import { Button, Modal, Form } from 'react-bootstrap'
 import { editEntry } from '../actions/editEntry'
 import ReactQuill from 'react-quill'
 
-export const EditEntryContainer = (props) => {
+export const EditBlogEntryContainer = (props) => {
 
     const [show, setShow] = useState(false)
-    const [publicEntry, setPublicEntry] = useState(props.entry.public)
+    const [publish, setPublish] = useState(props.entry.public)
     const currentUserId = useSelector(state => parseInt(state.user.currentUser.id))
     const entryId = props.entryId
     const loggedIn = useSelector(state => !!state.user.currentUser && state.user.currentUser.length !== 0)
@@ -29,9 +29,9 @@ export const EditEntryContainer = (props) => {
         setContent(value)
     }
 
-    const handlePublic = (event) => {
+    const handlePublish = (event) => {
         
-        setPublicEntry(event.target.checked)
+        setPublish(event.target.checked)
     }
 
     const handleSubmit = (event, entryId, currentUserId) => {
@@ -42,9 +42,10 @@ export const EditEntryContainer = (props) => {
                 
                 content: content,
                 user_id: currentUserId,
-                public: publicEntry
+                published: publish,
+                blog_id: props.entry.blog_id
                 
-            }, entryId, null
+            }, entryId
         ))
         setShow(false)
     }
@@ -70,7 +71,7 @@ export const EditEntryContainer = (props) => {
                                 [ 'link', 'image', 'video']]}} />
                                 <br></br>
 
-                                <Form.Check type="checkbox" label="Make public" onChange={handlePublic} checked={publicEntry}/>
+                                <Form.Check type="checkbox" label="Publish" onChange={handlePublish} checked={publish}/>
                             <Button type="submit">Edit entry</Button>
                         </Form>
                     </Modal.Body>

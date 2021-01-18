@@ -1,10 +1,10 @@
 
 
-export function editEntry(data, blogId) {
+export function editEntry(entry, entryId, blogId) {
     return (dispatch) => {
       dispatch({ type: 'START_EDIT_ENTRY' });
-      
-      fetch(`${process.env.REACT_APP_API_URL}/api/v1/entries/${data.entry.entry_id}`, {
+      // debugger
+      fetch(`${process.env.REACT_APP_API_URL}/api/v1/entries/${entryId}`, {
         credentials: "include",
         method: "PATCH",
         headers: {
@@ -13,11 +13,7 @@ export function editEntry(data, blogId) {
         },
 
         body: JSON.stringify({
-            entry: {
-                content: data.entry.content,
-                user_id: data.entry.user_id,
-                public: data.entry.public
-            }
+            entry
         })
         })
         .then(response => response.json())
