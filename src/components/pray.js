@@ -4,13 +4,13 @@ export const Pray = (props) => {
     if(props.prayed) {
         return (
             <>
-                <Image src="pray_2.svg" style={{width: "30px"}}/>
+                <Image src="https://prayerjournal.place/pray_2.svg" style={{width: "30px"}}/>
             </>
         )
     } else {
         return (
             <>
-                <Image src="pray_1.svg" style={{width: "30px"}}/>
+                <Image src="https://prayerjournal.place/pray_1.svg" style={{width: "30px"}}/>
             </>
         )
     }
