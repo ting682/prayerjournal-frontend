@@ -6,12 +6,22 @@ import { DeleteEntry } from '../components/deleteEntry'
 import { LikeContainer } from '../components/likeContainer'
 import { Card } from 'react-bootstrap'
 import FbShare from './fbShare'
+import { PrayersContainer } from './prayersContainer'
 // import '@fortawesome/fontawesome-svg-core/styles.css'
 
 export const Entry = (props) => {
-    //debugger
+    
     const timeAgo = new TimeAgo('en-US')
 
+    let prayedCount;
+
+    if (props.entry.prayers_count === 0) {
+        prayedCount = ""
+    } else if (props.entry.prayers_count === 1) {
+        prayedCount = "Prayed once"
+    } else {
+        prayedCount = "Prayed " + props.entry.prayers_count + " times"
+    }
     
     return (
         <div className="entry">
@@ -27,7 +37,7 @@ export const Entry = (props) => {
                     <div className="entryContent">
                         {Parser(props.entry.content)}
                     </div>
-                    <p><LikeContainer {...props} likes={props.likes}/>Likes: {props.entry.likes_count}</p>
+                    <p><PrayersContainer {...props} prayers={props.prayers} />{prayedCount} <LikeContainer {...props} likes={props.likes}/>Likes: {props.entry.likes_count}</p>
                     <CommentsContainer comments={props.comments} {...props} search={props.search}/>
                 </Card.Body>
             </Card>

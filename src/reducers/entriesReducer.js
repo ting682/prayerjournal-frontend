@@ -6,6 +6,8 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
     let oldEntry;
     let entryText;
     let tempDiv;
+    let prayers;
+    
     switch (action.type) {
         case "START_ADDING_ENTRIES_REQUEST":
             return {
@@ -138,6 +140,7 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
 
                 comments = [];
                 likes = [];
+                prayers = [];
 
                 tempDiv = document.createElement('div')
                 tempDiv.innerHTML = entry.attributes.content
@@ -149,10 +152,12 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                         comments.push(includedData)
                     } else if (includedData.type === 'like' && includedData.attributes.entry_id === parseInt(entry.id)) {
                         likes.push(includedData)
+                    } else if (includedData.type === 'prayer' && includedData.attributes.entry_id === parseInt(entry.id)) {
+                        prayers.push(includedData)
                     }
                 }
 
-                entriesData.push(Object.assign(entry, { comments: comments, likes: likes, entryText: entryText} ))
+                entriesData.push(Object.assign(entry, { comments: comments, likes: likes, prayers: prayers, entryText: entryText} ))
             }
 
             //debugger
@@ -198,7 +203,7 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
             tempDiv.innerHTML = entry.attributes.content
             entryText = tempDiv.textContent.toLowerCase()
 
-            Object.assign(entry, { comments: [], likes: [], entryText: entryText} )
+            Object.assign(entry, { comments: [], likes: [], prayers: [], entryText: entryText} )
 
             return {
                 ...state,
@@ -265,6 +270,27 @@ export function entriesReducer(state = { entries: [], requesting: false}, action
                 requesting: false
             }
         
+        case 'NEW_PRAYER':
+            //debugger
+            entryIndex = state.entries.findIndex(function (entry) {
+                //debugger
+                return parseInt(entry.id) === parseInt(action.prayer.data.attributes.entry_id)
+            })
+
+            entry = state.entries.find(function(entry) {
+                return parseInt(entry.id) === action.prayer.data.attributes.entry_id
+            })
+
+            entry.attributes.prayers_count += 1
+
+            entry.prayers.push(action.prayer.data)
+
+            return {
+                ...state,
+                entries: [...state.entries.slice(0, entryIndex), entry, ...state.entries.slice(entryIndex + 1)],
+                requesting: false
+            }
+
         case 'PATCH_LIKE':
             //debugger
             entryIndex = state.entries.findIndex(function (entry) {

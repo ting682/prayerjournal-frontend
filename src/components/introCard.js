@@ -9,9 +9,9 @@ export const IntroCard = (props) => {
             <Card.Body>
                 
                 <Card.Title style={{textAlign: "center"}}>{props.title}</Card.Title>
-                <Card.Text style={{textAlign: "center"}}>
+                
                     {props.text}
-                </Card.Text>
+                
             </Card.Body>
         </Card>
     )

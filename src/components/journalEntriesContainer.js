@@ -83,7 +83,7 @@ class JournalEntriesContainer extends Component {
                 //debugger
                 return this.props.entries.map(entry => {
             
-                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} search={this.state.searchTerm}/>
+                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} prayers={entry.prayers} {...this.props} search={this.state.searchTerm}/>
             }, this)
     
         } else {
@@ -93,7 +93,7 @@ class JournalEntriesContainer extends Component {
                 return entry.entryText.includes(this.state.searchTerm)
             }, this).map(entry => {
             
-                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} {...this.props} search={this.state.searchTerm} />
+                return <Entry key={entry.id} entryId={entry.id} entry={entry.attributes} comments={entry.comments} likes={entry.likes} prayers={entry.prayers} {...this.props} search={this.state.searchTerm} />
             }, this)
         }
 
