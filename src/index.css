@@ -61,10 +61,14 @@ mark {
   width: 70vw;
 }
 
+.verseheading {
+  top: 30%;
+}
+
 .ourmanna-verse {
   
   top: 30%;
-  color: pink;
+  color: black;
   position: relative;
   text-align: center;
   font-family: Georgia, serif;
@@ -150,6 +154,15 @@ mark {
 
   .introcard.card {
     width: 100%;
+  }
+
+  .verseheading {
+    top: 10%;
+  }
+  
+  .ourmanna-verse {
+    
+    top: 10%;
   }
 }
 

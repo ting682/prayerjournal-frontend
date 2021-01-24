@@ -21,7 +21,7 @@ export const OurMannaVerse = (props) => {
         return (
 
             <React.Fragment>
-            <div className="verseheading" style={{position: "relative", top: "30%", textAlign: 'center', color: 'pink', fontFamily: "Georgia, serif"}}>
+            <div className="verseheading" style={{position: "relative", textAlign: 'center', color: 'black', fontFamily: "Georgia, serif"}}>
                     <div style={{fontSize: "3vh"}}>Verse of the day</div>
             </div>
             <div className="ourmanna-verse">
