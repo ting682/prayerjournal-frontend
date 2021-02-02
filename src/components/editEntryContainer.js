@@ -2,7 +2,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import React, { useState } from 'react'
 import { Button, Modal, Form } from 'react-bootstrap'
 import { editEntry } from '../actions/editEntry'
-import ReactQuill from 'react-quill'
+import ReactQuill, { Quill } from 'react-quill'
+import ImageCompress from 'quill-image-compress';
+
+Quill.register('modules/imageCompress', ImageCompress);
 
 export const EditEntryContainer = (props) => {
 
@@ -67,7 +70,16 @@ export const EditEntryContainer = (props) => {
                                 
                                 [{ 'header': '1' }, { 'header': '2' }, 'blockquote'],
                                 [{ 'list': 'ordered' }, { 'list': 'bullet'}], 
-                                [ 'link', 'image', 'video']]}} />
+                                [ 'link', 'image', 'video']],
+
+                                imageCompress: {
+                                    quality: 0.7, // default
+                                    maxWidth: 1000, // default
+                                    maxHeight: 1000, // default
+                                    debug: true, // default
+                                  }
+                                
+                                }} />
                                 <br></br>
 
                                 <Form.Check type="checkbox" label="Make public" onChange={handlePublic} checked={publicEntry}/>

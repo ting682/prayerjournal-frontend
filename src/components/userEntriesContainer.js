@@ -28,9 +28,9 @@ class UserEntriesContainer extends Component {
         if (!this.props.loggingOut) {
             
             await this.props.fetchUserEntries(this.props.history, this.props.user.id)
+            
         }
 
-        
     }
 
     handleSearch = (term) => {

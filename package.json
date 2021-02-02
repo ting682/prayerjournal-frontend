@@ -19,6 +19,7 @@
     "gsap": "^3.5.1",
     "html-react-parser": "^0.14.2",
     "javascript-time-ago": "^2.3.3",
+    "quill-image-compress": "^1.2.14",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-copy-to-clipboard": "^5.0.2",
