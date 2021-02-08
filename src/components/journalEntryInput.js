@@ -72,7 +72,7 @@ class JournalEntryInput extends Component {
                             <Form.Check type="checkbox" label="Make public" onChange={this.handlePublic}/>   
                             <Button type="submit">Submit journal entry</Button> 
                             
-                    </Form.Group>
+                        </Form.Group>
                 </Form>
                 <BibleVerseSearch />
             </React.Fragment>

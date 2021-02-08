@@ -65,7 +65,6 @@ class EntryInput extends Component {
                                     quality: 0.7, // default
                                     maxWidth: 1000, // default
                                     maxHeight: 1000, // default
-                                    imageType: 'image/jpeg', // default
                                     debug: true, // default
                                   }
                                 

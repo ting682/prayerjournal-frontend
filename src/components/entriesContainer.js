@@ -13,6 +13,7 @@ import { BibleVerseSearch } from './bibleVerseSearch'
 import en from 'javascript-time-ago/locale/en'
 import { SearchEntries } from './searchEntries'
 import Mark from 'mark.js'
+import LazyLoad from 'react-lazyload';
 
 TimeAgo.addDefaultLocale(en)
 
@@ -134,8 +135,11 @@ class EntriesContainer extends Component {
                     
                     <EntryInput />
                     <BibleVerseSearch />
-                    {this.mapEntries()} 
+                    <LazyLoad>
+                        {this.mapEntries()} 
+                    
                     <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                    </LazyLoad>
                 </div>
             )
         } else {
@@ -143,8 +147,10 @@ class EntriesContainer extends Component {
                 <div id="entries">
                     <br></br>
                     <SearchEntries {...this.props} handleSearch={this.handleSearch}/>
+                    <LazyLoad>
                     {this.mapEntries()} 
-                    <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                        <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                    </LazyLoad>
                 </div>
             )
             

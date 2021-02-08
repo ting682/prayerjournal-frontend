@@ -9,7 +9,7 @@ import VerseOfTheDay from './verseOfTheDay'
 import { SearchEntries } from './searchEntries'
 import Mark from 'mark.js'
 import JournalEntryInput from './journalEntryInput'
-
+import LazyLoad from 'react-lazyload';
 
 class JournalEntriesContainer extends Component {
 
@@ -120,7 +120,9 @@ class JournalEntriesContainer extends Component {
                     <JournalEntryInput />
                     <br></br>
                     <SearchEntries {...this.props} handleSearch={this.handleSearch}/>
-                    {this.mapEntries()} 
+                    <LazyLoad>
+                        {this.mapEntries()}
+                    </LazyLoad>
                 </div>
             )
  
