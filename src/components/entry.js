@@ -8,6 +8,7 @@ import { Card } from 'react-bootstrap'
 import FbShare from './fbShare'
 import { PrayersContainer } from './prayersContainer'
 // import '@fortawesome/fontawesome-svg-core/styles.css'
+import LazyLoad from 'react-lazyload';
 
 export const Entry = (props) => {
     
@@ -24,24 +25,26 @@ export const Entry = (props) => {
     }
     
     return (
-        <div className="entry">
-            
-            <Card>
-                <Card.Body>
-                    <Card.Title>Created by: {props.entry.name}</Card.Title>
-                    
-                    <EditEntryContainer {...props} /> <DeleteEntry {...props} />
-                    <br />
-                    <FbShare route={"https://prayerjournal.place/entries"} entryRoute={props.entryId} />
-                    <p>{timeAgo.format(new Date(props.entry.updated_at))}</p>
-                    <div className="entryContent">
-                        {Parser(props.entry.content)}
-                    </div>
-                    <p><PrayersContainer {...props} prayers={props.prayers} />{prayedCount} <LikeContainer {...props} likes={props.likes}/>Likes: {props.entry.likes_count}</p>
-                    <CommentsContainer comments={props.comments} {...props} search={props.search}/>
-                </Card.Body>
-            </Card>
-            
-        </div>
+        <LazyLoad>
+            <div className="entry">
+                
+                <Card>
+                    <Card.Body>
+                        <Card.Title>Created by: {props.entry.name}</Card.Title>
+                        
+                        <EditEntryContainer {...props} /> <DeleteEntry {...props} />
+                        <br />
+                        <FbShare route={"https://prayerjournal.place/entries"} entryRoute={props.entryId} />
+                        <p>{timeAgo.format(new Date(props.entry.updated_at))}</p>
+                        <div className="entryContent">
+                            {Parser(props.entry.content)}
+                        </div>
+                        <p><PrayersContainer {...props} prayers={props.prayers} />{prayedCount} <LikeContainer {...props} likes={props.likes}/>Likes: {props.entry.likes_count}</p>
+                        <CommentsContainer comments={props.comments} {...props} search={props.search}/>
+                    </Card.Body>
+                </Card>
+                
+            </div>
+        </LazyLoad>
     )
 }
