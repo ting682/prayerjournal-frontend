@@ -13,7 +13,7 @@ import LazyLoad from 'react-lazyload';
 export const Entry = (props) => {
     
     const timeAgo = new TimeAgo('en-US')
-
+    
     let prayedCount;
 
     if (props.entry.prayers_count === 0) {
@@ -34,6 +34,7 @@ export const Entry = (props) => {
                         
                         <EditEntryContainer {...props} /> <DeleteEntry {...props} />
                         <br />
+                        
                         <FbShare route={"https://prayerjournal.place/entries"} entryRoute={props.entryId} />
                         <p>{timeAgo.format(new Date(props.entry.updated_at))}</p>
                         <div className="entryContent">
