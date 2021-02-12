@@ -4,6 +4,7 @@ export const IntroCard = (props) => {
 
 
     return (
+        
         <Card className="introcard">
             <Card.Img variant='top' src={props.image}/>
             <Card.Body>

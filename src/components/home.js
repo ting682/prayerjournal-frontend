@@ -18,18 +18,18 @@ export const Home = (props) => {
                 This web application is made for those who want to keep a journal, post, share, and interact with fellow users! 
             </p> */}
 
-            <IntroCard   text={["", <p>The apostle Paul says: </p>, <p><em>So encourage each other and build each other up, just as you are already doing - 1 Thessalonians 5:11</em></p>, <p>Let this prayer journal be a way of staying in fellowship with one another and allow yourself to have a deeper relationship with God by keeping a journal of your thoughts and prayers.</p>, ""]} />
+            <IntroCard key={1} text={["", <p>The apostle Paul says: </p>, <p><em>So encourage each other and build each other up, just as you are already doing - 1 Thessalonians 5:11</em></p>, <p>Let this prayer journal be a way of staying in fellowship with one another and allow yourself to have a deeper relationship with God by keeping a journal of your thoughts and prayers.</p>, ""]} />
             
             {/* <p>
                 Please login or signup!
             </p> */}
-            <VerseOfTheDay {...props} verse={props.verse} ></VerseOfTheDay>
+            <VerseOfTheDay key={4} {...props} verse={props.verse} ></VerseOfTheDay>
             
-            <IntroCard title={"My prayer journal"} text={["My prayer journal is simply a personalized  way of keeping a good habit of communicating your thoughts regularly and consistently to God. We want a prayer journal to help reflect on God, ourselves, and everything around us that's happening."]}/>
+            <IntroCard key={2} title={"My prayer journal"} text={["My prayer journal is simply a personalized  way of keeping a good habit of communicating your thoughts regularly and consistently to God. We want a prayer journal to help reflect on God, ourselves, and everything around us that's happening."]}/>
             
             <MyJournalIntroCard />
 
-            <IntroCard title={"Is the concept of a prayer journal biblical?"} text={["I believe the concept of a prayer journal is biblical. In the book of Psalms, David and many others wrote about their feelings and about their relationship with God. Here is a link I found interesting:", <p><a href="https://www.gotquestions.org/prayer-journal.html">Got questions? Is the concept of a prayer journal biblical?</a></p>]}/>
+            <IntroCard key={3} title={"Is the concept of a prayer journal biblical?"} text={["I believe the concept of a prayer journal is biblical. In the book of Psalms, David and many others wrote about their feelings and about their relationship with God. Here is a link I found interesting:", <p><a href="https://www.gotquestions.org/prayer-journal.html">Got questions? Is the concept of a prayer journal biblical?</a></p>]}/>
 
         </div>
     )
